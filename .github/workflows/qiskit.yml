@@ -1,0 +1,58 @@
+name: Qiskit
+on:
+  schedule:
+    - cron: '0 0,12 * * *'
+
+
+jobs:
+  core-tests:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        config:
+          - {
+              pennylane: 'git+https://github.com/PennyLaneAI/pennylane.git@device-test-cli',
+              plugin: 'git+https://github.com/PennyLaneAI/pennylane-qiskit.git'
+            }
+          - {pennylane: 'pennylane', plugin: 'pennylane-qiskit'}
+
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.4.1
+        with:
+          access_token: ${{ github.token }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+
+      - name: Install requirements
+        run: |
+          pip install --upgrade pip
+          pip install --upgrade qiskit
+          pip install ${{ matrix.config.pennylane }} ${{ matrix.config.plugin }}
+
+      - name: Get plugin version
+        id: get-version
+        if: "!contains(matrix.config.plugin, 'git')"
+        run: |
+          plugin_version=$(python -c "import pkg_resources as pkg; print(pkg.get_distribution('pennylane_qiskit').version)")
+          echo ::set-output name=plugin_version::$plugin_version
+
+      - uses: actions/checkout@v2
+        with:
+          path: plugin_repo
+
+      - name: Checkout git release
+        if: "!contains(matrix.config.plugin, 'git')"
+        run: cd plugin_repo && git checkout v${{ steps.get-version.outputs.plugin_version }}
+
+      - name: Run core plugin tests
+        run: |
+          pl-device-test --device="qiskit.basicaer"
+          pl-device-test --device="qiskit.aer"
+
+      - name: Run plugin tests
+        run: python -m pytest plugin_repo/tests --tb=native
