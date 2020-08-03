@@ -45,25 +45,22 @@ jobs:
           pip install pytest pytest-mock pytest-cov flaky
           pip install ${{ matrix.config.pennylane }} ${{ matrix.config.plugin }}
 
-      - name: Get plugin version
-        id: get-version
-        if: "!contains(matrix.config.plugin, 'git')"
-        run: |
-          plugin_version=$(python -c "import pkg_resources as pkg; print(pkg.get_distribution('pennylane_qiskit').version)")
-          echo ::set-output name=plugin_version::$plugin_version
-
       - uses: actions/checkout@v2
         with:
+          repository: PennyLaneAI/pennylane-qiskit
           path: plugin_repo
 
       - name: Checkout git release
+        id: get-version
         if: "!contains(matrix.config.plugin, 'git')"
-        run: cd plugin_repo && git checkout v${{ steps.get-version.outputs.plugin_version }}
+        run: |
+          PLUGIN_VERSION=$(python -c "import pkg_resources as pkg; print(pkg.get_distribution('pennylane_qiskit').version)")
+          cd plugin_repo && git checkout v$PLUGIN_VERSION
 
       - name: Run core plugin tests
         run: |
-          pl-device-test --device="qiskit.basicaer"
-          pl-device-test --device="qiskit.aer"
+          pl-device-test --device="qiskit.basicaer" --tb=short
+          pl-device-test --device="qiskit.aer" --tb=short
 
       - name: Run plugin tests
-        run: python -m pytest plugin_repo/tests --tb=native
+        run: python -m pytest plugin_repo/tests --tb=short
