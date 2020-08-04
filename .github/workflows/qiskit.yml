@@ -44,18 +44,18 @@ jobs:
 
       - name: Install PennyLane
         run: |
-          if [ "${{ matrix.config.pennylane }}" -eq "github" ]; then
+          if [ "${{ matrix.config.pennylane }}" == "github" ]; then
             pip install git+https://github.com/PennyLaneAI/pennylane.git@${{ env.PENNYLANE_BRANCH }}
-          elif [ "${{ matrix.config.pennylane }}" -eq "pypi" ]; then
+          elif [ "${{ matrix.config.pennylane }}" == "pypi" ]; then
             pip install pennylane
           fi
 
-      - name: Install PluginPennyLane
+      - name: Install Plugin
         run: |
-          if [ "${{ matrix.config.pennylane }}" -eq "github" ]; then
+          if [ "${{ matrix.config.plugin }}" == "github" ]; then
             pip install git+https://github.com/${{ env.PLUGIN_REPO }}.git@${{ env.PLUGIN_BRANCH }}
-          elif [ "${{ matrix.config.pennylane }}" -eq "pypi" ]; then
-            pip install pennylane
+          elif [ "${{ matrix.config.plugin }}" == "pypi" ]; then
+            pip install ${{ env.PLUGIN_PACKAGE }}
           fi
 
       - uses: actions/checkout@v2
