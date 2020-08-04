@@ -53,7 +53,7 @@ jobs:
       - name: Install PennyLane
         if: contains(matrix.config.pennylane, 'github')
         run: |
-          pip uninstall pennylane
+          pip uninstall -y pennylane
           pip install git+https://github.com/PennyLaneAI/pennylane.git@${{ env.PENNYLANE_BRANCH }}
 
       - uses: actions/checkout@v2
