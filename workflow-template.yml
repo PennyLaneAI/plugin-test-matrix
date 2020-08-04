@@ -11,7 +11,7 @@ env:
   PLUGIN_REPO: PennyLaneAI/pennylane-{{ plugin }}
   PLUGIN_BRANCH: master
   PLUGIN_PACKAGE: pennylane_{{ plugin }}
-  PENNYLANE_BRANCH: device-test-cli
+  PENNYLANE_BRANCH: master
 
 
 jobs:

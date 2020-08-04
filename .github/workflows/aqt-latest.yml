@@ -11,7 +11,7 @@ env:
   PLUGIN_REPO: PennyLaneAI/pennylane-aqt
   PLUGIN_BRANCH: master
   PLUGIN_PACKAGE: pennylane_aqt
-  PENNYLANE_BRANCH: device-test-cli
+  PENNYLANE_BRANCH: master
 
 
 jobs:

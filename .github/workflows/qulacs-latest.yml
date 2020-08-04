@@ -11,7 +11,7 @@ env:
   PLUGIN_REPO: PennyLaneAI/pennylane-qulacs
   PLUGIN_BRANCH: master
   PLUGIN_PACKAGE: pennylane_qulacs
-  PENNYLANE_BRANCH: device-test-cli
+  PENNYLANE_BRANCH: master
 
 
 jobs:
