@@ -1,4 +1,4 @@
-name: qiskit-stable
+name: cirq-latest
 on:
   push:
   pull_request:
@@ -8,9 +8,9 @@ on:
 
 
 env:
-  PLUGIN_REPO: PennyLaneAI/pennylane-qiskit
+  PLUGIN_REPO: PennyLaneAI/pennylane-cirq
   PLUGIN_BRANCH: master
-  PLUGIN_PACKAGE: pennylane_qiskit
+  PLUGIN_PACKAGE: pennylane_cirq
   PENNYLANE_BRANCH: device-test-cli
 
 
@@ -22,7 +22,7 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {pennylane: git, plugin: pypi}
+          - {pennylane: git, plugin: git}
 
     steps:
       - name: Cancel Previous Runs
@@ -38,8 +38,7 @@ jobs:
       - name: Install requirements
         run: |
           pip install --upgrade pip
-          pip install --upgrade qiskit
-          pip install pyscf==1.7.2
+          pip install --upgrade cirq
           pip install pytest pytest-mock pytest-cov flaky
           pip freeze
 
@@ -82,8 +81,10 @@ jobs:
         # Remove this if statement when the device tests are released on PyPI
         if: "contains(matrix.config.pennylane, 'git')"
         run: |
-          pl-device-test --device="qiskit.basicaer" --tb=short
-          pl-device-test --device="qiskit.aer" --tb=short
+          pl-device-test --device="cirq.simulator" --tb=short --analytic=False
+          pl-device-test --device="cirq.simulator" --tb=short --analytic=True
+          pl-device-test --device="cirq.mixedsimulator" --tb=short --analytic=False
+          pl-device-test --device="cirq.mixedsimulator" --tb=short --analytic=True
 
       - name: Run plugin tests
         run: python -m pytest plugin_repo/tests --tb=short

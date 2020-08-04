@@ -12,4 +12,5 @@ All entries in the matrix are tested against PennyLane latest (GitHub master).
 |                   | Stable                                                                                          | Latest                                                                                   |
 |---------------    |------------------------------------------------------------------------------------------------ |------------------------------------------------------------------------------------      |
 | Qiskit            | ![Qiskit](https://github.com/PennyLaneAI/plugin-tests/workflows/qiskit-stable/badge.svg)        | ![Qiskit](https://github.com/PennyLaneAI/plugin-tests/workflows/qiskit-latest/badge.svg) |
+| Cirq              | ![Cirq](https://github.com/PennyLaneAI/plugin-tests/workflows/cirq-stable/badge.svg)            | ![Cirq](https://github.com/PennyLaneAI/plugin-tests/workflows/cirq-latest/badge.svg)     |
 |                   |                                                                                                 |                                                                                          |

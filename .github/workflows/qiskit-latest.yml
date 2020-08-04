@@ -41,6 +41,7 @@ jobs:
           pip install --upgrade qiskit
           pip install pyscf==1.7.2
           pip install pytest pytest-mock pytest-cov flaky
+          pip freeze
 
       - name: Install Plugin
         run: |
