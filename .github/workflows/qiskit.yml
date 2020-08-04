@@ -42,14 +42,6 @@ jobs:
           pip install --upgrade qiskit
           pip install pytest pytest-mock pytest-cov flaky
 
-      - name: Install PennyLane
-        run: |
-          if [ "${{ matrix.config.pennylane }}" == "github" ]; then
-            pip install git+https://github.com/PennyLaneAI/pennylane.git@${{ env.PENNYLANE_BRANCH }}
-          elif [ "${{ matrix.config.pennylane }}" == "pypi" ]; then
-            pip install pennylane
-          fi
-
       - name: Install Plugin
         run: |
           if [ "${{ matrix.config.plugin }}" == "github" ]; then
@@ -58,11 +50,17 @@ jobs:
             pip install ${{ env.PLUGIN_PACKAGE }}
           fi
 
+      - name: Install PennyLane
+        if: contains(matrix.config.pennylane, 'github')
+        run: |
+          pip uninstall pennylane
+          pip install git+https://github.com/PennyLaneAI/pennylane.git@${{ env.PENNYLANE_BRANCH }}
+
       - uses: actions/checkout@v2
         with:
           repository: ${{ env.PLUGIN_REPO }}
           path: plugin_repo
-          ref: ${{ env.PLUGIN_BRANCH }}
+          # ref: ${{ env.PLUGIN_BRANCH }}
 
       - name: Checkout git release
         if: "!contains(matrix.config.plugin, 'git')"
@@ -70,7 +68,7 @@ jobs:
           PLUGIN_VERSION=$(python -c "import pkg_resources as pkg; print(pkg.get_distribution('${{ env.PLUGIN_PACKAGE }}').version)")
           cd plugin_repo && git checkout v$PLUGIN_VERSION
 
-      - name: Run core plugin tests
+      - name: Run PennyLane device integration tests
         if: "contains(matrix.config.pennylane, 'git')"
         run: |
           pl-device-test --device="qiskit.basicaer" --tb=short
