@@ -7,8 +7,9 @@ available in the folder [`.github/workflows`](.github/workflows).
 
 ## Testing matrix
 
-|                   | PennyLane v0.9                                                                                   | PennyLane master                                                                             |
-|---------------    |------------------------------------------------------------------------------------------------- |------------------------------------------------------------------------------------          |
-| Qiskit v0.9       | ![Qiskit](https://github.com/PennyLaneAI/plugin-tests/workflows/qiskit-pypi-pyppi/badge.svg)     | ![Qiskit](https://github.com/PennyLaneAI/plugin-tests/workflows/qiskit-git-pypi/badge.svg)   |
-| Qiskit master     | -                                                                                                | ![Qiskit](https://github.com/PennyLaneAI/plugin-tests/workflows/qiskit-git-git/badge.svg)    |
-|                   |                                                                                                  |                                                                                              |
+All entries in the matrix are tested against PennyLane latest (GitHub master).
+
+|                   | Stable                                                                                          | Latest                                                                                   |
+|---------------    |------------------------------------------------------------------------------------------------ |------------------------------------------------------------------------------------      |
+| Qiskit            | ![Qiskit](https://github.com/PennyLaneAI/plugin-tests/workflows/qiskit-stable/badge.svg)        | ![Qiskit](https://github.com/PennyLaneAI/plugin-tests/workflows/qiskit-latest/badge.svg) |
+|                   |                                                                                                 |                                                                                          |
