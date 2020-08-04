@@ -40,6 +40,7 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install --upgrade qiskit
+          pip install pyscf==1.7.2
           pip install pytest pytest-mock pytest-cov flaky
 
       - name: Install Plugin
@@ -56,17 +57,26 @@ jobs:
           pip uninstall -y pennylane
           pip install git+https://github.com/PennyLaneAI/pennylane.git@${{ env.PENNYLANE_BRANCH }}
 
+      - name: Get plugin version
+        id: plugin-version
+        if: contains(matrix.config.plugin, 'pypi')
+        run: |
+          PLUGIN_VERSION=$(python -c "import pkg_resources as pkg; print(pkg.get_distribution('${{ env.PLUGIN_PACKAGE }}').version)")
+          echo ::set-output name=version::$PLUGIN_VERSION
+
       - uses: actions/checkout@v2
+        if: contains(matrix.config.plugin, 'git')
         with:
           repository: ${{ env.PLUGIN_REPO }}
           path: plugin_repo
-          # ref: ${{ env.PLUGIN_BRANCH }}
+          ref: ${{ env.PLUGIN_BRANCH }}
 
-      - name: Checkout git release
-        if: "!contains(matrix.config.plugin, 'git')"
-        run: |
-          PLUGIN_VERSION=$(python -c "import pkg_resources as pkg; print(pkg.get_distribution('${{ env.PLUGIN_PACKAGE }}').version)")
-          cd plugin_repo && git checkout v$PLUGIN_VERSION
+      - uses: actions/checkout@v2
+        if: contains(matrix.config.plugin, 'pypi')
+        with:
+          repository: ${{ env.PLUGIN_REPO }}
+          path: plugin_repo
+          ref: v${{ steps.plugin-version.outputs.version }}
 
       - name: Run PennyLane device integration tests
         if: "contains(matrix.config.pennylane, 'git')"
