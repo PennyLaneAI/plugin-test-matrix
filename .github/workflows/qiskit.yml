@@ -8,10 +8,9 @@ on:
 
 
 env:
-  PLUGIN_NAME: pennylane-qiskit
-  PLUGIN_PACKAGE: pennylane_qiskit
-  PLUGIN_REPO: PennyLaneAI/${{ env.PLUGIN_NAME }}
+  PLUGIN_REPO: PennyLaneAI/pennylane-qiskit
   PLUGIN_BRANCH: master
+  PLUGIN_PACKAGE: pennylane_qiskit
   PENNYLANE_BRANCH: device-test-cli
 
 
