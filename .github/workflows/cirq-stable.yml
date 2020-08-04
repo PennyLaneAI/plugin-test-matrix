@@ -82,9 +82,9 @@ jobs:
         if: "contains(matrix.config.pennylane, 'git')"
         run: |
           pl-device-test --device="cirq.simulator" --tb=short --analytic=False --skip-ops --shots=8000
-          pl-device-test --device="cirq.simulator" --tb=short --analytic=True --skip-ops --shots=8000
+          pl-device-test --device="cirq.simulator" --tb=short --analytic=True --skip-ops
           pl-device-test --device="cirq.mixedsimulator" --tb=short --analytic=False --skip-ops --shots=8000
-          pl-device-test --device="cirq.mixedsimulator" --tb=short --analytic=True --skip-ops --shots=8000
+          pl-device-test --device="cirq.mixedsimulator" --tb=short --analytic=True --skip-ops
 
       - name: Run plugin tests
         run: python -m pytest plugin_repo/tests --tb=short
