@@ -35,15 +35,14 @@ jobs:
       - name: Install requirements
         run: |
           pip install --upgrade pip
-          pip install --upgrade qiskit
-          pip install pyscf==1.7.2
+          pip install --upgrade qiskitpip install --upgrade pyscf==1.7.2
           pip install pytest pytest-mock pytest-cov flaky
           pip freeze
 
       - name: Install PennyLane and Plugin
         run: |
           pip install git+https://github.com/PennyLaneAI/pennylane.git@${{ env.PENNYLANE_BRANCH }} \
-            ${{ env.PLUGIN_PACKAGE }}
+          ${{ env.PLUGIN_PACKAGE }}
 
       - name: Get plugin version
         id: plugin-version
@@ -59,8 +58,8 @@ jobs:
 
       - name: Run PennyLane device integration tests
         run: |
-          pl-device-test --device="qiskit.basicaer" --tb=short --skip-ops --shots=8000
-          pl-device-test --device="qiskit.aer" --tb=short --skip-ops --shots=8000
+          pl-device-test --device=qiskit.basicaer --tb=short --skip-ops --shots=8000
+          pl-device-test --device=qiskit.aer --tb=short --skip-ops --shots=8000
 
       - name: Run plugin tests
         run: python -m pytest plugin_repo/tests --tb=short

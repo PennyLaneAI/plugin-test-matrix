@@ -1,0 +1,90 @@
+name: {{ plugin }}-{% if latest %}latest{% else %}stable{% endif %}
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+
+env:
+  PLUGIN_REPO: PennyLaneAI/pennylane-{{ plugin }}
+  PLUGIN_BRANCH: master
+  PLUGIN_PACKAGE: pennylane_{{ plugin }}
+  PENNYLANE_BRANCH: device-test-cli
+
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.4.1
+        with:
+          access_token: {% raw %}${{ github.token }}{% endraw %}
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+
+      - name: Install requirements
+        run: |
+          pip install --upgrade pip
+          {% for req in requirements %}pip install --upgrade {{ req }}{% endfor %}
+          pip install pytest pytest-mock pytest-cov flaky
+          pip freeze
+
+     {%- if latest %}
+
+      - name: Install PennyLane and Plugin
+        run: |
+          {% raw -%}
+          pip install git+https://github.com/PennyLaneAI/pennylane.git@${{ env.PENNYLANE_BRANCH }} \
+            git+https://github.com/${{ env.PLUGIN_REPO }}.git@${{ env.PLUGIN_BRANCH }}
+          {%- endraw %}
+
+      - uses: actions/checkout@v2
+        with:
+          repository: {% raw %}${{ env.PLUGIN_REPO }}{% endraw %}
+          path: plugin_repo
+          ref: {% raw %}${{ env.PLUGIN_BRANCH }}{% endraw %}
+
+      {% else %}
+
+      - name: Install PennyLane and Plugin
+        run: |
+          {% raw -%}
+          pip install git+https://github.com/PennyLaneAI/pennylane.git@${{ env.PENNYLANE_BRANCH }} \
+          ${{ env.PLUGIN_PACKAGE }}
+          {%- endraw %}
+
+      - name: Get plugin version
+        id: plugin-version
+        run: |
+          {% raw -%}
+          PLUGIN_VERSION=$(python -c "import pkg_resources as pkg; print(pkg.get_distribution('${{ env.PLUGIN_PACKAGE }}').version)")
+          echo ::set-output name=version::$PLUGIN_VERSION
+          {%- endraw %}
+
+      - uses: actions/checkout@v2
+        with:
+          repository: {% raw %}${{ env.PLUGIN_REPO }}{% endraw %}
+          path: plugin_repo
+          ref: {% raw %}v${{ steps.plugin-version.outputs.version }}{% endraw %}
+
+      {% endif -%}
+
+      - name: Run PennyLane device integration tests
+        run: |
+          {%- for test in device_tests %}
+          pl-device-test {{ test }}
+          {%- endfor %}
+
+      - name: Run plugin tests
+        run: python -m pytest plugin_repo/tests --tb=short
+

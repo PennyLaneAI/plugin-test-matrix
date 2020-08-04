@@ -20,9 +20,6 @@ jobs:
 
     strategy:
       fail-fast: false
-      matrix:
-        config:
-          - {pennylane: git, plugin: git}
 
     steps:
       - name: Cancel Previous Runs
@@ -55,8 +52,10 @@ jobs:
 
       - name: Run PennyLane device integration tests
         run: |
-          pl-device-test --device="qiskit.basicaer" --tb=short --skip-ops --shots=8000
-          pl-device-test --device="qiskit.aer" --tb=short --skip-ops --shots=8000
+          pl-device-test --device=cirq.simulator --tb=short --skip-ops --analytic=True
+          pl-device-test --device=cirq.simulator --tb=short --skip-ops --analytic=False --shots=8000
+          pl-device-test --device=cirq.mixedsimulator --tb=short --skip-ops --analytic=True
+          pl-device-test --device=cirq.mixedsimulator --tb=short --skip-ops --analytic=False --shots=8000
 
       - name: Run plugin tests
         run: python -m pytest plugin_repo/tests --tb=short
