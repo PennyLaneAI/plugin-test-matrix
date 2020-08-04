@@ -35,7 +35,9 @@ jobs:
       - name: Install requirements
         run: |
           pip install --upgrade pip
-          {% for req in requirements %}pip install --upgrade {{ req }}{% endfor %}
+          {%- for req in requirements %}
+          pip install --upgrade {{ req }}
+          {%- endfor %}
           pip install pytest pytest-mock pytest-cov flaky
           pip freeze
 
