@@ -81,10 +81,10 @@ jobs:
         # Remove this if statement when the device tests are released on PyPI
         if: "contains(matrix.config.pennylane, 'git')"
         run: |
-          pl-device-test --device="cirq.simulator" --tb=short --analytic=False --skip-ops
-          pl-device-test --device="cirq.simulator" --tb=short --analytic=True --skip-ops
-          pl-device-test --device="cirq.mixedsimulator" --tb=short --analytic=False --skip-ops
-          pl-device-test --device="cirq.mixedsimulator" --tb=short --analytic=True --skip-ops
+          pl-device-test --device="cirq.simulator" --tb=short --analytic=False --skip-ops --shots=8000
+          pl-device-test --device="cirq.simulator" --tb=short --analytic=True --skip-ops --shots=8000
+          pl-device-test --device="cirq.mixedsimulator" --tb=short --analytic=False --skip-ops --shots=8000
+          pl-device-test --device="cirq.mixedsimulator" --tb=short --analytic=True --skip-ops --shots=8000
 
       - name: Run plugin tests
         run: python -m pytest plugin_repo/tests --tb=short
