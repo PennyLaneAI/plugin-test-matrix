@@ -6,6 +6,15 @@ on:
     - cron: '0 0,12 * * *'
   workflow_dispatch:
 
+
+env:
+  PLUGIN_NAME: pennylane-qiskit
+  PLUGIN_PACKAGE: pennylane_qiskit
+  PLUGIN_REPO: PennyLaneAI/${{ env.PLUGIN_NAME }}
+  PLUGIN_BRANCH: master
+  PENNYLANE_BRANCH: device-test-cli
+
+
 jobs:
   core-tests:
     runs-on: ubuntu-latest
@@ -14,11 +23,8 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {
-              pennylane: 'git+https://github.com/PennyLaneAI/pennylane.git@device-test-cli',
-              plugin: 'git+https://github.com/PennyLaneAI/pennylane-qiskit.git'
-            }
-          - {pennylane: 'pennylane', plugin: 'pennylane-qiskit'}
+          - {pennylane: github, plugin: github}
+          - {pennylane: pypi, plugin: pypi}
 
     steps:
       - name: Cancel Previous Runs
@@ -36,22 +42,37 @@ jobs:
           pip install --upgrade pip
           pip install --upgrade qiskit
           pip install pytest pytest-mock pytest-cov flaky
-          pip install ${{ matrix.config.pennylane }} ${{ matrix.config.plugin }}
+
+      - name: Install PennyLane
+        run: |
+          if [ "${{ matrix.config.pennylane }}" -eq "github" ]; then
+            pip install git+https://github.com/PennyLaneAI/pennylane.git@${{ env.PENNYLANE_BRANCH }}
+          elif [ "${{ matrix.config.pennylane }}" -eq "pypi" ]; then
+            pip install pennylane
+          fi
+
+      - name: Install PluginPennyLane
+        run: |
+          if [ "${{ matrix.config.pennylane }}" -eq "github" ]; then
+            pip install git+https://github.com/${{ env.PLUGIN_REPO }}.git@${{ env.PLUGIN_BRANCH }}
+          elif [ "${{ matrix.config.pennylane }}" -eq "pypi" ]; then
+            pip install pennylane
+          fi
 
       - uses: actions/checkout@v2
         with:
-          repository: PennyLaneAI/pennylane-qiskit
+          repository: ${{ env.PLUGIN_REPO }}
           path: plugin_repo
+          ref: ${{ env.PLUGIN_BRANCH }}
 
       - name: Checkout git release
-        id: get-version
         if: "!contains(matrix.config.plugin, 'git')"
         run: |
-          PLUGIN_VERSION=$(python -c "import pkg_resources as pkg; print(pkg.get_distribution('pennylane_qiskit').version)")
+          PLUGIN_VERSION=$(python -c "import pkg_resources as pkg; print(pkg.get_distribution('${{ env.PLUGIN_PACKAGE }}').version)")
           cd plugin_repo && git checkout v$PLUGIN_VERSION
 
       - name: Run core plugin tests
-        if: "!contains(matrix.config.pennylane, 'git')"
+        if: "contains(matrix.config.pennylane, 'git')"
         run: |
           pl-device-test --device="qiskit.basicaer" --tb=short
           pl-device-test --device="qiskit.aer" --tb=short
