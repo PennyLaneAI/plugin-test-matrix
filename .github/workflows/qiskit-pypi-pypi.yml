@@ -1,9 +1,9 @@
-name: Qiskit
+name: qiskit-pypi-pypi
 on:
   push:
   pull_request:
   schedule:
-    - cron: '0 0,12 * * *'
+    - cron: '0 0 * * *'
   workflow_dispatch:
 
 
@@ -15,16 +15,14 @@ env:
 
 
 jobs:
-  core-tests:
+  tests:
     runs-on: ubuntu-latest
 
     strategy:
       fail-fast: false
       matrix:
         config:
-          - {pennylane: github, plugin: github}
           - {pennylane: pypi, plugin: pypi}
-          - {pennylane: github, plugin: pypi}
 
     steps:
       - name: Cancel Previous Runs
@@ -46,14 +44,14 @@ jobs:
 
       - name: Install Plugin
         run: |
-          if [ "${{ matrix.config.plugin }}" == "github" ]; then
+          if [ "${{ matrix.config.plugin }}" == "git" ]; then
             pip install git+https://github.com/${{ env.PLUGIN_REPO }}.git@${{ env.PLUGIN_BRANCH }}
           elif [ "${{ matrix.config.plugin }}" == "pypi" ]; then
             pip install ${{ env.PLUGIN_PACKAGE }}
           fi
 
       - name: Install PennyLane
-        if: contains(matrix.config.pennylane, 'github')
+        if: contains(matrix.config.pennylane, 'git')
         run: |
           pip uninstall -y pennylane
           pip install git+https://github.com/PennyLaneAI/pennylane.git@${{ env.PENNYLANE_BRANCH }}
