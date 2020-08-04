@@ -1,6 +1,6 @@
-# Plugin Scheduled CI
+# Plugin Test Matrix
 
-This repository contains continuous integration for the official PennyLane plugins.
+This repository contains scheduled continuous integration for the official PennyLane plugins.
 
 Continuous-integration is performed by GitHub actions. Tests are executed on every push to `master`,
 and are also run on a schedule once a day.
@@ -20,6 +20,10 @@ All entries in the matrix are tested against PennyLane latest (GitHub master).
 | AQT       | ![](https://img.shields.io/pypi/v/pennylane-aqt?color=green&label=%20&style=flat-square)       | [![](https://github.com/PennyLaneAI/plugin-tests/workflows/aqt-stable/badge.svg)](https://github.com/PennyLaneAI/plugin-tests/actions?query=workflow%3Aaqt-stable)             | [![](https://github.com/PennyLaneAI/plugin-tests/workflows/aqt-latest/badge.svg)](https://github.com/PennyLaneAI/plugin-tests/actions?query=workflow%3Aaqt-latest)             |
 | Honeywell | ![](https://img.shields.io/pypi/v/pennylane-honeywell?color=green&label=%20&style=flat-square) | [![](https://github.com/PennyLaneAI/plugin-tests/workflows/honeywell-stable/badge.svg)](https://github.com/PennyLaneAI/plugin-tests/actions?query=workflow%3Ahoneywell-stable) | [![](https://github.com/PennyLaneAI/plugin-tests/workflows/honeywell-latest/badge.svg)](https://github.com/PennyLaneAI/plugin-tests/actions?query=workflow%3Ahoneywell-latest) |
 
+*Notes:*
+
+* PennyLane-SF currently depends against Strawberry Fields master, not stable
+
 ## Adding a plugin
 
 The file [`workflow-template.yml`](workflow-template.yml) is a Jinja2 template that makes it easy to
@@ -30,6 +34,9 @@ add a new plugin to the testing matrix. Simply add a new plugin to the `workflow
   repository and PyPI project are inferred from the plugin name. E.g., `'plugin': 'qiskit'` will
   correspond to the GitHub repo PennyLaneAI/pennylane-qiskit and the PyPI project
   `pennylane-qiskit`.
+
+* `which` (required): a set specifying whether to generate a workflow to test the `{"latest"}`
+  (GitHub master) version of the plugin, `{"stable"}` (PyPI) version of the plugin, or both `{"latest", "stable"}`.
 
 * `requirements` (optional): a list of Python packages that should be installed prior to plugin
   installation. You may use `pip` syntax, e.g., `pyscf==1.7.2`.
