@@ -79,16 +79,12 @@ jobs:
           path: plugin_repo
           ref: v${{ steps.plugin-version.outputs.version }}
 
-      - name: Run PennyLane device integration testsW
+      - name: Run PennyLane device integration tests
         # Remove this if statement when the device tests are released on PyPI
         if: "contains(matrix.config.pennylane, 'git')"
         run: |
-          success=0
-          pl-device-test --device="qiskit.basicaer" --tb=short && success=1
-          pl-device-test --device="qiskit.aer" --tb=short && success=1
-          if ! ((success)); then
-            exit 1
-          fi
+          pl-device-test --device="qiskit.basicaer" --tb=short
+          pl-device-test --device="qiskit.aer" --tb=short
 
       - name: Run plugin tests
         run: python -m pytest plugin_repo/tests --tb=short
