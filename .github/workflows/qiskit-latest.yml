@@ -52,8 +52,10 @@ jobs:
 
       - name: Run PennyLane device integration tests
         run: |
-          pl-device-test --device=qiskit.basicaer --tb=short --skip-ops --shots=8000
-          pl-device-test --device=qiskit.aer --tb=short --skip-ops --shots=8000
+          pl-device-test --device=qiskit.basicaer --tb=short --skip-ops --analytic=False --shots=10000 --device-kwargs backend=qasm_simulator
+          pl-device-test --device=qiskit.aer --tb=short --skip-ops --analytic=False --shots=10000 --device-kwargs backend=qasm_simulator
+          pl-device-test --device=qiskit.basicaer --tb=short --skip-ops --analytic=True --device-kwargs backend=statevector_simulator
+          pl-device-test --device=qiskit.aer --tb=short --skip-ops --analytic=True --device-kwargs backend=unitary_simulator
 
       - name: Run plugin tests
         run: python -m pytest plugin_repo/tests --tb=short

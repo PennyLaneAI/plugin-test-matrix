@@ -4,22 +4,43 @@ from jinja2 import FileSystemLoader, Environment
 workflows = [
     {
         "plugin": "qiskit",
+        "which": ["latest", "stable"],
         "requirements": ["qiskit", "pyscf==1.7.2"],
         "device_tests": [
-            "--device=qiskit.basicaer --tb=short --skip-ops --shots=8000",
-            "--device=qiskit.aer --tb=short --skip-ops --shots=8000",
-        ]
+            "--device=qiskit.basicaer --tb=short --skip-ops --analytic=False --shots=10000 --device-kwargs backend=qasm_simulator",
+            "--device=qiskit.aer --tb=short --skip-ops --analytic=False --shots=10000 --device-kwargs backend=qasm_simulator",
+            "--device=qiskit.basicaer --tb=short --skip-ops --analytic=True --device-kwargs backend=statevector_simulator",
+            "--device=qiskit.aer --tb=short --skip-ops --analytic=True --device-kwargs backend=unitary_simulator",
+        ],
     },
     {
         "plugin": "cirq",
+        "which": ["latest", "stable"],
         "requirements": ["cirq"],
         "device_tests": [
             "--device=cirq.simulator --tb=short --skip-ops --analytic=True",
-            "--device=cirq.simulator --tb=short --skip-ops --analytic=False --shots=8000",
+            "--device=cirq.simulator --tb=short --skip-ops --analytic=False --shots=10000",
             "--device=cirq.mixedsimulator --tb=short --skip-ops --analytic=True",
-            "--device=cirq.mixedsimulator --tb=short --skip-ops --analytic=False --shots=8000",
-        ]
+            "--device=cirq.mixedsimulator --tb=short --skip-ops --analytic=False --shots=10000",
+        ],
     },
+    {
+        "plugin": "qulacs",
+        "which": ["latest"],
+        "requirements": ["qulacs"],
+        "device_tests": [
+            "--device=qulacs.simulator --tb=short --skip-ops --analytic=True",
+            "--device=qulacs.simulator --tb=short --skip-ops --analytic=False --shots=10000",
+        ],
+    },
+    {
+        "plugin": "sf",
+        "which": ["stable", "latest"],
+        "requirements": ["git+https://github.com/XanaduAI/strawberryfields.git"],
+        "device_tests": [],
+    },
+    {"plugin": "aqt", "which": ["stable", "latest"], "requirements": [], "device_tests": []},
+    {"plugin": "honeywell", "which": ["stable", "latest"], "requirements": [], "device_tests": []},
 ]
 
 
@@ -33,7 +54,7 @@ def render_from_template(**kwargs):
 def render_templates():
 
     for wf in workflows:
-        for i in ["latest", "stable"]:
+        for i in wf["which"]:
             with open(f".github/workflows/{wf['plugin']}-{i}.yml", "w") as f:
                 f.write(render_from_template(latest=i == "latest", **wf))
 
