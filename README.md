@@ -34,13 +34,18 @@ add a new plugin to the testing matrix. Simply add a new plugin to the `workflow
 * `device_tests` (optional): a list of command line arguments to pass to the PennyLane device
   integration tests. Each list element corresponds to a single test run, e.g.,
 
-  ```python "device_tests": [ "--device=cirq.simulator --tb=short --skip-ops --analytic=True",
-  "--device=cirq.simulator --tb=short --skip-ops --analytic=False --shots=8000", ]
+  ```python
+  "device_tests":
+      [
+          "--device=cirq.simulator --tb=short --skip-ops --analytic=True",
+          "--device=cirq.simulator --tb=short --skip-ops --analytic=False --shots=8000"
+      ]
   ```
 
 Once you have added your plugin, run
 
-```console $ python compile.py
+```console
+$ python compile.py
 ```
 
 This will autogenerate two workflow files, `.github/workflows/plugin-stable.yml` and
