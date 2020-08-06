@@ -53,7 +53,7 @@ jobs:
       - name: Run PennyLane device integration tests
         run: |
           pl-device-test --device=qulacs.simulator --tb=short --skip-ops --analytic=True
-          pl-device-test --device=qulacs.simulator --tb=short --skip-ops --analytic=False --shots=10000
+          pl-device-test --device=qulacs.simulator --tb=short --skip-ops --analytic=False --shots=20000
 
       - name: Run plugin tests
         run: python -m pytest plugin_repo/tests --tb=short

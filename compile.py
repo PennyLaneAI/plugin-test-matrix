@@ -7,8 +7,8 @@ workflows = [
         "which": ["latest", "stable"],
         "requirements": ["qiskit", "pyscf==1.7.2"],
         "device_tests": [
-            "--device=qiskit.basicaer --tb=short --skip-ops --analytic=False --shots=10000 --device-kwargs backend=qasm_simulator",
-            "--device=qiskit.aer --tb=short --skip-ops --analytic=False --shots=10000 --device-kwargs backend=qasm_simulator",
+            "--device=qiskit.basicaer --tb=short --skip-ops --analytic=False --shots=20000 --device-kwargs backend=qasm_simulator",
+            "--device=qiskit.aer --tb=short --skip-ops --analytic=False --shots=20000 --device-kwargs backend=qasm_simulator",
             "--device=qiskit.basicaer --tb=short --skip-ops --analytic=True --device-kwargs backend=statevector_simulator",
             "--device=qiskit.aer --tb=short --skip-ops --analytic=True --device-kwargs backend=unitary_simulator",
         ],
@@ -19,9 +19,9 @@ workflows = [
         "requirements": ["cirq"],
         "device_tests": [
             "--device=cirq.simulator --tb=short --skip-ops --analytic=True",
-            "--device=cirq.simulator --tb=short --skip-ops --analytic=False --shots=10000",
+            "--device=cirq.simulator --tb=short --skip-ops --analytic=False --shots=20000",
             "--device=cirq.mixedsimulator --tb=short --skip-ops --analytic=True",
-            "--device=cirq.mixedsimulator --tb=short --skip-ops --analytic=False --shots=10000",
+            "--device=cirq.mixedsimulator --tb=short --skip-ops --analytic=False --shots=20000",
         ],
     },
     {
@@ -30,7 +30,7 @@ workflows = [
         "requirements": ["qulacs"],
         "device_tests": [
             "--device=qulacs.simulator --tb=short --skip-ops --analytic=True",
-            "--device=qulacs.simulator --tb=short --skip-ops --analytic=False --shots=10000",
+            "--device=qulacs.simulator --tb=short --skip-ops --analytic=False --shots=20000",
         ],
     },
     {
