@@ -32,7 +32,7 @@ All entries in the matrix are tested against PennyLane latest (GitHub master).
   bug exists, or (b) an upstream dependency (such as Qiskit or Qulacs)
   were released with breaking changes. In both cases, a bugfix release of the plugin should be made.
 
-* **Stable/latest passing**:a new plugin release is not essential; the current
+* **Stable/latest passing**: A new plugin release is not essential; the current
   PyPI release will continue to work once the new PennyLane version is released.
 
   - **Latest/latest passing**: Nothing to be done! However, it is still worth checking the
@@ -42,7 +42,7 @@ All entries in the matrix are tested against PennyLane latest (GitHub master).
   - **Latest/latest failing**: Indicates that recent changes have been made to the plugin repository
     post-release; further updates must be made to the plugin to ensure GitHub master passes.
 
-* **Stable/latest failing**: a new plugin release is required for compatibility
+* **Stable/latest failing**: A new plugin release is required for compatibility
   with the upcoming PennyLane release.
 
   - **Latest/latest failing**: Updates must be made to the plugin to ensure GitHub
@@ -54,20 +54,29 @@ All entries in the matrix are tested against PennyLane latest (GitHub master).
 
 ## Adding a plugin
 
-The file [`workflow-template.yml`](workflow-template.yml) is a Jinja2 template that makes it easy to
-add a new plugin to the testing matrix. Simply add a new plugin to the `workflows` list in
-[`compile.py`](compile.py), with the following dictionary keys:
+Two Jinja2 workflow templates are provided, that makes it easier to add a new plugin to the test matrix:
+
+* [`workflow-template-latest.yml`](workflow-template-latest.yml): for testing plugins against PennyLane latest
+* [`workflow-template-stable.yml`](workflow-template-stable.yml): for testing plugins against PennyLane stable
+
+Simply add a new plugin to the `workflows` list in [`compile.py`](compile.py), with the following dictionary keys:
 
 * `plugin` (required): the name of the plugin **not including the PennyLane prefix**. The plugin
   repository and PyPI project are inferred from the plugin name. E.g., `'plugin': 'qiskit'` will
   correspond to the GitHub repo PennyLaneAI/pennylane-qiskit and the PyPI project
   `pennylane-qiskit`.
 
+* `gh_user` (required): the GitHub user or organization which hosts the plugin repository.
+
 * `which` (required): a set specifying whether to generate a workflow to test the `{"latest"}`
   (GitHub master) version of the plugin, `{"stable"}` (PyPI) version of the plugin, or both `{"latest", "stable"}`.
 
 * `requirements` (optional): a list of Python packages that should be installed prior to plugin
   installation. You may use `pip` syntax, e.g., `pyscf==1.7.2`.
+
+* `requirements_latest` (optional): *additional* list of Python packages that should be installed prior to
+  latest/GitHub master plugin installation. For example, if the latest version of the plugin depends on a
+  development version of a particular framework.
 
 * `device_tests` (optional): a list of command line arguments to pass to the PennyLane device
   integration tests. Each list element corresponds to a single test run, e.g.,
@@ -80,11 +89,19 @@ add a new plugin to the testing matrix. Simply add a new plugin to the `workflow
       ]
   ```
 
+* `additional_setup` (optional): multiline string containing additional GitHub actions for execution
+  before the installment of plugins.
+
 Once you have added your plugin, run
 
 ```console
 $ python compile.py
 ```
 
-This will autogenerate two workflow files, `.github/workflows/plugin-stable.yml` and
-`.github/workflows/plugin-latest.yml`. Finally, make sure to add a row to the testing matrix above!
+This will autogenerate up to three workflow files, depending on the variable `which`:
+
+* `.github/workflows/plugin-stable-stable.yml`
+* `.github/workflows/plugin-stable-latest.yml`
+* `.github/workflows/plugin-latest-latest.yml`
+
+Finally, make sure to add a row to the testing matrix above!
