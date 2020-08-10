@@ -10,7 +10,7 @@ on:
 
 
 env:
-  PLUGIN_REPO: PennyLaneAI/pennylane-{{ plugin }}
+  PLUGIN_REPO: {{ gh_user }}/pennylane-{{ plugin }}
   PLUGIN_BRANCH: master
   PLUGIN_PACKAGE: pennylane_{{ plugin }}
   PENNYLANE_BRANCH: master
@@ -33,6 +33,10 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.7
+
+{%- if additional_setup is defined %}
+      {{ additional_setup | indent(6, True) }}
+{%- endif %}
 
       - name: Install requirements
         run: |

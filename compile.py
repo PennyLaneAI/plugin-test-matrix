@@ -1,9 +1,12 @@
+from textwrap import dedent
+
 from jinja2 import FileSystemLoader, Environment
 
 
 workflows = [
     {
         "plugin": "qiskit",
+        "gh_user": "PennyLaneAI",
         "which": ["latest", "stable"],
         "requirements": ["qiskit", "pyscf==1.7.2"],
         "device_tests": [
@@ -15,6 +18,7 @@ workflows = [
     },
     {
         "plugin": "cirq",
+        "gh_user": "PennyLaneAI",
         "which": ["latest", "stable"],
         "requirements": ["cirq"],
         "device_tests": [
@@ -26,6 +30,7 @@ workflows = [
     },
     {
         "plugin": "qulacs",
+        "gh_user": "PennyLaneAI",
         "which": ["latest"],
         "requirements": ["qulacs"],
         "device_tests": [
@@ -35,13 +40,44 @@ workflows = [
     },
     {
         "plugin": "sf",
+        "gh_user": "PennyLaneAI",
         "which": ["stable", "latest"],
         "requirements": ["strawberryfields"],
         "requirements_latest": ["git+https://github.com/XanaduAI/strawberryfields.git"],
         "device_tests": [],
     },
-    {"plugin": "aqt", "which": ["stable", "latest"], "requirements": [], "device_tests": []},
-    {"plugin": "honeywell", "which": ["stable", "latest"], "requirements": [], "device_tests": []},
+    {
+        "plugin": "forest",
+        "gh_user": "rigetti",
+        "which": ["stable", "latest"],
+        "requirements": ["pyquil"],
+        "device_tests": [
+            "pl-device-test --device=forest.numpy_wavefunction --tb=short --skip-ops --analytic=True",
+            "pl-device-test --device=forest.wavefunction --tb=short --skip-ops --analytic=False --shots=10000",
+            "pl-device-test --device=forest.qvm --tb=short --skip-ops --shots=10000 --device-kwargs device=4q-qvm",
+        ],
+        "additional_setup": dedent("""
+            - name: Run Forest Quilc
+              run: docker run --rm -d -p 5555:5555 rigetti/quilc -R
+
+            - name: Run Forest QVM
+              run: docker run --rm -d -p 5000:5000 rigetti/qvm -S"""
+        )
+    },
+    {
+        "plugin": "aqt",
+        "gh_user": "PennyLaneAI",
+        "which": ["stable", "latest"],
+        "requirements": [],
+        "device_tests": [],
+    },
+    {
+        "plugin": "honeywell",
+        "gh_user": "PennyLaneAI",
+        "which": ["stable", "latest"],
+        "requirements": [],
+        "device_tests": [],
+    },
 ]
 
 
@@ -63,10 +99,9 @@ def render_templates():
         # PennyLane latest tests
         for i in wf["which"]:
             with open(f".github/workflows/{wf['plugin']}-{i}-latest.yml", "w") as f:
-                f.write(render_from_template("workflow-template-latest.yml", latest=i == "latest", **wf))
-
-
-
+                f.write(
+                    render_from_template("workflow-template-latest.yml", latest=i == "latest", **wf)
+                )
 
 
 if __name__ == "__main__":
