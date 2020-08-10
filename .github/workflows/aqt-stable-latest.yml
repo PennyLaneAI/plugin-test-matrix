@@ -1,4 +1,6 @@
-name: aqt-stable
+# Workflow template for testing plugins aginst PennyLane latest
+
+name: aqt-stable-latest
 on:
   push:
   pull_request:

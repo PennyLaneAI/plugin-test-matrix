@@ -1,0 +1,74 @@
+# Workflow template for testing plugin stable/PennyLane stable
+
+name: qiskit-stable-stable
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
+
+
+env:
+  PLUGIN_REPO: PennyLaneAI/pennylane-qiskit
+  PLUGIN_BRANCH: master
+  PLUGIN_PACKAGE: pennylane_qiskit
+  PENNYLANE_BRANCH: master
+
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.4.1
+        with:
+          access_token: ${{ github.token }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+
+      - name: Install requirements
+        run: |
+          pip install --upgrade pip
+          pip install --upgrade qiskit
+          pip install --upgrade pyscf==1.7.2
+          pip install pytest pytest-mock pytest-cov flaky
+          pip freeze
+
+      - name: Install PennyLane and Plugin
+        run: |
+          pip install pennylane ${{ env.PLUGIN_PACKAGE }}
+          pip freeze
+
+      - name: Get plugin version
+        id: plugin-version
+        run: |
+          PLUGIN_VERSION=$(python -c "import pkg_resources as pkg; print(pkg.get_distribution('${{ env.PLUGIN_PACKAGE }}').version)")
+          echo ::set-output name=version::$PLUGIN_VERSION
+
+      - uses: actions/checkout@v2
+        with:
+          repository: ${{ env.PLUGIN_REPO }}
+          path: plugin_repo
+          ref: v${{ steps.plugin-version.outputs.version }}
+
+      - name: Run PennyLane device integration tests
+        run: |
+          if ! [ -x "$(command -v pl-device-test)" ]; then
+            echo 'Error: Version of PennyLane does not provide device integration tests.' >&2
+          else
+            pl-device-test --device=qiskit.basicaer --tb=short --skip-ops --analytic=False --shots=20000 --device-kwargs backend=qasm_simulator
+            pl-device-test --device=qiskit.aer --tb=short --skip-ops --analytic=False --shots=20000 --device-kwargs backend=qasm_simulator
+            pl-device-test --device=qiskit.basicaer --tb=short --skip-ops --analytic=True --device-kwargs backend=statevector_simulator
+            pl-device-test --device=qiskit.aer --tb=short --skip-ops --analytic=True --device-kwargs backend=unitary_simulator
+          fi
+
+      - name: Run plugin tests
+        run: python -m pytest plugin_repo/tests --tb=short

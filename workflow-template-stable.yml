@@ -1,9 +1,11 @@
-name: {{ plugin }}-{% if latest %}latest{% else %}stable{% endif %}
+# Workflow template for testing plugin stable/PennyLane stable
+
+name: {{ plugin }}-stable-stable
 on:
   push:
   pull_request:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 0 * * 0'
   workflow_dispatch:
 
 
@@ -41,29 +43,12 @@ jobs:
           pip install pytest pytest-mock pytest-cov flaky
           pip freeze
 
-     {%- if latest %}
-
       - name: Install PennyLane and Plugin
         run: |
           {% raw -%}
-          pip install git+https://github.com/PennyLaneAI/pennylane.git@${{ env.PENNYLANE_BRANCH }} \
-            git+https://github.com/${{ env.PLUGIN_REPO }}.git@${{ env.PLUGIN_BRANCH }}
+          pip install pennylane ${{ env.PLUGIN_PACKAGE }}
           {%- endraw %}
-
-      - uses: actions/checkout@v2
-        with:
-          repository: {% raw %}${{ env.PLUGIN_REPO }}{% endraw %}
-          path: plugin_repo
-          ref: {% raw %}${{ env.PLUGIN_BRANCH }}{% endraw %}
-
-      {% else %}
-
-      - name: Install PennyLane and Plugin
-        run: |
-          {% raw -%}
-          pip install git+https://github.com/PennyLaneAI/pennylane.git@${{ env.PENNYLANE_BRANCH }} \
-          ${{ env.PLUGIN_PACKAGE }}
-          {%- endraw %}
+          pip freeze
 
       - name: Get plugin version
         id: plugin-version
@@ -79,13 +64,17 @@ jobs:
           path: plugin_repo
           ref: {% raw %}v${{ steps.plugin-version.outputs.version }}{% endraw %}
 
-      {% endif -%}
-
+      {% if device_tests -%}
       - name: Run PennyLane device integration tests
         run: |
-          {%- for test in device_tests %}
-          pl-device-test {{ test }}
-          {%- endfor %}
+          if ! [ -x "$(command -v pl-device-test)" ]; then
+            echo 'Error: Version of PennyLane does not provide device integration tests.' >&2
+          else
+            {%- for test in device_tests %}
+            pl-device-test {{ test }}
+            {%- endfor %}
+          fi
+      {%- endif %}
 
       - name: Run plugin tests
         run: python -m pytest plugin_repo/tests --tb=short

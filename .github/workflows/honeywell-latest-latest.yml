@@ -1,4 +1,6 @@
-name: qulacs-latest
+# Workflow template for testing plugins aginst PennyLane latest
+
+name: honeywell-latest-latest
 on:
   push:
   pull_request:
@@ -8,9 +10,9 @@ on:
 
 
 env:
-  PLUGIN_REPO: PennyLaneAI/pennylane-qulacs
+  PLUGIN_REPO: PennyLaneAI/pennylane-honeywell
   PLUGIN_BRANCH: master
-  PLUGIN_PACKAGE: pennylane_qulacs
+  PLUGIN_PACKAGE: pennylane_honeywell
   PENNYLANE_BRANCH: master
 
 
@@ -35,7 +37,6 @@ jobs:
       - name: Install requirements
         run: |
           pip install --upgrade pip
-          pip install --upgrade qulacs
           pip install pytest pytest-mock pytest-cov flaky
           pip freeze
 
@@ -52,8 +53,6 @@ jobs:
 
       - name: Run PennyLane device integration tests
         run: |
-          pl-device-test --device=qulacs.simulator --tb=short --skip-ops --analytic=True
-          pl-device-test --device=qulacs.simulator --tb=short --skip-ops --analytic=False --shots=20000
 
       - name: Run plugin tests
         run: python -m pytest plugin_repo/tests --tb=short

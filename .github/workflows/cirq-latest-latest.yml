@@ -1,0 +1,63 @@
+# Workflow template for testing plugins aginst PennyLane latest
+
+name: cirq-latest-latest
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+
+env:
+  PLUGIN_REPO: PennyLaneAI/pennylane-cirq
+  PLUGIN_BRANCH: master
+  PLUGIN_PACKAGE: pennylane_cirq
+  PENNYLANE_BRANCH: master
+
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.4.1
+        with:
+          access_token: ${{ github.token }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+
+      - name: Install requirements
+        run: |
+          pip install --upgrade pip
+          pip install --upgrade cirq
+          pip install pytest pytest-mock pytest-cov flaky
+          pip freeze
+
+      - name: Install PennyLane and Plugin
+        run: |
+          pip install git+https://github.com/PennyLaneAI/pennylane.git@${{ env.PENNYLANE_BRANCH }} \
+            git+https://github.com/${{ env.PLUGIN_REPO }}.git@${{ env.PLUGIN_BRANCH }}
+
+      - uses: actions/checkout@v2
+        with:
+          repository: ${{ env.PLUGIN_REPO }}
+          path: plugin_repo
+          ref: ${{ env.PLUGIN_BRANCH }}
+
+      - name: Run PennyLane device integration tests
+        run: |
+          pl-device-test --device=cirq.simulator --tb=short --skip-ops --analytic=True
+          pl-device-test --device=cirq.simulator --tb=short --skip-ops --analytic=False --shots=20000
+          pl-device-test --device=cirq.mixedsimulator --tb=short --skip-ops --analytic=True
+          pl-device-test --device=cirq.mixedsimulator --tb=short --skip-ops --analytic=False --shots=20000
+
+      - name: Run plugin tests
+        run: python -m pytest plugin_repo/tests --tb=short

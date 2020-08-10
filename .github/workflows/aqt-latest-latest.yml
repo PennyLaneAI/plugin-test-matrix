@@ -1,4 +1,6 @@
-name: qiskit-latest
+# Workflow template for testing plugins aginst PennyLane latest
+
+name: aqt-latest-latest
 on:
   push:
   pull_request:
@@ -8,9 +10,9 @@ on:
 
 
 env:
-  PLUGIN_REPO: PennyLaneAI/pennylane-qiskit
+  PLUGIN_REPO: PennyLaneAI/pennylane-aqt
   PLUGIN_BRANCH: master
-  PLUGIN_PACKAGE: pennylane_qiskit
+  PLUGIN_PACKAGE: pennylane_aqt
   PENNYLANE_BRANCH: master
 
 
@@ -35,8 +37,6 @@ jobs:
       - name: Install requirements
         run: |
           pip install --upgrade pip
-          pip install --upgrade qiskit
-          pip install --upgrade pyscf==1.7.2
           pip install pytest pytest-mock pytest-cov flaky
           pip freeze
 
@@ -53,10 +53,6 @@ jobs:
 
       - name: Run PennyLane device integration tests
         run: |
-          pl-device-test --device=qiskit.basicaer --tb=short --skip-ops --analytic=False --shots=20000 --device-kwargs backend=qasm_simulator
-          pl-device-test --device=qiskit.aer --tb=short --skip-ops --analytic=False --shots=20000 --device-kwargs backend=qasm_simulator
-          pl-device-test --device=qiskit.basicaer --tb=short --skip-ops --analytic=True --device-kwargs backend=statevector_simulator
-          pl-device-test --device=qiskit.aer --tb=short --skip-ops --analytic=True --device-kwargs backend=unitary_simulator
 
       - name: Run plugin tests
         run: python -m pytest plugin_repo/tests --tb=short
