@@ -40,6 +40,11 @@ jobs:
           {%- for req in requirements %}
           pip install --upgrade {{ req }}
           {%- endfor %}
+          {%- if requirements_latest is defined %}
+          {%- for req in requirements_latest %}
+          pip install --upgrade {{ req }}
+          {%- endfor %}
+          {%- endif %}
           pip install pytest pytest-mock pytest-cov flaky
           pip freeze
 

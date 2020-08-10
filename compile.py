@@ -36,7 +36,8 @@ workflows = [
     {
         "plugin": "sf",
         "which": ["stable", "latest"],
-        "requirements": ["git+https://github.com/XanaduAI/strawberryfields.git"],
+        "requirements": ["strawberryfields"],
+        "requirements_latest": ["git+https://github.com/XanaduAI/strawberryfields.git"],
         "device_tests": [],
     },
     {"plugin": "aqt", "which": ["stable", "latest"], "requirements": [], "device_tests": []},
