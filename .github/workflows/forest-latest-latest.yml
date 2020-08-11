@@ -62,7 +62,6 @@ jobs:
         run: |
           pl-device-test --device=forest.numpy_wavefunction --tb=short --skip-ops --analytic=True
           pl-device-test --device=forest.wavefunction --tb=short --skip-ops --analytic=False --shots=20000
-          pl-device-test --device=forest.qvm --tb=short --skip-ops --shots=20000 --device-kwargs device=4q-qvm
 
       - name: Run plugin tests
         run: python -m pytest plugin_repo/tests --tb=short

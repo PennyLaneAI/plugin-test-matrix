@@ -54,7 +54,7 @@ workflows = [
         "device_tests": [
             "--device=forest.numpy_wavefunction --tb=short --skip-ops --analytic=True",
             "--device=forest.wavefunction --tb=short --skip-ops --analytic=False --shots=20000",
-            "--device=forest.qvm --tb=short --skip-ops --shots=20000 --device-kwargs device=4q-qvm",
+            # "--device=forest.qvm --tb=short --skip-ops --shots=20000 --device-kwargs device=4q-qvm",
         ],
         "additional_setup": dedent("""
             - name: Run Forest Quilc
