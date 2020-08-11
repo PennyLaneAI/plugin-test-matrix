@@ -82,7 +82,7 @@ workflows = [
         "plugin": "pq",
         "gh_user": "PennyLaneAI",
         "which": ["stable", "latest"],
-        "requirements": [],
+        "requirements": ["projectq"],
         "device_tests": [],
     },
 ]

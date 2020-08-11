@@ -37,6 +37,7 @@ jobs:
       - name: Install requirements
         run: |
           pip install --upgrade pip
+          pip install --upgrade projectq
           pip install pytest pytest-mock pytest-cov flaky
           pip freeze
 
