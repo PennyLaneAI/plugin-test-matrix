@@ -26,6 +26,9 @@ All entries in the matrix are tested against PennyLane latest (GitHub master).
 
 * PennyLane-SF currently depends against Strawberry Fields master, not stable
 
+* The device integration tests currently do not support devices with a fixed
+  number of wires; as a result, `forest.qvm` is not tested.
+
 ## Interpreting the test matrix
 
 * **Stable/stable**: This reflects a scenario where PennyLane and the plugin are both installed
