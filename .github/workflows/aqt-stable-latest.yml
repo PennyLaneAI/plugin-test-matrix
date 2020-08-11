@@ -14,6 +14,7 @@ env:
   PLUGIN_BRANCH: master
   PLUGIN_PACKAGE: pennylane_aqt
   PENNYLANE_BRANCH: master
+  IBMQX_TOKEN: ${{ secrets.IBMQX_TOKEN }}
 
 
 jobs:
