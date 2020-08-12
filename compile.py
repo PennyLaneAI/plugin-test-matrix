@@ -85,6 +85,16 @@ workflows = [
         "requirements": ["projectq"],
         "device_tests": [],
     },
+    {
+        "plugin": "lightning",
+        "gh_user": "PennyLaneAI",
+        "which": ["latest"],
+        "requirements": [],
+        "device_tests": [
+            "--device lightning.qubit --analytic True --skip-ops",
+            "--device lightning.qubit --analytic False --skip-ops --shots=20000",
+            ],
+    },
 ]
 
 
