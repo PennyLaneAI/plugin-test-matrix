@@ -84,6 +84,16 @@ workflows = [
         "which": ["stable", "latest"],
         "requirements": ["projectq"],
         "device_tests": [],
+        "additional_setup": dedent("""
+            - name: Install Eigen
+              run: |
+                # Linux specific build settings
+                curl -OsL https://bitbucket.org/eigen/eigen/get/3.3.7.tar.gz
+                tar xzf 3.3.7.tar.gz eigen-eigen-323c052e1731/Eigen --strip-components 1
+                tar xzf 3.3.7.tar.gz eigen-eigen-323c052e1731/unsupported --strip-components 1
+                sudo cp -rf Eigen /usr/local/include
+                sudo cp -rf unsupported /usr/local/include"""
+        )
     },
     {
         "plugin": "lightning",
