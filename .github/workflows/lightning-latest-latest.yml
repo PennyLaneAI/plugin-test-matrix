@@ -38,6 +38,7 @@ jobs:
       - name: Install requirements
         run: |
           pip install --upgrade pip
+          pip install --upgrade pybind11
           pip install pytest pytest-mock pytest-cov flaky
           pip freeze
 
