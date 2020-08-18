@@ -74,7 +74,7 @@ jobs:
         run: |
           {% raw -%}
           pip install git+https://github.com/PennyLaneAI/pennylane.git@${{ env.PENNYLANE_BRANCH }} \
-          ${{ env.PLUGIN_PACKAGE }}
+          ${{ env.PLUGIN_PACKAGE }} --upgrade
           {%- endraw %}
 
       - name: Get plugin version

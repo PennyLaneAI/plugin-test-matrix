@@ -51,7 +51,7 @@ jobs:
       - name: Install PennyLane and Plugin
         run: |
           {% raw -%}
-          pip install pennylane ${{ env.PLUGIN_PACKAGE }}
+          pip install pennylane ${{ env.PLUGIN_PACKAGE }} --upgrade
           {%- endraw %}
           pip freeze
 

@@ -45,7 +45,7 @@ jobs:
       - name: Install PennyLane and Plugin
         run: |
           pip install git+https://github.com/PennyLaneAI/pennylane.git@${{ env.PENNYLANE_BRANCH }} \
-          ${{ env.PLUGIN_PACKAGE }}
+          ${{ env.PLUGIN_PACKAGE }} --upgrade
 
       - name: Get plugin version
         id: plugin-version
