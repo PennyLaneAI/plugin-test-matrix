@@ -88,7 +88,7 @@ workflows = [
     {
         "plugin": "lightning",
         "gh_user": "PennyLaneAI",
-        "which": ["latest"],
+        "which": ["stable", "latest"],
         "requirements": ["pybind11"],
         "device_tests": [
             "--device lightning.qubit --analytic True --skip-ops",
