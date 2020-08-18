@@ -31,7 +31,7 @@ workflows = [
     {
         "plugin": "qulacs",
         "gh_user": "PennyLaneAI",
-        "which": ["latest"],
+        "which": ["stable", "latest"],
         "requirements": ["qulacs"],
         "device_tests": [
             "--device=qulacs.simulator --tb=short --skip-ops --analytic=True",
