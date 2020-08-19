@@ -25,8 +25,6 @@ All entries in the matrix are tested against PennyLane latest (GitHub master).
 
 *Notes:*
 
-* PennyLane-SF currently depends against Strawberry Fields master, not stable
-
 * The device integration tests currently do not support devices with a fixed
   number of wires; as a result, `forest.qvm` is not tested.
 

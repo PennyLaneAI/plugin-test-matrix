@@ -39,7 +39,6 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install --upgrade strawberryfields
-          pip install --upgrade git+https://github.com/XanaduAI/strawberryfields.git
           pip install pytest pytest-mock pytest-cov flaky
           pip freeze
 

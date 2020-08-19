@@ -43,7 +43,6 @@ workflows = [
         "gh_user": "PennyLaneAI",
         "which": ["stable", "latest"],
         "requirements": ["strawberryfields"],
-        "requirements_latest": ["git+https://github.com/XanaduAI/strawberryfields.git"],
         "device_tests": [],
     },
     {
