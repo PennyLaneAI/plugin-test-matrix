@@ -85,9 +85,10 @@ jobs:
           path: plugin_repo
           ref: {% raw %}v${{ steps.plugin-version.outputs.version }}{% endraw %}
       {% endif -%}
+
+      {% if device_tests -%}
       - name: Run PennyLane device integration tests
         run: |
-          {% if device_tests -%}
           if ! [ -x "$(command -v pl-device-test)" ]; then
             echo 'Error: Version of PennyLane does not provide device integration tests.' >&2
           else
@@ -95,7 +96,7 @@ jobs:
             pl-device-test {{ test }}
             {%- endfor %}
           fi
-          {%- endif %}
+      {%- endif %}
 
       - name: Run plugin tests
         run: python -m pytest plugin_repo/tests --tb=short
