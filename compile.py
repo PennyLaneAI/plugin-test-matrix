@@ -113,9 +113,9 @@ def render_templates():
 
     for wf in workflows:
         # PennyLane stable tests
-        if "stable" in wf["which"]:
-            with open(f".github/workflows/{wf['plugin']}-stable-stable.yml", "w") as f:
-                f.write(render_from_template("workflow-template-stable.yml", latest="stable", **wf))
+        for i in wf["which"]:
+            with open(f".github/workflows/{wf['plugin']}-{i}-stable.yml", "w") as f:
+                f.write(render_from_template("workflow-template-stable.yml", latest=i ==  "latest", **wf))
 
         # PennyLane latest tests
         for i in wf["which"]:

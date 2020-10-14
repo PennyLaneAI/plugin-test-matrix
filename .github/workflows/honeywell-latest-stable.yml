@@ -1,11 +1,11 @@
-# Workflow template for testing plugins against PennyLane latest
+# Workflow template for testing plugins against PennyLane stable
 
-name: honeywell-latest-latest
+name: honeywell-latest-stable
 on:
   push:
   pull_request:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 0 * * 0'
   workflow_dispatch:
 
 
@@ -43,17 +43,14 @@ jobs:
 
       - name: Install PennyLane and Plugin
         run: |
-          pip install git+https://github.com/PennyLaneAI/pennylane.git@${{ env.PENNYLANE_BRANCH }} \
-            git+https://github.com/${{ env.PLUGIN_REPO }}.git@${{ env.PLUGIN_BRANCH }}
+          pip install pennylane git+https://github.com/${{ env.PLUGIN_REPO }}.git@${{ env.PLUGIN_BRANCH }}
 
       - uses: actions/checkout@v2
         with:
           repository: ${{ env.PLUGIN_REPO }}
           path: plugin_repo
           ref: ${{ env.PLUGIN_BRANCH }}
-
-      - name: Run PennyLane device integration tests
-        run: |
+      
 
       - name: Run plugin tests
         run: python -m pytest plugin_repo/tests --tb=short

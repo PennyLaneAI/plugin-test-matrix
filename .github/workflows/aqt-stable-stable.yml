@@ -1,4 +1,4 @@
-# Workflow template for testing plugin stable/PennyLane stable
+# Workflow template for testing plugins against PennyLane stable
 
 name: aqt-stable-stable
 on:
@@ -57,7 +57,6 @@ jobs:
           repository: ${{ env.PLUGIN_REPO }}
           path: plugin_repo
           ref: v${{ steps.plugin-version.outputs.version }}
-
       
 
       - name: Run plugin tests
