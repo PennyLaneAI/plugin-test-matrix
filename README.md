@@ -51,6 +51,9 @@ All entries in the matrix are tested against PennyLane latest (GitHub master).
   - **Latest/latest failing**: Updates must be made to the plugin to ensure GitHub
     master passes.
 
+  - **Latest/stable failing**: The requirement of PennyLane in the plugin will
+    have to be increased.
+
   - **Latest/latest passing**: Nothing to be done! The plugin is ready to be released
     with the upcoming PennyLane release.
 
@@ -101,10 +104,11 @@ Once you have added your plugin, run
 $ python compile.py
 ```
 
-This will autogenerate up to three workflow files, depending on the variable `which`:
+This will autogenerate up to four workflow files, depending on the variable `which`:
 
 * `.github/workflows/plugin-stable-stable.yml`
 * `.github/workflows/plugin-stable-latest.yml`
+* `.github/workflows/plugin-latest-stable.yml`
 * `.github/workflows/plugin-latest-latest.yml`
 
 Finally, make sure to add a row to the testing matrix above!
