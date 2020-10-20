@@ -26,7 +26,7 @@ workflows = [
             "--device=cirq.simulator --tb=short --skip-ops --analytic=False --shots=20000",
             "--device=cirq.mixedsimulator --tb=short --skip-ops --analytic=True",
             "--device=cirq.mixedsimulator --tb=short --skip-ops --analytic=False --shots=20000",
-            "--device=cirq.pasqal --tb=short --skip-ops --analytic=False --shots=20000",
+            "--device=cirq.pasqal --tb=short --skip-ops --analytic=False --shots=20000 --device-kwargs control_radius=2.",
             "--device=cirq.qsim --tb=short --skip-ops --analytic=False --shots=20000",
         ],
     },
