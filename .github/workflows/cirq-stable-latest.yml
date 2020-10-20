@@ -39,6 +39,7 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install --upgrade cirq
+          pip install --upgrade qsimcirq
           pip install pytest pytest-mock pytest-cov flaky
           pip freeze
 
@@ -65,6 +66,8 @@ jobs:
           pl-device-test --device=cirq.simulator --tb=short --skip-ops --analytic=False --shots=20000
           pl-device-test --device=cirq.mixedsimulator --tb=short --skip-ops --analytic=True
           pl-device-test --device=cirq.mixedsimulator --tb=short --skip-ops --analytic=False --shots=20000
+          pl-device-test --device=cirq.pasqal --tb=short --skip-ops --analytic=False --shots=20000
+          pl-device-test --device=cirq.qsim --tb=short --skip-ops --analytic=False --shots=20000
 
       - name: Run plugin tests
         run: python -m pytest plugin_repo/tests --tb=short
