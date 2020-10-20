@@ -1,6 +1,6 @@
-# Workflow template for testing plugin stable/PennyLane stable
+# Workflow template for testing plugins against PennyLane stable
 
-name: {{ plugin }}-stable-stable
+name: {{ plugin }}-{% if latest %}latest{% else %}stable{% endif %}-stable
 on:
   push:
   pull_request:
@@ -48,6 +48,21 @@ jobs:
           pip install pytest pytest-mock pytest-cov flaky
           pip freeze
 
+     {%- if latest %}
+
+      - name: Install PennyLane and Plugin
+        run: |
+          {% raw -%}
+          pip install pennylane git+https://github.com/${{ env.PLUGIN_REPO }}.git@${{ env.PLUGIN_BRANCH }}
+          {%- endraw %}
+
+      - uses: actions/checkout@v2
+        with:
+          repository: {% raw %}${{ env.PLUGIN_REPO }}{% endraw %}
+          path: plugin_repo
+          ref: {% raw %}${{ env.PLUGIN_BRANCH }}{% endraw %}
+      {% else %}
+
       - name: Install PennyLane and Plugin
         run: |
           {% raw -%}
@@ -68,6 +83,7 @@ jobs:
           repository: {% raw %}${{ env.PLUGIN_REPO }}{% endraw %}
           path: plugin_repo
           ref: {% raw %}v${{ steps.plugin-version.outputs.version }}{% endraw %}
+      {% endif -%}
 
       {% if device_tests -%}
       - name: Run PennyLane device integration tests

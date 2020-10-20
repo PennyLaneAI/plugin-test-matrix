@@ -1,4 +1,4 @@
-# Workflow template for testing plugins aginst PennyLane latest
+# Workflow template for testing plugins against PennyLane latest
 
 name: aqt-latest-latest
 on:

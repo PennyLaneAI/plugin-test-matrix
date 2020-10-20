@@ -1,11 +1,11 @@
-# Workflow template for testing plugins against PennyLane latest
+# Workflow template for testing plugins against PennyLane stable
 
-name: qulacs-stable-latest
+name: qulacs-latest-stable
 on:
   push:
   pull_request:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 0 * * 0'
   workflow_dispatch:
 
 
@@ -44,25 +44,21 @@ jobs:
 
       - name: Install PennyLane and Plugin
         run: |
-          pip install git+https://github.com/PennyLaneAI/pennylane.git@${{ env.PENNYLANE_BRANCH }} \
-          ${{ env.PLUGIN_PACKAGE }} --upgrade
-
-      - name: Get plugin version
-        id: plugin-version
-        run: |
-          PLUGIN_VERSION=$(python -c "import pkg_resources as pkg; print(pkg.get_distribution('${{ env.PLUGIN_PACKAGE }}').version)")
-          echo ::set-output name=version::$PLUGIN_VERSION
+          pip install pennylane git+https://github.com/${{ env.PLUGIN_REPO }}.git@${{ env.PLUGIN_BRANCH }}
 
       - uses: actions/checkout@v2
         with:
           repository: ${{ env.PLUGIN_REPO }}
           path: plugin_repo
-          ref: v${{ steps.plugin-version.outputs.version }}
-
+          ref: ${{ env.PLUGIN_BRANCH }}
       - name: Run PennyLane device integration tests
         run: |
-          pl-device-test --device=qulacs.simulator --tb=short --skip-ops --analytic=True
-          pl-device-test --device=qulacs.simulator --tb=short --skip-ops --analytic=False --shots=20000
+          if ! [ -x "$(command -v pl-device-test)" ]; then
+            echo 'Error: Version of PennyLane does not provide device integration tests.' >&2
+          else
+            pl-device-test --device=qulacs.simulator --tb=short --skip-ops --analytic=True
+            pl-device-test --device=qulacs.simulator --tb=short --skip-ops --analytic=False --shots=20000
+          fi
 
       - name: Run plugin tests
         run: python -m pytest plugin_repo/tests --tb=short
