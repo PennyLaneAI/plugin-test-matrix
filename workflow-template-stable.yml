@@ -11,9 +11,9 @@ on:
 
 env:
   PLUGIN_REPO: {{ gh_user }}/pennylane-{{ plugin }}
-  PLUGIN_BRANCH: master
+  PLUGIN_BRANCH: {% if branch %}{{ branch }}{% else %}master{% endif %}
   PLUGIN_PACKAGE: pennylane_{{ plugin }}
-  PENNYLANE_BRANCH: master
+  PENNYLANE_BRANCH: {% if branch %}{{ branch }}{% else %}master{% endif %}
   IBMQX_TOKEN: {% raw %}${{ secrets.IBMQX_TOKEN }}{% endraw %}
 
 

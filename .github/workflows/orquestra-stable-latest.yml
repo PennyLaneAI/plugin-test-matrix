@@ -11,9 +11,9 @@ on:
 
 env:
   PLUGIN_REPO: PennyLaneAI/pennylane-orquestra
-  PLUGIN_BRANCH: master
+  PLUGIN_BRANCH: main
   PLUGIN_PACKAGE: pennylane_orquestra
-  PENNYLANE_BRANCH: master
+  PENNYLANE_BRANCH: main
   IBMQX_TOKEN: ${{ secrets.IBMQX_TOKEN }}
 
 

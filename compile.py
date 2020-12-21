@@ -111,6 +111,7 @@ workflows = [
         "requirements": [],
         "device_tests": [],
         "test_kwargs": ["-k 'not e2e'"],
+        "branch": "main",
     },
 ]
 
