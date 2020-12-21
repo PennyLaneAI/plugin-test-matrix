@@ -110,6 +110,7 @@ workflows = [
         "which": ["stable", "latest"],
         "requirements": [],
         "device_tests": [],
+        "test_kwargs": ["-k 'not e2e'"],
     },
 ]
 

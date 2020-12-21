@@ -100,5 +100,5 @@ jobs:
           {%- endfor %}
 
       - name: Run plugin tests
-        run: python -m pytest plugin_repo/tests --tb=short
+        run: python -m pytest plugin_repo/tests --tb=short {%- for kwarg in test_kwargs %} {{ kwarg }} {%- endfor %}
 

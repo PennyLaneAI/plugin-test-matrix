@@ -62,4 +62,4 @@ jobs:
         run: |
 
       - name: Run plugin tests
-        run: python -m pytest plugin_repo/tests --tb=short
+        run: python -m pytest plugin_repo/tests --tb=short -k 'not e2e'
