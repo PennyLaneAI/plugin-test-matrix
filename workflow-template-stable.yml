@@ -13,7 +13,7 @@ env:
   PLUGIN_REPO: {{ gh_user }}/pennylane-{{ plugin }}
   PLUGIN_BRANCH: {% if branch %}{{ branch }}{% else %}master{% endif %}
   PLUGIN_PACKAGE: pennylane_{{ plugin }}
-  PENNYLANE_BRANCH: {% if branch %}{{ branch }}{% else %}master{% endif %}
+  PENNYLANE_BRANCH: master
   IBMQX_TOKEN: {% raw %}${{ secrets.IBMQX_TOKEN }}{% endraw %}
 
 
