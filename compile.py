@@ -104,6 +104,13 @@ workflows = [
                 sudo apt install libeigen3-dev"""
         )
     },
+    {
+        "plugin": "orquestra",
+        "gh_user": "PennyLaneAI",
+        "which": ["stable", "latest"],
+        "requirements": [],
+        "device_tests": [],
+    },
 ]
 
 
