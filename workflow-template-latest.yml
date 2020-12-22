@@ -11,7 +11,7 @@ on:
 
 env:
   PLUGIN_REPO: {{ gh_user }}/pennylane-{{ plugin }}
-  PLUGIN_BRANCH: master
+  PLUGIN_BRANCH: {% if branch %}{{ branch }}{% else %}master{% endif %}
   PLUGIN_PACKAGE: pennylane_{{ plugin }}
   PENNYLANE_BRANCH: master
   IBMQX_TOKEN: {% raw %}${{ secrets.IBMQX_TOKEN }}{% endraw %}
@@ -100,5 +100,5 @@ jobs:
           {%- endfor %}
 
       - name: Run plugin tests
-        run: python -m pytest plugin_repo/tests --tb=short
+        run: python -m pytest plugin_repo/tests --tb=short {%- for kwarg in test_kwargs %} {{ kwarg }} {%- endfor %}
 
