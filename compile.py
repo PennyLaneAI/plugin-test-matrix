@@ -146,12 +146,12 @@ def render_templates():
             plugin_name = wf["plugin"]
             wf["plugin_package"] = "pennylane_" + plugin_name
 
-        if "tests_loc" not in wf:
-            wf["tests_loc"] = "tests"
-
         if "plugin_repo" not in wf:
             plugin_name = wf["plugin"]
             wf["plugin_repo"] = "pennylane-" + plugin_name
+
+        if "tests_loc" not in wf:
+            wf["tests_loc"] = "tests"
 
         # PennyLane stable tests
         for i in wf["which"]:
