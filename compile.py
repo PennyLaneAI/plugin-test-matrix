@@ -113,6 +113,21 @@ workflows = [
         "test_kwargs": ["-k 'not e2e'"],
         "branch": "main",
     },
+    {
+        "plugin": "braket",
+        "plugin_repo": "amazon-braket-pennylane-plugin-python",
+        "plugin_package": "amazon-braket-pennylane-plugin",
+        "gh_user": "aws",
+        "which": ["stable", "latest"],
+        "requirements": [],
+        "device_tests": [],
+        "branch": "main",
+        "device_tests": [
+            "--device=braket.local.qubit --tb=short --skip-ops --shots=20000",
+            "--device=braket.local.qubit --tb=short --skip-ops",
+        ],
+        "tests_loc": "test/unit_tests",
+    },
 ]
 
 
@@ -126,6 +141,18 @@ def render_from_template(template, **kwargs):
 def render_templates():
 
     for wf in workflows:
+
+        if "plugin_package" not in wf:
+            plugin_name = wf["plugin"]
+            wf["plugin_package"] = "pennylane_" + plugin_name
+
+        if "plugin_repo" not in wf:
+            plugin_name = wf["plugin"]
+            wf["plugin_repo"] = "pennylane-" + plugin_name
+
+        if "tests_loc" not in wf:
+            wf["tests_loc"] = "tests"
+
         # PennyLane stable tests
         for i in wf["which"]:
             with open(f".github/workflows/{wf['plugin']}-{i}-stable.yml", "w") as f:
