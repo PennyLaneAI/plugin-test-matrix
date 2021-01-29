@@ -155,12 +155,12 @@ def render_templates():
 
         # PennyLane stable tests
         for i in wf["which"]:
-            with open(f".github/workflows/{wf['plugin_name']}-{i}-stable.yml", "w") as f:
+            with open(f".github/workflows/{wf['plugin']}-{i}-stable.yml", "w") as f:
                 f.write(render_from_template("workflow-template-stable.yml", latest=i ==  "latest", **wf))
 
         # PennyLane latest tests
         for i in wf["which"]:
-            with open(f".github/workflows/{wf['plugin_name']}-{i}-latest.yml", "w") as f:
+            with open(f".github/workflows/{wf['plugin']}-{i}-latest.yml", "w") as f:
                 f.write(
                     render_from_template("workflow-template-latest.yml", latest=i == "latest", **wf)
                 )
