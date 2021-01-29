@@ -5,7 +5,7 @@ from jinja2 import FileSystemLoader, Environment
 
 workflows = [
     {
-        "plugin": "pennylane-qiskit",
+        "plugin": "qiskit",
         "gh_user": "PennyLaneAI",
         "which": ["latest", "stable"],
         "requirements": ["qiskit", "pyscf==1.7.2"],
@@ -17,7 +17,7 @@ workflows = [
         ],
     },
     {
-        "plugin": "pennylane-cirq",
+        "plugin": "cirq",
         "gh_user": "PennyLaneAI",
         "which": ["latest", "stable"],
         "requirements": ["cirq", "qsimcirq"],
@@ -34,7 +34,7 @@ workflows = [
         ],
     },
     {
-        "plugin": "pennylane-qulacs",
+        "plugin": "qulacs",
         "gh_user": "PennyLaneAI",
         "which": ["stable", "latest"],
         "requirements": ["qulacs"],
@@ -44,14 +44,14 @@ workflows = [
         ],
     },
     {
-        "plugin": "pennylane-sf",
+        "plugin": "sf",
         "gh_user": "PennyLaneAI",
         "which": ["stable", "latest"],
         "requirements": ["strawberryfields"],
         "device_tests": [],
     },
     {
-        "plugin": "pennylane-forest",
+        "plugin": "forest",
         "gh_user": "rigetti",
         "which": ["stable", "latest"],
         "requirements": ["pyquil"],
@@ -69,28 +69,28 @@ workflows = [
         )
     },
     {
-        "plugin": "pennylane-aqt",
+        "plugin": "aqt",
         "gh_user": "PennyLaneAI",
         "which": ["stable", "latest"],
         "requirements": [],
         "device_tests": [],
     },
     {
-        "plugin": "pennylane-honeywell",
+        "plugin": "honeywell",
         "gh_user": "PennyLaneAI",
         "which": ["stable", "latest"],
         "requirements": [],
         "device_tests": [],
     },
     {
-        "plugin": "pennylane-pq",
+        "plugin": "pq",
         "gh_user": "PennyLaneAI",
         "which": ["stable", "latest"],
         "requirements": ["projectq"],
         "device_tests": [],
     },
     {
-        "plugin": "pennylane-lightning",
+        "plugin": "lightning",
         "gh_user": "PennyLaneAI",
         "which": ["stable", "latest"],
         "requirements": ["pybind11"],
@@ -105,7 +105,7 @@ workflows = [
         )
     },
     {
-        "plugin": "pennylane-orquestra",
+        "plugin": "orquestra",
         "gh_user": "PennyLaneAI",
         "which": ["stable", "latest"],
         "requirements": [],
@@ -114,8 +114,8 @@ workflows = [
         "branch": "main",
     },
     {
-        "plugin": "amazon-braket-pennylane-plugin-python",
-        "plugin_name": "braket",
+        "plugin": "braket",
+        "plugin_repo": "amazon-braket-pennylane-plugin-python",
         "plugin_package": "amazon-braket-pennylane-plugin",
         "gh_user": "aws",
         "which": ["stable", "latest"],
@@ -143,16 +143,15 @@ def render_templates():
     for wf in workflows:
 
         if "plugin_package" not in wf:
-            plugin_name_split = wf["plugin"].split("-")
-            default_plugin_package = "pennylane_" + "-".join(plugin_name_split[1:])
-            wf["plugin_package"] = default_plugin_package
+            plugin_name = wf["plugin"]
+            wf["plugin_package"] = "pennylane_" + plugin_name
 
         if "tests_loc" not in wf:
             wf["tests_loc"] = "tests"
 
-        if "plugin_name" not in wf:
-            plugin_name_split = wf["plugin"].split("-")
-            wf["plugin_name"] = "-".join(plugin_name_split[1:])
+        if "plugin_repo" not in wf:
+            plugin_name = wf["plugin"]
+            wf["plugin_repo"] = "pennylane-" + plugin_name
 
         # PennyLane stable tests
         for i in wf["which"]:

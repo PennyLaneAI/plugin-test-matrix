@@ -1,6 +1,6 @@
 # Workflow template for testing plugins against PennyLane latest
 
-name: {{ plugin_name }}-{% if latest %}latest{% else %}stable{% endif %}-latest
+name: {{ plugin }}-{% if latest %}latest{% else %}stable{% endif %}-latest
 on:
   push:
   pull_request:
@@ -10,7 +10,7 @@ on:
 
 
 env:
-  PLUGIN_REPO: {{ gh_user }}/{{ plugin }}
+  PLUGIN_REPO: {{ gh_user }}/{{ plugin_repo }}
   PLUGIN_BRANCH: {% if branch %}{{ branch }}{% else %}master{% endif %}
   PLUGIN_PACKAGE: {{ plugin_package }}
   PENNYLANE_BRANCH: master
