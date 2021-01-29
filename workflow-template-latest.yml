@@ -12,7 +12,7 @@ on:
 env:
   PLUGIN_REPO: {{ gh_user }}/{{ plugin }}
   PLUGIN_BRANCH: {% if branch %}{{ branch }}{% else %}master{% endif %}
-  PLUGIN_PACKAGE: {{ plugin_repo }}
+  PLUGIN_PACKAGE: {{ plugin_package }}
   PENNYLANE_BRANCH: master
   IBMQX_TOKEN: {% raw %}${{ secrets.IBMQX_TOKEN }}{% endraw %}
 

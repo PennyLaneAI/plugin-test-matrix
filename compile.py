@@ -116,7 +116,7 @@ workflows = [
     {
         "plugin": "amazon-braket-pennylane-plugin-python",
         "plugin_name": "braket",
-        "plugin_repo": "amazon-braket-pennylane-plugin",
+        "plugin_package": "amazon-braket-pennylane-plugin",
         "gh_user": "aws",
         "which": ["stable", "latest"],
         "requirements": [],
@@ -142,10 +142,10 @@ def render_templates():
 
     for wf in workflows:
 
-        if "plugin_repo" not in wf:
+        if "plugin_package" not in wf:
             plugin_name_split = wf["plugin"].split("-")
-            default_plugin_repo = "pennylane_" + "-".join(plugin_name_split[1:])
-            wf["plugin_repo"] = default_plugin_repo
+            default_plugin_package = "pennylane_" + "-".join(plugin_name_split[1:])
+            wf["plugin_package"] = default_plugin_package
 
         if "tests_loc" not in wf:
             wf["tests_loc"] = "tests"
