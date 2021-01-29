@@ -5,7 +5,7 @@ from jinja2 import FileSystemLoader, Environment
 
 workflows = [
     {
-        "plugin": "qiskit",
+        "plugin": "pennylane-qiskit",
         "gh_user": "PennyLaneAI",
         "which": ["latest", "stable"],
         "requirements": ["qiskit", "pyscf==1.7.2"],
@@ -17,7 +17,7 @@ workflows = [
         ],
     },
     {
-        "plugin": "cirq",
+        "plugin": "pennylane-cirq",
         "gh_user": "PennyLaneAI",
         "which": ["latest", "stable"],
         "requirements": ["cirq", "qsimcirq"],
@@ -34,7 +34,7 @@ workflows = [
         ],
     },
     {
-        "plugin": "qulacs",
+        "plugin": "pennylane-qulacs",
         "gh_user": "PennyLaneAI",
         "which": ["stable", "latest"],
         "requirements": ["qulacs"],
@@ -44,14 +44,14 @@ workflows = [
         ],
     },
     {
-        "plugin": "sf",
+        "plugin": "pennylane-sf",
         "gh_user": "PennyLaneAI",
         "which": ["stable", "latest"],
         "requirements": ["strawberryfields"],
         "device_tests": [],
     },
     {
-        "plugin": "forest",
+        "plugin": "pennylane-forest",
         "gh_user": "rigetti",
         "which": ["stable", "latest"],
         "requirements": ["pyquil"],
@@ -69,28 +69,28 @@ workflows = [
         )
     },
     {
-        "plugin": "aqt",
+        "plugin": "pennylane-aqt",
         "gh_user": "PennyLaneAI",
         "which": ["stable", "latest"],
         "requirements": [],
         "device_tests": [],
     },
     {
-        "plugin": "honeywell",
+        "plugin": "pennylane-honeywell",
         "gh_user": "PennyLaneAI",
         "which": ["stable", "latest"],
         "requirements": [],
         "device_tests": [],
     },
     {
-        "plugin": "pq",
+        "plugin": "pennylane-pq",
         "gh_user": "PennyLaneAI",
         "which": ["stable", "latest"],
         "requirements": ["projectq"],
         "device_tests": [],
     },
     {
-        "plugin": "lightning",
+        "plugin": "pennylane-lightning",
         "gh_user": "PennyLaneAI",
         "which": ["stable", "latest"],
         "requirements": ["pybind11"],
@@ -105,13 +105,28 @@ workflows = [
         )
     },
     {
-        "plugin": "orquestra",
+        "plugin": "pennylane-orquestra",
         "gh_user": "PennyLaneAI",
         "which": ["stable", "latest"],
         "requirements": [],
         "device_tests": [],
         "test_kwargs": ["-k 'not e2e'"],
         "branch": "main",
+    },
+    {
+        "plugin": "amazon-braket-pennylane-plugin-python",
+        "plugin_name": "braket",
+        "plugin_repo": "amazon-braket-pennylane-plugin",
+        "gh_user": "aws",
+        "which": ["stable", "latest"],
+        "requirements": [],
+        "device_tests": [],
+        "branch": "main",
+        "device_tests": [
+            "--device=braket.local.qubit --tb=short --skip-ops --shots=20000",
+            "--device=braket.local.qubit --tb=short --skip-ops",
+        ],
+        "tests_loc": "test/unit_tests",
     },
 ]
 
@@ -126,14 +141,27 @@ def render_from_template(template, **kwargs):
 def render_templates():
 
     for wf in workflows:
+
+        if "plugin_repo" not in wf:
+            plugin_name_split = wf["plugin"].split("-")
+            default_plugin_repo = "pennylane_" + "-".join(plugin_name_split[1:])
+            wf["plugin_repo"] = default_plugin_repo
+
+        if "tests_loc" not in wf:
+            wf["tests_loc"] = "tests"
+
+        if "plugin_name" not in wf:
+            plugin_name_split = wf["plugin"].split("-")
+            wf["plugin_name"] = "-".join(plugin_name_split[1:])
+
         # PennyLane stable tests
         for i in wf["which"]:
-            with open(f".github/workflows/{wf['plugin']}-{i}-stable.yml", "w") as f:
+            with open(f".github/workflows/{wf['plugin_name']}-{i}-stable.yml", "w") as f:
                 f.write(render_from_template("workflow-template-stable.yml", latest=i ==  "latest", **wf))
 
         # PennyLane latest tests
         for i in wf["which"]:
-            with open(f".github/workflows/{wf['plugin']}-{i}-latest.yml", "w") as f:
+            with open(f".github/workflows/{wf['plugin_name']}-{i}-latest.yml", "w") as f:
                 f.write(
                     render_from_template("workflow-template-latest.yml", latest=i == "latest", **wf)
                 )
