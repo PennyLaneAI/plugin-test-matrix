@@ -123,8 +123,8 @@ workflows = [
         "device_tests": [],
         "branch": "main",
         "device_tests": [
-            "--device=braket.local.qubit --tb=short --skip-ops --shots=20000",
-            "--device=braket.local.qubit --tb=short --skip-ops",
+            "--device=braket.local.qubit --tb=short --skip-ops --shots=20000 -k 'not no_0_shots'",
+            "--device=braket.local.qubit --tb=short --skip-ops -k 'not Sample and not no_0_shots'",
         ],
         "tests_loc": "test/unit_tests",
     },
