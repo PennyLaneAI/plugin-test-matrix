@@ -60,8 +60,8 @@ jobs:
 
       - name: Run PennyLane device integration tests
         run: |
-          pl-device-test --device=braket.local.qubit --tb=short --skip-ops --shots=20000
-          pl-device-test --device=braket.local.qubit --tb=short --skip-ops
+          pl-device-test --device=braket.local.qubit --tb=short --skip-ops --shots=20000 -k 'not no_0_shots'
+          pl-device-test --device=braket.local.qubit --tb=short --skip-ops -k 'not Sample and not no_0_shots'
 
       - name: Run plugin tests
         run: python -m pytest plugin_repo/test/unit_tests --tb=short

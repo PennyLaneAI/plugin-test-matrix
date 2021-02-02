@@ -29,6 +29,9 @@ All entries in the matrix are tested against PennyLane latest (GitHub master).
 
 * The device integration tests currently do not support devices with a fixed
   number of wires; as a result, `forest.qvm` is not tested.
+  
+* The Braket plugin device integration tests are run with `-k “not Sample and not no_0_shots”`,
+  see #6
 
 ## Interpreting the test matrix
 
