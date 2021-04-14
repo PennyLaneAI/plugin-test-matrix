@@ -10,10 +10,10 @@ workflows = [
         "which": ["latest", "stable"],
         "requirements": ["qiskit", "pyscf==1.7.2"],
         "device_tests": [
-            "--device=qiskit.basicaer --tb=short --skip-ops --analytic=False --shots=20000 --device-kwargs backend=qasm_simulator",
-            "--device=qiskit.aer --tb=short --skip-ops --analytic=False --shots=20000 --device-kwargs backend=qasm_simulator",
-            "--device=qiskit.basicaer --tb=short --skip-ops --analytic=True --device-kwargs backend=statevector_simulator",
-            "--device=qiskit.aer --tb=short --skip-ops --analytic=True --device-kwargs backend=unitary_simulator",
+            "--device=qiskit.basicaer --tb=short --skip-ops --shots=20000 --device-kwargs backend=qasm_simulator",
+            "--device=qiskit.aer --tb=short --skip-ops --shots=20000",
+            "--device=qiskit.basicaer --tb=short --skip-ops --shots=None --device-kwargs backend=statevector_simulator",
+            "--device=qiskit.aer --tb=short --skip-ops --shots=None --device-kwargs backend=aer_simulator_unitary",
         ],
     },
     {
@@ -22,10 +22,10 @@ workflows = [
         "which": ["latest", "stable"],
         "requirements": ["cirq", "qsimcirq"],
         "device_tests": [
-            "--device=cirq.simulator --tb=short --skip-ops --analytic=True",
-            "--device=cirq.simulator --tb=short --skip-ops --analytic=False --shots=20000",
-            "--device=cirq.mixedsimulator --tb=short --skip-ops --analytic=True",
-            "--device=cirq.mixedsimulator --tb=short --skip-ops --analytic=False --shots=20000",
+            "--device=cirq.simulator --tb=short --skip-ops --shots=None",
+            "--device=cirq.simulator --tb=short --skip-ops --shots=20000",
+            "--device=cirq.mixedsimulator --tb=short --skip-ops --shots=None",
+            "--device=cirq.mixedsimulator --tb=short --skip-ops --shots=20000",
             # Pasqal doesn't work, says
             #      qubits = [pasqal.ThreeDQubit(wire * control_radius / 2, 0, 0) for wire in range(wires)]
             #      E   TypeError: unsupported operand type(s) for /: 'str' and 'int'
@@ -39,8 +39,8 @@ workflows = [
         "which": ["stable", "latest"],
         "requirements": ["qulacs"],
         "device_tests": [
-            "--device=qulacs.simulator --tb=short --skip-ops --analytic=True",
-            "--device=qulacs.simulator --tb=short --skip-ops --analytic=False --shots=20000",
+            "--device=qulacs.simulator --tb=short --skip-ops --shots=None",
+            "--device=qulacs.simulator --tb=short --skip-ops --shots=20000",
         ],
     },
     {
@@ -56,8 +56,8 @@ workflows = [
         "which": ["stable", "latest"],
         "requirements": ["pyquil"],
         "device_tests": [
-            "--device=forest.numpy_wavefunction --tb=short --skip-ops --analytic=True",
-            "--device=forest.wavefunction --tb=short --skip-ops --analytic=False --shots=20000",
+            "--device=forest.numpy_wavefunction --tb=short --skip-ops --shots=None",
+            "--device=forest.wavefunction --tb=short --skip-ops --shots=20000",
             # "--device=forest.qvm --tb=short --skip-ops --shots=20000 --device-kwargs device=4q-qvm",
         ],
         "additional_setup": dedent("""
@@ -95,8 +95,8 @@ workflows = [
         "which": ["stable", "latest"],
         "requirements": ["pybind11"],
         "device_tests": [
-            "--device lightning.qubit --analytic True --skip-ops",
-            "--device lightning.qubit --analytic False --skip-ops --shots=20000",
+            "--device lightning.qubit --shots=None --skip-ops",
+            "--device lightning.qubit --skip-ops --shots=20000",
             ],
         "additional_setup": dedent("""
             - name: Install Eigen
