@@ -57,10 +57,10 @@ jobs:
           if ! [ -x "$(command -v pl-device-test)" ]; then
             echo 'Error: Version of PennyLane does not provide device integration tests.' >&2
           else
-            pl-device-test --device=cirq.simulator --tb=short --skip-ops --analytic=True
-            pl-device-test --device=cirq.simulator --tb=short --skip-ops --analytic=False --shots=20000
-            pl-device-test --device=cirq.mixedsimulator --tb=short --skip-ops --analytic=True
-            pl-device-test --device=cirq.mixedsimulator --tb=short --skip-ops --analytic=False --shots=20000
+            pl-device-test --device=cirq.simulator --tb=short --skip-ops --shots=None
+            pl-device-test --device=cirq.simulator --tb=short --skip-ops --shots=20000
+            pl-device-test --device=cirq.mixedsimulator --tb=short --skip-ops --shots=None
+            pl-device-test --device=cirq.mixedsimulator --tb=short --skip-ops --shots=20000
             pl-device-test --device=cirq.qsim --tb=short --skip-ops --analytic=False --shots=20000
           fi
 

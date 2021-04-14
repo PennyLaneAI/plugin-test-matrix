@@ -62,8 +62,8 @@ jobs:
           if ! [ -x "$(command -v pl-device-test)" ]; then
             echo 'Error: Version of PennyLane does not provide device integration tests.' >&2
           else
-            pl-device-test --device=forest.numpy_wavefunction --tb=short --skip-ops --analytic=True
-            pl-device-test --device=forest.wavefunction --tb=short --skip-ops --analytic=False --shots=20000
+            pl-device-test --device=forest.numpy_wavefunction --tb=short --skip-ops --shots=None
+            pl-device-test --device=forest.wavefunction --tb=short --skip-ops --shots=20000
           fi
 
       - name: Run plugin tests

@@ -65,8 +65,8 @@ jobs:
 
       - name: Run PennyLane device integration tests
         run: |
-          pl-device-test --device lightning.qubit --analytic True --skip-ops
-          pl-device-test --device lightning.qubit --analytic False --skip-ops --shots=20000
+          pl-device-test --device lightning.qubit --shots=None --skip-ops
+          pl-device-test --device lightning.qubit --skip-ops --shots=20000
 
       - name: Run plugin tests
         run: python -m pytest plugin_repo/tests --tb=short

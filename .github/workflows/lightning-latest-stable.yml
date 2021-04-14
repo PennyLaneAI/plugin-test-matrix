@@ -60,8 +60,8 @@ jobs:
           if ! [ -x "$(command -v pl-device-test)" ]; then
             echo 'Error: Version of PennyLane does not provide device integration tests.' >&2
           else
-            pl-device-test --device lightning.qubit --analytic True --skip-ops
-            pl-device-test --device lightning.qubit --analytic False --skip-ops --shots=20000
+            pl-device-test --device lightning.qubit --shots=None --skip-ops
+            pl-device-test --device lightning.qubit --skip-ops --shots=20000
           fi
 
       - name: Run plugin tests

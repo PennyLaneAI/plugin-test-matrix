@@ -62,10 +62,10 @@ jobs:
 
       - name: Run PennyLane device integration tests
         run: |
-          pl-device-test --device=cirq.simulator --tb=short --skip-ops --analytic=True
-          pl-device-test --device=cirq.simulator --tb=short --skip-ops --analytic=False --shots=20000
-          pl-device-test --device=cirq.mixedsimulator --tb=short --skip-ops --analytic=True
-          pl-device-test --device=cirq.mixedsimulator --tb=short --skip-ops --analytic=False --shots=20000
+          pl-device-test --device=cirq.simulator --tb=short --skip-ops --shots=None
+          pl-device-test --device=cirq.simulator --tb=short --skip-ops --shots=20000
+          pl-device-test --device=cirq.mixedsimulator --tb=short --skip-ops --shots=None
+          pl-device-test --device=cirq.mixedsimulator --tb=short --skip-ops --shots=20000
           pl-device-test --device=cirq.qsim --tb=short --skip-ops --analytic=False --shots=20000
 
       - name: Run plugin tests
