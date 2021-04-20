@@ -15,6 +15,7 @@ env:
   PLUGIN_PACKAGE: {{ plugin_package }}
   PENNYLANE_BRANCH: master
   IBMQX_TOKEN: {% raw %}${{ secrets.IBMQX_TOKEN }}{% endraw %}
+  IONQ_API_KEY: {% raw %}${{ secrets.IONQ_API_KEY }}{% endraw %}
 
 
 jobs:
