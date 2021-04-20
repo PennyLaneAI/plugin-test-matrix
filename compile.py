@@ -83,6 +83,13 @@ workflows = [
         "device_tests": [],
     },
     {
+        "plugin": "ionq",
+        "gh_user": "PennyLaneAI",
+        "which": ["stable", "latest"],
+        "requirements": [],
+        "device_tests": ["--device=ionq.simulator --tb=short --skip-ops --shots=10000"],
+    },
+    {
         "plugin": "pq",
         "gh_user": "PennyLaneAI",
         "which": ["stable", "latest"],
