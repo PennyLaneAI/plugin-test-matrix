@@ -47,7 +47,7 @@ workflows = [
         "plugin": "sf",
         "gh_user": "PennyLaneAI",
         "which": ["stable", "latest"],
-        "requirements": ["strawberryfields"],
+        "requirements": ["strawberryfields", "tensorflow"],
         "device_tests": [],
     },
     {

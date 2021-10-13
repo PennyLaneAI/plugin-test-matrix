@@ -40,6 +40,7 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install --upgrade strawberryfields
+          pip install --upgrade tensorflow
           pip install pytest pytest-mock pytest-cov flaky
           pip freeze
 
