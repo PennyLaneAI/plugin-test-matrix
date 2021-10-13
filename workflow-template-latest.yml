@@ -13,8 +13,7 @@ env:
   PLUGIN_REPO: {{ gh_user }}/{{ plugin_repo }}
   PLUGIN_BRANCH: {% if branch %}{{ branch }}{% else %}master{% endif %}
   PLUGIN_PACKAGE: {{ plugin_package }}
-  # Set pl_branch to @master to explicitly mark the master branch
-  PENNYLANE_BRANCH: {% if pl_branch %}{{ pl_branch }}{% else %}{% endif %}
+  #PENNYLANE_BRANCH: @master
   IBMQX_TOKEN: {% raw %}${{ secrets.IBMQX_TOKEN }}{% endraw %}
   IONQ_API_KEY: {% raw %}${{ secrets.IONQ_API_KEY }}{% endraw %}
 
@@ -60,7 +59,7 @@ jobs:
       - name: Install PennyLane and Plugin
         run: |
           {% raw -%}
-          pip install git+https://github.com/PennyLaneAI/pennylane.git${{ env.PENNYLANE_BRANCH }} \
+          pip install git+https://github.com/PennyLaneAI/pennylane.git \
             git+https://github.com/${{ env.PLUGIN_REPO }}.git@${{ env.PLUGIN_BRANCH }}
           {%- endraw %}
 
@@ -75,7 +74,7 @@ jobs:
       - name: Install PennyLane and Plugin
         run: |
           {% raw -%}
-          pip install git+https://github.com/PennyLaneAI/pennylane.git${{ env.PENNYLANE_BRANCH }} \
+          pip install git+https://github.com/PennyLaneAI/pennylane.git \
           ${{ env.PLUGIN_PACKAGE }} --upgrade
           {%- endraw %}
 
