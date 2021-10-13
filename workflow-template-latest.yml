@@ -14,7 +14,7 @@ env:
   PLUGIN_BRANCH: {% if branch %}{{ branch }}{% else %}master{% endif %}
   PLUGIN_PACKAGE: {{ plugin_package }}
   # Set pl_branch to @master to explicitly mark the master branch
-  PENNYLANE_BRANCH: {% if pl_branch %}{{ pl_branch }}{% else %}""{% endif %}
+  PENNYLANE_BRANCH: {% if pl_branch %}{{ pl_branch }}{% else %}{% endif %}
   IBMQX_TOKEN: {% raw %}${{ secrets.IBMQX_TOKEN }}{% endraw %}
   IONQ_API_KEY: {% raw %}${{ secrets.IONQ_API_KEY }}{% endraw %}
 
