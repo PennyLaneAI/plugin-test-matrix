@@ -34,6 +34,13 @@ All entries in the matrix are tested against PennyLane latest (GitHub master).
 * The Braket plugin device integration tests are run with `-k “not Sample and not no_0_shots”`,
   see #6
 
+## QML repo
+
+|           |   Status  |
+|:----------|:----------|
+| [`build-dev`](https://github.com/PennyLaneAI/qml/actions/workflows/build-dev.yml) | [![](https://img.shields.io/github/workflow/status/PennyLaneAI/qml/build-dev?label=%20&logo=github&style=flat-square)](https://github.com/PennyLaneAI/qml/actions?query=workflow%3Abuild-dev) |
+| [`build-master`](https://github.com/PennyLaneAI/qml/actions/workflows/build-master.yml) | [![](https://img.shields.io/github/workflow/status/PennyLaneAI/qml/build-master?label=%20&logo=github&style=flat-square)](https://github.com/PennyLaneAI/qml/actions?query=workflow%3Abuild-master) |
+
 ## Interpreting the test matrix
 
 * **Stable/stable**: This reflects a scenario where PennyLane and the plugin are both installed
