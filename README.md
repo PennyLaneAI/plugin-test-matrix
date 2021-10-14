@@ -26,11 +26,6 @@ All entries in the matrix are tested against PennyLane latest (GitHub master).
 | [Orquestra](https://github.com/PennyLaneAI/pennylane-orquestra) | ![](https://img.shields.io/pypi/v/pennylane-orquestra?color=green&label=%20&style=flat-square)    | [![](https://img.shields.io/github/workflow/status/PennyLaneAI/plugin-test-matrix/orquestra-stable-stable?label=%20&logo=github&style=flat-square)](https://github.com/PennyLaneAI/plugin-test-matrix/actions?query=workflow%3Aorquestra-stable-stable)       | [![](https://img.shields.io/github/workflow/status/PennyLaneAI/plugin-test-matrix/orquestra-stable-latest?label=%20&logo=github&style=flat-square)](https://github.com/PennyLaneAI/plugin-test-matrix/actions?query=workflow%3Aorquestra-stable-latest)       | [![](https://img.shields.io/github/workflow/status/PennyLaneAI/plugin-test-matrix/orquestra-latest-stable?label=%20&logo=github&style=flat-square)](https://github.com/PennyLaneAI/plugin-test-matrix/actions?query=workflow%3Aorquestra-latest-stable)       | [![](https://img.shields.io/github/workflow/status/PennyLaneAI/plugin-test-matrix/orquestra-latest-latest?label=%20&logo=github&style=flat-square)](https://github.com/PennyLaneAI/plugin-test-matrix/actions?query=workflow%3Aorquestra-latest-latest)       |
 | [Braket](https://github.com/aws/amazon-braket-pennylane-plugin-python) | ![](https://img.shields.io/pypi/v/amazon-braket-pennylane-plugin?color=green&label=%20&style=flat-square)    | [![](https://img.shields.io/github/workflow/status/PennyLaneAI/plugin-test-matrix/braket-stable-stable?label=%20&logo=github&style=flat-square)](https://github.com/PennyLaneAI/plugin-test-matrix/actions?query=workflow%3Abraket-stable-stable)       | [![](https://img.shields.io/github/workflow/status/PennyLaneAI/plugin-test-matrix/braket-stable-latest?label=%20&logo=github&style=flat-square)](https://github.com/PennyLaneAI/plugin-test-matrix/actions?query=workflow%3Abraket-stable-latest)       | [![](https://img.shields.io/github/workflow/status/PennyLaneAI/plugin-test-matrix/braket-latest-stable?label=%20&logo=github&style=flat-square)](https://github.com/PennyLaneAI/plugin-test-matrix/actions?query=workflow%3Abraket-latest-stable)       | [![](https://img.shields.io/github/workflow/status/PennyLaneAI/plugin-test-matrix/braket-latest-latest?label=%20&logo=github&style=flat-square)](https://github.com/PennyLaneAI/plugin-test-matrix/actions?query=workflow%3Abraket-latest-latest)       |
 
-|           |   Status  |
-|:----------|:----------|
-| [`build-dev`](https://github.com/PennyLaneAI/qml/actions/workflows/build-dev.yml) | [![](https://img.shields.io/github/workflow/status/PennyLaneAI/qml/build-dev?label=%20&logo=github&style=flat-square)](https://github.com/PennyLaneAI/qml/actions?query=workflow%3Abuild-dev) |
-| [`build-master`](https://github.com/PennyLaneAI/qml/actions/workflows/build-master.yml) | [![](https://img.shields.io/github/workflow/status/PennyLaneAI/qml/build-master?label=%20&logo=github&style=flat-square)](https://github.com/PennyLaneAI/qml/actions?query=workflow%3Abuild-master) |
-
 *Notes:*
 
 * The device integration tests currently do not support devices with a fixed
@@ -38,6 +33,14 @@ All entries in the matrix are tested against PennyLane latest (GitHub master).
   
 * The Braket plugin device integration tests are run with `-k “not Sample and not no_0_shots”`,
   see #6
+
+## QML repo
+
+|           |   Status  |
+|:----------|:----------|
+| [`build-dev`](https://github.com/PennyLaneAI/qml/actions/workflows/build-dev.yml) | [![](https://img.shields.io/github/workflow/status/PennyLaneAI/qml/build-dev?label=%20&logo=github&style=flat-square)](https://github.com/PennyLaneAI/qml/actions?query=workflow%3Abuild-dev) |
+| [`build-master`](https://github.com/PennyLaneAI/qml/actions/workflows/build-master.yml) | [![](https://img.shields.io/github/workflow/status/PennyLaneAI/qml/build-master?label=%20&logo=github&style=flat-square)](https://github.com/PennyLaneAI/qml/actions?query=workflow%3Abuild-master) |
+
 
 ## Interpreting the test matrix
 
