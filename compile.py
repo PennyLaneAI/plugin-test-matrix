@@ -54,7 +54,7 @@ workflows = [
         "plugin": "forest",
         "gh_user": "rigetti",
         "which": ["stable", "latest"],
-        "requirements": ["pyquil==2.28.3"],
+        "requirements": ["pyquil==2.28.2"],
         "device_tests": [
             "--device=forest.numpy_wavefunction --tb=short --skip-ops --shots=None",
             "--device=forest.wavefunction --tb=short --skip-ops --shots=20000",
