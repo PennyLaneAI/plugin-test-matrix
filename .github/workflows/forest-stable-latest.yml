@@ -45,7 +45,7 @@ jobs:
       - name: Install requirements
         run: |
           pip install --upgrade pip
-          pip install --upgrade pyquil
+          pip install --upgrade pyquil==2.28.3
           pip install pytest pytest-mock pytest-cov flaky
           pip freeze
 
