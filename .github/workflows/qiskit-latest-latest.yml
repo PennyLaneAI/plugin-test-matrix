@@ -14,7 +14,7 @@ env:
   PLUGIN_BRANCH: master
   PLUGIN_PACKAGE: pennylane_qiskit
   PENNYLANE_BRANCH: master
-  IBMQX_TOKEN: ${{ secrets.IBMQX_TOKEN }}
+  IBMQX_TOKEN_TEST: ${{ secrets.IBMQX_TOKEN }}
   IONQ_API_KEY: ${{ secrets.IONQ_API_KEY }}
 
 
