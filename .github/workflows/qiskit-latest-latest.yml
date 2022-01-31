@@ -64,3 +64,4 @@ jobs:
 
       - name: Run plugin tests
         run: python -m pytest plugin_repo/tests -k 'not test_ibmq.py and not test_runtime.py' --tb=short
+        # Tests are removed because they are run on IBMQ
