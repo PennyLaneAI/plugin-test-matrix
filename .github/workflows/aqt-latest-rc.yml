@@ -1,6 +1,6 @@
 # Workflow template for testing plugins against PennyLane release candidate
 
-name: aqt-rc-latest
+name: aqt-latest-rc
 on:
   push:
   pull_request:

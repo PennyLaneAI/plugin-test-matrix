@@ -1,6 +1,6 @@
 # Workflow template for testing plugins against PennyLane release candidate
 
-name: ionq-rc-latest
+name: ionq-latest-rc
 on:
   push:
   pull_request:

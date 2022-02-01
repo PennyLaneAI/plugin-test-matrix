@@ -1,6 +1,6 @@
 # Workflow template for testing plugins against PennyLane release candidate
 
-name: qiskit-rc-latest
+name: qiskit-latest-rc
 on:
   push:
   pull_request:

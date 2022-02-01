@@ -1,6 +1,6 @@
 # Workflow template for testing plugins against PennyLane release candidate
 
-name: cirq-rc-latest
+name: cirq-latest-rc
 on:
   push:
   pull_request:

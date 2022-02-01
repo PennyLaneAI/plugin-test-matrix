@@ -1,6 +1,6 @@
 # Workflow template for testing plugins against PennyLane release candidate
 
-name: honeywell-rc-latest
+name: honeywell-latest-rc
 on:
   push:
   pull_request:

@@ -1,6 +1,6 @@
 # Workflow template for testing plugins against PennyLane release candidate
 
-name: sf-rc-latest
+name: sf-latest-rc
 on:
   push:
   pull_request:

@@ -1,6 +1,6 @@
 # Workflow template for testing plugins against PennyLane release candidate
 
-name: qulacs-rc-latest
+name: qulacs-latest-rc
 on:
   push:
   pull_request:
