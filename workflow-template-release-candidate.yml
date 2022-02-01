@@ -1,0 +1,78 @@
+# Workflow template for testing plugins against PennyLane release candidate
+
+name: {{ plugin }}-rc-latest
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+
+env:
+  PLUGIN_REPO: {{ gh_user }}/{{ plugin_repo }}
+  PLUGIN_BRANCH: {% if branch %}{{ branch }}{% else %}master{% endif %}
+  PLUGIN_PACKAGE: {{ plugin_package }}
+  PENNYLANE_BRANCH: master
+  IBMQX_TOKEN: {% raw %}${{ secrets.IBMQX_TOKEN }}{% endraw %}
+  IONQ_API_KEY: {% raw %}${{ secrets.IONQ_API_KEY }}{% endraw %}
+
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.4.1
+        with:
+          access_token: {% raw %}${{ github.token }}{% endraw %}
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+
+{%- if additional_setup is defined %}
+      {{ additional_setup | indent(6, True) }}
+{%- endif %}
+
+      - name: Install requirements
+        run: |
+          pip install --upgrade pip
+          {%- for req in requirements %}
+          pip install --upgrade {{ req }}
+          {%- endfor %}
+          {%- if requirements_latest is defined %}
+          {%- for req in requirements_latest %}
+          pip install --upgrade {{ req }}
+          {%- endfor %}
+          {%- endif %}
+          pip install pytest pytest-mock pytest-cov flaky
+          pip freeze
+
+      - name: Install PennyLane and Plugin
+        run: |
+          {% raw -%}
+          pip install git+https://github.com/PennyLaneAI/pennylane.git@v0.21.0-rc0 \
+            git+https://github.com/${{ env.PLUGIN_REPO }}.git@${{ env.PLUGIN_BRANCH }}
+          {%- endraw %}
+
+      - uses: actions/checkout@v2
+        with:
+          repository: {% raw %}${{ env.PLUGIN_REPO }}{% endraw %}
+          path: plugin_repo
+          ref: {% raw %}${{ env.PLUGIN_BRANCH }}{% endraw %}
+
+      - name: Run PennyLane device integration tests
+        run: |
+          {%- for test in device_tests %}
+          pl-device-test {{ test }}
+          {%- endfor %}
+
+      - name: Run plugin tests
+        run: python -m pytest plugin_repo/{{ tests_loc }} --tb=short {%- for kwarg in test_kwargs %} {{ kwarg }} {%- endfor %}
+

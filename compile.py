@@ -172,6 +172,13 @@ def render_templates():
                     render_from_template("workflow-template-latest.yml", latest=i == "latest", **wf)
                 )
 
+        # PennyLane release candidate tests
+        for i in wf["which"]:
+            with open(f".github/workflows/{wf['plugin']}-latest-rc.yml", "w") as f:
+                f.write(
+                    render_from_template("workflow-template-release-candidate.yml", latest=True, **wf)
+                )
+
 
 if __name__ == "__main__":
     render_templates()
