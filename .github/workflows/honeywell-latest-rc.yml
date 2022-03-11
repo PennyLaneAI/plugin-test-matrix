@@ -1,6 +1,6 @@
-# Workflow template for testing plugins against PennyLane latest
+# Workflow template for testing plugins against PennyLane release candidate
 
-name: qiskit-latest-latest
+name: honeywell-latest-rc
 on:
   push:
   pull_request:
@@ -10,9 +10,9 @@ on:
 
 
 env:
-  PLUGIN_REPO: PennyLaneAI/pennylane-qiskit
+  PLUGIN_REPO: PennyLaneAI/pennylane-honeywell
   PLUGIN_BRANCH: master
-  PLUGIN_PACKAGE: pennylane_qiskit
+  PLUGIN_PACKAGE: pennylane_honeywell
   PENNYLANE_BRANCH: master
   IBMQX_TOKEN: ${{ secrets.IBMQX_TOKEN }}
   IONQ_API_KEY: ${{ secrets.IONQ_API_KEY }}
@@ -39,14 +39,12 @@ jobs:
       - name: Install requirements
         run: |
           pip install --upgrade pip
-          pip install --upgrade qiskit
-          pip install --upgrade pyscf==1.7.2
           pip install pytest pytest-mock pytest-cov flaky
           pip freeze
 
       - name: Install PennyLane and Plugin
         run: |
-          pip install git+https://github.com/PennyLaneAI/pennylane.git \
+          pip install git+https://github.com/PennyLaneAI/pennylane.git@v0.22.0-rc0 \
             git+https://github.com/${{ env.PLUGIN_REPO }}.git@${{ env.PLUGIN_BRANCH }}
 
       - uses: actions/checkout@v2
@@ -57,10 +55,6 @@ jobs:
 
       - name: Run PennyLane device integration tests
         run: |
-          pl-device-test --device=qiskit.basicaer --tb=short --skip-ops --shots=20000 --device-kwargs backend=qasm_simulator
-          pl-device-test --device=qiskit.aer --tb=short --skip-ops --shots=20000
-          pl-device-test --device=qiskit.basicaer --tb=short --skip-ops --shots=None --device-kwargs backend=statevector_simulator
-          pl-device-test --device=qiskit.aer --tb=short --skip-ops --shots=None --device-kwargs backend=aer_simulator_unitary
 
       - name: Run plugin tests
         run: python -m pytest plugin_repo/tests --tb=short

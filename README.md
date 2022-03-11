@@ -70,6 +70,25 @@ All entries in the matrix are tested against PennyLane latest (GitHub master).
   - **Latest/latest passing**: Nothing to be done! The plugin is ready to be released
     with the upcoming PennyLane release.
 
+## Feature freeze testing matrix
+
+All entries in the matrix are tested against the PennyLane release candidate branch (GitHub `v0.22.0-rc0` branch).
+
+|           | Latest plugin/ release candidate PennyLane                                                                                                                                                                                                                          |
+|:----------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Qiskit](https://github.com/PennyLaneAI/pennylane-qiskit)    | [![](https://img.shields.io/github/workflow/status/PennyLaneAI/plugin-test-matrix/qiskit-latest-rc?label=%20&logo=github&style=flat-square)](https://github.com/PennyLaneAI/plugin-test-matrix/actions?query=workflow%3Aqiskit-latest-rc)       |
+| [Cirq](https://github.com/PennyLaneAI/pennylane-cirq)      | [![](https://img.shields.io/github/workflow/status/PennyLaneAI/plugin-test-matrix/cirq-latest-rc?label=%20&logo=github&style=flat-square)](https://github.com/PennyLaneAI/plugin-test-matrix/actions?query=workflow%3Acirq-latest-rc)           |
+| [SF](https://github.com/PennyLaneAI/pennylane-sf)        | [![](https://img.shields.io/github/workflow/status/PennyLaneAI/plugin-test-matrix/sf-latest-rc?label=%20&logo=github&style=flat-square)](https://github.com/PennyLaneAI/plugin-test-matrix/actions?query=workflow%3Asf-latest-rc)               |
+| [Qulacs](https://github.com/PennyLaneAI/pennylane-qulacs)    | [![](https://img.shields.io/github/workflow/status/PennyLaneAI/plugin-test-matrix/qulacs-latest-rc?label=%20&logo=github&style=flat-square)](https://github.com/PennyLaneAI/plugin-test-matrix/actions?query=workflow%3Aqulacs-latest-rc)       |
+| [AQT](https://github.com/PennyLaneAI/pennylane-aqt)       | [![](https://img.shields.io/github/workflow/status/PennyLaneAI/plugin-test-matrix/aqt-latest-rc?label=%20&logo=github&style=flat-square)](https://github.com/PennyLaneAI/plugin-test-matrix/actions?query=workflow%3Aaqt-latest-rc)             |
+| [Honeywell](https://github.com/PennyLaneAI/pennylane-honeywell) | [![](https://img.shields.io/github/workflow/status/PennyLaneAI/plugin-test-matrix/honeywell-latest-rc?label=%20&logo=github&style=flat-square)](https://github.com/PennyLaneAI/plugin-test-matrix/actions?query=workflow%3Ahoneywell-latest-rc) |
+| [IonQ](https://github.com/PennyLaneAI/pennylane-ionq) | [![](https://img.shields.io/github/workflow/status/PennyLaneAI/plugin-test-matrix/ionq-latest-rc?label=%20&logo=github&style=flat-square)](https://github.com/PennyLaneAI/plugin-test-matrix/actions?query=workflow%3Aionq-latest-rc) |
+| [Forest](https://github.com/rigetti/pennylane-forest)    | [![](https://img.shields.io/github/workflow/status/PennyLaneAI/plugin-test-matrix/forest-latest-rc?label=%20&logo=github&style=flat-square)](https://github.com/PennyLaneAI/plugin-test-matrix/actions?query=workflow%3Aforest-latest-rc)       |
+| [ProjectQ](https://github.com/PennyLaneAI/pennylane-pq)  | [![](https://img.shields.io/github/workflow/status/PennyLaneAI/plugin-test-matrix/pq-latest-rc?label=%20&logo=github&style=flat-square)](https://github.com/PennyLaneAI/plugin-test-matrix/actions?query=workflow%3Apq-latest-rc)               |
+| [Lightning](https://github.com/PennyLaneAI/pennylane-lightning) | [![](https://img.shields.io/github/workflow/status/PennyLaneAI/plugin-test-matrix/lightning-latest-rc?label=%20&logo=github&style=flat-square)](https://github.com/PennyLaneAI/plugin-test-matrix/actions?query=workflow%3Alightning-latest-rc)       |
+| [Orquestra](https://github.com/PennyLaneAI/pennylane-orquestra) | [![](https://img.shields.io/github/workflow/status/PennyLaneAI/plugin-test-matrix/orquestra-latest-rc?label=%20&logo=github&style=flat-square)](https://github.com/PennyLaneAI/plugin-test-matrix/actions?query=workflow%3Aorquestra-latest-rc)       |
+| [Braket](https://github.com/aws/amazon-braket-pennylane-plugin-python) | [![](https://img.shields.io/github/workflow/status/PennyLaneAI/plugin-test-matrix/braket-latest-rc?label=%20&logo=github&style=flat-square)](https://github.com/PennyLaneAI/plugin-test-matrix/actions?query=workflow%3Abraket-latest-rc)       |
+
 
 ## Adding a plugin
 
@@ -117,11 +136,12 @@ Once you have added your plugin, run
 $ python compile.py
 ```
 
-This will autogenerate up to four workflow files, depending on the variable `which`:
+This will autogenerate up to five workflow files, depending on the variable `which`:
 
 * `.github/workflows/plugin-stable-stable.yml`
 * `.github/workflows/plugin-stable-latest.yml`
 * `.github/workflows/plugin-latest-stable.yml`
 * `.github/workflows/plugin-latest-latest.yml`
+* `.github/workflows/plugin-latest-rc.yml`
 
 Finally, make sure to add a row to the testing matrix above!
