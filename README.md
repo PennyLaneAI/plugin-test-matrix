@@ -72,7 +72,7 @@ All entries in the matrix are tested against PennyLane latest (GitHub master).
 
 ## Feature freeze testing matrix
 
-All entries in the matrix are tested against the PennyLane release candidate branch (GitHub `v0.21.0-rc0` branch).
+All entries in the matrix are tested against the PennyLane release candidate branch (GitHub `v0.22.0-rc0` branch).
 
 |           | Latest plugin/ release candidate PennyLane                                                                                                                                                                                                                          |
 |:----------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
