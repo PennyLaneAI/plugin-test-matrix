@@ -14,7 +14,7 @@ env:
   PLUGIN_BRANCH: master
   PLUGIN_PACKAGE: pennylane_qiskit
   PENNYLANE_BRANCH: master
-  IBMQX_TOKEN: ${{ secrets.IBMQX_TOKEN }}
+  IBMQX_TOKEN_TEST: ${{ secrets.IBMQX_TOKEN }}
   IONQ_API_KEY: ${{ secrets.IONQ_API_KEY }}
 
 
@@ -69,4 +69,5 @@ jobs:
           pl-device-test --device=qiskit.aer --tb=short --skip-ops --shots=None --device-kwargs backend=aer_simulator_unitary
 
       - name: Run plugin tests
-        run: python -m pytest plugin_repo/tests --tb=short
+        run: python -m pytest plugin_repo/tests -k 'not test_ibmq.py and not test_runtime.py' --tb=short
+        # Tests are removed because they are run on IBMQ
