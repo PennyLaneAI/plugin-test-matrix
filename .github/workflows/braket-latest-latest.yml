@@ -16,7 +16,8 @@ env:
   PENNYLANE_BRANCH: master
   IBMQX_TOKEN: ${{ secrets.IBMQX_TOKEN }}
   IONQ_API_KEY: ${{ secrets.IONQ_API_KEY }}
-
+  TF_VERSION: 2.6.0
+  TORCH_VERSION: 1.10.0+cpu
 
 jobs:
   tests:
@@ -41,6 +42,10 @@ jobs:
           pip install --upgrade pip
           pip install pytest pytest-mock pytest-cov flaky
           pip freeze
+
+      - name: Install TF
+        run: |
+          pip install tensorflow~=$TF_VERSION keras~=$TF_VERSION
 
       - name: Install PennyLane and Plugin
         run: |
