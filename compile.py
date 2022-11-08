@@ -62,7 +62,7 @@ workflows = [
         ],
         "additional_setup": dedent("""
             - name: Run Forest Quilc
-              run: docker run --rm -d -p 5555:5555 rigetti/quilc:1.22.0 -R
+              run: docker run --rm -d -p 5555:5555 rigetti/quilc:1.23.0 -R
 
             - name: Run Forest QVM
               run: docker run --rm -d -p 5000:5000 rigetti/qvm -S"""
