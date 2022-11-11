@@ -51,20 +51,20 @@ workflows = [
         "device_tests": [],
     },
     {
-        "plugin": "forest",
+        "plugin": "rigetti",
         "gh_user": "rigetti",
         "which": ["stable", "latest"],
         "requirements": ["pyquil==2.28.2"],
         "device_tests": [
-            "--device=forest.numpy_wavefunction --tb=short --skip-ops --shots=None",
-            "--device=forest.wavefunction --tb=short --skip-ops --shots=20000",
-            # "--device=forest.qvm --tb=short --skip-ops --shots=20000 --device-kwargs device=4q-qvm",
+            "--device=rigetti.numpy_wavefunction --tb=short --skip-ops --shots=None",
+            "--device=rigetti.wavefunction --tb=short --skip-ops --shots=20000",
+            # "--device=rigetti.qvm --tb=short --skip-ops --shots=20000 --device-kwargs device=4q-qvm",
         ],
         "additional_setup": dedent("""
-            - name: Run Forest Quilc
+            - name: Run Rigetti Quilc
               run: docker run --rm -d -p 5555:5555 rigetti/quilc:1.23.0 -R
 
-            - name: Run Forest QVM
+            - name: Run Rigetti QVM
               run: docker run --rm -d -p 5000:5000 rigetti/qvm -S"""
         )
     },
