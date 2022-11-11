@@ -1,6 +1,6 @@
 # Workflow template for testing plugins against PennyLane stable
 
-name: forest-latest-stable
+name: rigetti-latest-stable
 on:
   push:
   pull_request:
@@ -10,9 +10,9 @@ on:
 
 
 env:
-  PLUGIN_REPO: rigetti/pennylane-forest
+  PLUGIN_REPO: rigetti/pennylane-rigetti
   PLUGIN_BRANCH: master
-  PLUGIN_PACKAGE: pennylane_forest
+  PLUGIN_PACKAGE: pennylane_rigetti
   PENNYLANE_BRANCH: master
   IBMQX_TOKEN: ${{ secrets.IBMQX_TOKEN }}
   IONQ_API_KEY: ${{ secrets.IONQ_API_KEY }}
@@ -36,10 +36,10 @@ jobs:
         with:
           python-version: 3.7
             
-      - name: Run Forest Quilc
+      - name: Run Rigetti Quilc
         run: docker run --rm -d -p 5555:5555 rigetti/quilc:1.23.0 -R
 
-      - name: Run Forest QVM
+      - name: Run Rigetti QVM
         run: docker run --rm -d -p 5000:5000 rigetti/qvm -S
 
       - name: Install requirements
@@ -63,8 +63,8 @@ jobs:
           if ! [ -x "$(command -v pl-device-test)" ]; then
             echo 'Error: Version of PennyLane does not provide device integration tests.' >&2
           else
-            pl-device-test --device=forest.numpy_wavefunction --tb=short --skip-ops --shots=None
-            pl-device-test --device=forest.wavefunction --tb=short --skip-ops --shots=20000
+            pl-device-test --device=rigetti.numpy_wavefunction --tb=short --skip-ops --shots=None
+            pl-device-test --device=rigetti.wavefunction --tb=short --skip-ops --shots=20000
           fi
 
       - name: Run plugin tests
