@@ -1,6 +1,6 @@
-# Workflow template for testing plugins against PennyLane latest
+# Workflow template for testing plugins against PennyLane release candidate
 
-name: rigetti-latest-latest
+name: rigetti-latest-rc
 on:
   push:
   pull_request:
@@ -10,7 +10,7 @@ on:
 
 
 env:
-  PLUGIN_REPO: rigetti/pennylane-rigetti
+  PLUGIN_REPO: PennyLaneAI/pennylane-rigetti
   PLUGIN_BRANCH: master
   PLUGIN_PACKAGE: pennylane_rigetti
   PENNYLANE_BRANCH: master
@@ -51,7 +51,7 @@ jobs:
 
       - name: Install PennyLane and Plugin
         run: |
-          pip install git+https://github.com/PennyLaneAI/pennylane.git \
+          pip install git+https://github.com/PennyLaneAI/pennylane.git@v0.27.0-rc0 \
             git+https://github.com/${{ env.PLUGIN_REPO }}.git@${{ env.PLUGIN_BRANCH }}
 
       - uses: actions/checkout@v2
