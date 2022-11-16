@@ -52,7 +52,7 @@ workflows = [
     },
     {
         "plugin": "rigetti",
-        "gh_user": "rigetti",
+        "gh_user": "PennyLaneAI",
         "which": ["stable", "latest"],
         "requirements": ["pyquil==2.28.2"],
         "device_tests": [
