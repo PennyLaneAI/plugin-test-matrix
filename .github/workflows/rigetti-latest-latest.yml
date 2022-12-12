@@ -1,16 +1,16 @@
-# Workflow template for testing plugins against PennyLane stable
+# Workflow template for testing plugins against PennyLane latest
 
-name: rigetti-stable-stable
+name: rigetti-latest-latest
 on:
   push:
   pull_request:
   schedule:
-    - cron: '0 0 * * 0'
+    - cron: '0 0 * * *'
   workflow_dispatch:
 
 
 env:
-  PLUGIN_REPO: rigetti/pennylane-rigetti
+  PLUGIN_REPO: PennyLaneAI/pennylane-rigetti
   PLUGIN_BRANCH: master
   PLUGIN_PACKAGE: pennylane_rigetti
   PENNYLANE_BRANCH: master
@@ -51,28 +51,19 @@ jobs:
 
       - name: Install PennyLane and Plugin
         run: |
-          pip install pennylane ${{ env.PLUGIN_PACKAGE }} --upgrade
-          pip freeze
-
-      - name: Get plugin version
-        id: plugin-version
-        run: |
-          PLUGIN_VERSION=$(python -c "import pkg_resources as pkg; print(pkg.get_distribution('${{ env.PLUGIN_PACKAGE }}').version)")
-          echo ::set-output name=version::$PLUGIN_VERSION
+          pip install git+https://github.com/PennyLaneAI/pennylane.git \
+            git+https://github.com/${{ env.PLUGIN_REPO }}.git@${{ env.PLUGIN_BRANCH }}
 
       - uses: actions/checkout@v2
         with:
           repository: ${{ env.PLUGIN_REPO }}
           path: plugin_repo
-          ref: v${{ steps.plugin-version.outputs.version }}
+          ref: ${{ env.PLUGIN_BRANCH }}
+
       - name: Run PennyLane device integration tests
         run: |
-          if ! [ -x "$(command -v pl-device-test)" ]; then
-            echo 'Error: Version of PennyLane does not provide device integration tests.' >&2
-          else
-            pl-device-test --device=rigetti.numpy_wavefunction --tb=short --skip-ops --shots=None
-            pl-device-test --device=rigetti.wavefunction --tb=short --skip-ops --shots=20000
-          fi
+          pl-device-test --device=rigetti.numpy_wavefunction --tb=short --skip-ops --shots=None
+          pl-device-test --device=rigetti.wavefunction --tb=short --skip-ops --shots=20000
 
       - name: Run plugin tests
         run: python -m pytest plugin_repo/tests --tb=short

@@ -10,7 +10,7 @@ on:
 
 
 env:
-  PLUGIN_REPO: rigetti/pennylane-rigetti
+  PLUGIN_REPO: PennyLaneAI/pennylane-rigetti
   PLUGIN_BRANCH: master
   PLUGIN_PACKAGE: pennylane_rigetti
   PENNYLANE_BRANCH: master
