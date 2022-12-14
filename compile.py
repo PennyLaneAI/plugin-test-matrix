@@ -1,7 +1,6 @@
 from textwrap import dedent
 
-from jinja2 import FileSystemLoader, Environment
-
+from jinja2 import Environment, FileSystemLoader
 
 workflows = [
     {
@@ -60,13 +59,14 @@ workflows = [
             "--device=rigetti.wavefunction --tb=short --skip-ops --shots=20000",
             # "--device=rigetti.qvm --tb=short --skip-ops --shots=20000 --device-kwargs device=4q-qvm",
         ],
-        "additional_setup": dedent("""
+        "additional_setup": dedent(
+            """
             - name: Run Rigetti Quilc
               run: docker run --rm -d -p 5555:5555 rigetti/quilc:1.23.0 -R
 
             - name: Run Rigetti QVM
               run: docker run --rm -d -p 5000:5000 rigetti/qvm -S"""
-        )
+        ),
     },
     {
         "plugin": "aqt",
@@ -104,12 +104,13 @@ workflows = [
         "device_tests": [
             "--device lightning.qubit --shots=None --skip-ops",
             "--device lightning.qubit --skip-ops --shots=20000",
-            ],
-        "additional_setup": dedent("""
+        ],
+        "additional_setup": dedent(
+            """
             - name: Install Eigen
               run: |
                 sudo apt install libeigen3-dev"""
-        )
+        ),
     },
     {
         "plugin": "orquestra",
@@ -163,7 +164,9 @@ def render_templates():
         # PennyLane stable tests
         for i in wf["which"]:
             with open(f".github/workflows/{wf['plugin']}-{i}-stable.yml", "w") as f:
-                f.write(render_from_template("workflow-template-stable.yml", latest=i ==  "latest", **wf))
+                f.write(
+                    render_from_template("workflow-template-stable.yml", latest=i == "latest", **wf)
+                )
 
         # PennyLane latest tests
         for i in wf["which"]:
@@ -176,7 +179,9 @@ def render_templates():
         for i in wf["which"]:
             with open(f".github/workflows/{wf['plugin']}-latest-rc.yml", "w") as f:
                 f.write(
-                    render_from_template("workflow-template-release-candidate.yml", latest=True, **wf)
+                    render_from_template(
+                        "workflow-template-release-candidate.yml", latest=True, **wf
+                    )
                 )
 
 
