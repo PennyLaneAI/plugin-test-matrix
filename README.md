@@ -138,7 +138,7 @@ $ python compile.py
 
 This will autogenerate up to five workflow files, depending on the variable `which`:
 
-* `.github/workflows/plugin-stable-latest.yml`
+* `.github/workflows/plugin-stable-stable.yml`
 * `.github/workflows/plugin-stable-latest.yml`
 * `.github/workflows/plugin-latest-stable.yml`
 * `.github/workflows/plugin-latest-latest.yml`
