@@ -36,10 +36,10 @@ All entries in the matrix are tested against PennyLane latest (GitHub master).
 
 ## QML repo
 
-|                     | Status                                  |
-|:--------------------|:----------------------------------------|
-| [`build-dev`](#)    | Maintenance (Status will be added soon) |
-| [`build-master`](#) | Maintenance (Status will be added soon) |
+|                                                                                                                   | Status                                                                                                                                                                                                   |
+|:------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [`build-branch-dev`](https://github.com/PennyLaneAI/qml/blob/master/.github/workflows/build-branch-dev.yml)       | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/qml/build-branch-dev.yml)](https://github.com/PennyLaneAI/qml/actions/workflows/build-branch-dev.yml)       |
+| [`build-branch-master`](https://github.com/PennyLaneAI/qml/blob/master/.github/workflows/build-branch-master.yml) | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/qml/build-branch-master.yml)](https://github.com/PennyLaneAI/qml/actions/workflows/build-branch-master.yml) |
 
 ## Interpreting the test matrix
 
