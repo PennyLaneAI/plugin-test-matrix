@@ -135,7 +135,7 @@ Simply add a new plugin to the `workflows` list in [`compile.py`](compile.py), w
 * `token` (optional): sets an environment variable with the same name as the token. The value is loaded from the
   repository secrets. The token is required by some plugins for backend authentication.
 
-* Once you have added your plugin, run
+Once you have added your plugin, run
 
 ```console
 $ python compile.py
