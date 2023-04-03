@@ -135,6 +135,18 @@ workflows = [
         ],
         "tests_loc": "test/unit_tests",
     },
+    {
+        "plugin": "quantuminspire",
+        "gh_user": "QuTech-Delft",
+        "which": ["stable", "latest"],
+        "requirements": ["pennylane-qiskit", "quantuminspire", "qiskit"],
+        "branch": "master",
+        "device_tests": [
+            "--device=quantuminspire.qi --tb=short --skip-ops --shots=4096 --device-kwargs backend='QX single-node simulator'",
+        ],
+        "tests_loc": "tests/unit_test",
+        "token": "QI_TOKEN",
+    },
 ]
 
 
