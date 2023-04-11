@@ -43,6 +43,8 @@ All entries in the matrix are tested against PennyLane latest (GitHub master).
 
 ## Catalyst compiler
 
+The following table shows the current Catalyst compatibility with the Lightning and PennyLane packages, where each of the 3 packages is tested as "latest" and "stable". Latest versions are built directly from the repository's main or master branch, while stable is built from the repository at the most recent release tag. The reason this is needed rather than installing PyPI packages is that the Lightning dependency in Catalyst needs to be built from source and cannot be obtained from the PyPI package. PennyLane stable is installed from PyPI.
+
 <table>
   <tr>
     <td></td>
@@ -70,7 +72,6 @@ All entries in the matrix are tested against PennyLane latest (GitHub master).
     <td><a href=https://github.com/PennyLaneAI/catalyst/actions/workflows/CPL_latest-latest-stable.yaml><img src=https://img.shields.io/github/actions/workflow/status/PennyLaneAI/catalyst/CPL_latest-latest-stable.yaml alt="Check CPL latest/latest/stable"></a></td>
     <td><a href=https://github.com/PennyLaneAI/catalyst/actions/workflows/CPL_latest-latest-latest.yaml><img src=https://img.shields.io/github/actions/workflow/status/PennyLaneAI/catalyst/CPL_latest-latest-latest.yaml alt="Check CPL latest/latest/latest"></a></td>
   </tr>
-
 </table>
 
 ## Interpreting the test matrix
