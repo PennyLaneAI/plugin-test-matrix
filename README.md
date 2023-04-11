@@ -30,7 +30,7 @@ All entries in the matrix are tested against PennyLane latest (GitHub master).
 
 * The device integration tests currently do not support devices with a fixed
   number of wires; as a result, `rigetti.qvm` is not tested.
-  
+
 * The Braket plugin device integration tests are run with `-k “not Sample and not no_0_shots”`,
   see #6
 
@@ -40,6 +40,39 @@ All entries in the matrix are tested against PennyLane latest (GitHub master).
 |:------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [`build-branch-dev`](https://github.com/PennyLaneAI/qml/blob/master/.github/workflows/build-branch-dev.yml)       | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/qml/build-branch-dev.yml)](https://github.com/PennyLaneAI/qml/actions/workflows/build-branch-dev.yml)       |
 | [`build-branch-master`](https://github.com/PennyLaneAI/qml/blob/master/.github/workflows/build-branch-master.yml) | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/qml/build-branch-master.yml)](https://github.com/PennyLaneAI/qml/actions/workflows/build-branch-master.yml) |
+
+## Catalyst compiler
+
+The following table shows the current Catalyst compatibility with the Lightning and PennyLane packages, where each of the 3 packages is tested as "latest" and "stable". Latest versions are built directly from the repository's main or master branch, while stable is built from the repository at the most recent release tag. The reason this is needed rather than installing PyPI packages is that the Lightning dependency in Catalyst needs to be built from source and cannot be obtained from the PyPI package. PennyLane stable is installed from PyPI.
+
+<table>
+  <tr>
+    <td></td>
+    <td colspan="2">PennyLane <b>stable</b></td>
+    <td colspan="2">PennyLane <b>latest</b></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Lightning <b>stable</b></td>
+    <td>Lightning <b>latest</b></td>
+    <td>Lightning <b>stable</b></td>
+    <td>Lightning <b>latest</b></td>
+  </tr>
+  <tr>
+    <td>Catalyst <b>stable</b></td>
+    <td><a href=https://github.com/PennyLaneAI/catalyst/actions/workflows/CPL_stable-stable-stable.yaml><img src=https://img.shields.io/github/actions/workflow/status/PennyLaneAI/catalyst/CPL_stable-stable-stable.yaml alt="Check CPL stable/stable/stable"></a></td>
+    <td><a href=https://github.com/PennyLaneAI/catalyst/actions/workflows/CPL_stable-stable-latest.yaml><img src=https://img.shields.io/github/actions/workflow/status/PennyLaneAI/catalyst/CPL_stable-stable-latest.yaml alt="Check CPL stable/stable/latest"></a></td>
+    <td><a href=https://github.com/PennyLaneAI/catalyst/actions/workflows/CPL_stable-latest-stable.yaml><img src=https://img.shields.io/github/actions/workflow/status/PennyLaneAI/catalyst/CPL_stable-latest-stable.yaml alt="Check CPL stable/latest/stable"></a></td>
+    <td><a href=https://github.com/PennyLaneAI/catalyst/actions/workflows/CPL_stable-latest-latest.yaml><img src=https://img.shields.io/github/actions/workflow/status/PennyLaneAI/catalyst/CPL_stable-latest-latest.yaml alt="Check CPL stable/latest/latest"></a></td>
+  </tr>
+  <tr>
+    <td>Catalyst <b>latest</b></td>
+    <td><a href=https://github.com/PennyLaneAI/catalyst/actions/workflows/CPL_latest-stable-stable.yaml><img src=https://img.shields.io/github/actions/workflow/status/PennyLaneAI/catalyst/CPL_latest-stable-stable.yaml alt="Check CPL latest/stable/stable"></a></td>
+    <td><a href=https://github.com/PennyLaneAI/catalyst/actions/workflows/CPL_latest-stable-latest.yaml><img src=https://img.shields.io/github/actions/workflow/status/PennyLaneAI/catalyst/CPL_latest-stable-latest.yaml alt="Check CPL latest/stable/latest"></a></td>
+    <td><a href=https://github.com/PennyLaneAI/catalyst/actions/workflows/CPL_latest-latest-stable.yaml><img src=https://img.shields.io/github/actions/workflow/status/PennyLaneAI/catalyst/CPL_latest-latest-stable.yaml alt="Check CPL latest/latest/stable"></a></td>
+    <td><a href=https://github.com/PennyLaneAI/catalyst/actions/workflows/CPL_latest-latest-latest.yaml><img src=https://img.shields.io/github/actions/workflow/status/PennyLaneAI/catalyst/CPL_latest-latest-latest.yaml alt="Check CPL latest/latest/latest"></a></td>
+  </tr>
+</table>
 
 ## Interpreting the test matrix
 
@@ -90,7 +123,7 @@ All entries in the matrix are tested against the PennyLane release candidate bra
 | [Braket](https://github.com/aws/amazon-braket-pennylane-plugin-python) | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/plugin-test-matrix/braket-latest-rc.yml?branch=master)](https://github.com/PennyLaneAI/plugin-test-matrix/actions?query=workflow%3Abraket-latest-rc)       |
 
 
-## Adding a plugin 
+## Adding a plugin
 
 Two Jinja2 workflow templates are provided, that makes it easier to add a new plugin to the test matrix:
 
