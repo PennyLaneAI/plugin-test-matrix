@@ -44,13 +44,6 @@ workflows = [
         ],
     },
     {
-        "plugin": "sf",
-        "gh_user": "PennyLaneAI",
-        "which": ["stable", "latest"],
-        "requirements": ["strawberryfields", "tensorflow"],
-        "device_tests": [],
-    },
-    {
         "plugin": "rigetti",
         "gh_user": "PennyLaneAI",
         "which": ["stable", "latest"],
