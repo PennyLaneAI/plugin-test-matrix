@@ -46,7 +46,7 @@ jobs:
 
       - name: Install PennyLane and Plugin
         run: |
-          pip install git+https://github.com/PennyLaneAI/pennylane.git@v0.29.0-rc0 \
+          pip install git+https://github.com/PennyLaneAI/pennylane.git@v0.29.1-rc0 \
             git+https://github.com/${{ env.PLUGIN_REPO }}.git@${{ env.PLUGIN_BRANCH }}
 
       - uses: actions/checkout@v2
@@ -63,5 +63,4 @@ jobs:
           pl-device-test --device=qiskit.aer --tb=short --skip-ops --shots=None --device-kwargs backend=aer_simulator_unitary
 
       - name: Run plugin tests
-        run: python -m pytest plugin_repo/tests -k 'not test_ibmq.py and not test_runtime.py' --tb=short
-        # Tests are removed because they are run on IBMQ
+        run: python -m pytest plugin_repo/tests --tb=short

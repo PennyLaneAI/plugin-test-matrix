@@ -16,12 +16,11 @@ env:
   PENNYLANE_BRANCH: master
   IBMQX_TOKEN: ${{ secrets.IBMQX_TOKEN }}
   IONQ_API_KEY: ${{ secrets.IONQ_API_KEY }}
-  GCC_VERSION: 11
 
 
 jobs:
   tests:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     strategy:
       fail-fast: false
@@ -37,9 +36,9 @@ jobs:
         with:
           python-version: 3.8
             
-      - name: Install buildtools & compilers
+      - name: Install Eigen
         run: |
-          sudo apt-get update && sudo apt-get -y -q install cmake gcc-${{ env.GCC_VERSION }} g++-${{ env.GCC_VERSION }} ninja-build
+          sudo apt install libeigen3-dev
 
       - name: Install requirements
         run: |
@@ -50,7 +49,7 @@ jobs:
 
       - name: Install PennyLane and Plugin
         run: |
-          pip install git+https://github.com/PennyLaneAI/pennylane.git@v0.29.0-rc0 \
+          pip install git+https://github.com/PennyLaneAI/pennylane.git@v0.29.1-rc0 \
             git+https://github.com/${{ env.PLUGIN_REPO }}.git@${{ env.PLUGIN_BRANCH }}
 
       - uses: actions/checkout@v2
