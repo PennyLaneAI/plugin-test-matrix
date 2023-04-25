@@ -15,6 +15,7 @@ workflows = [
             "--device=qiskit.basicaer --tb=short --skip-ops --shots=None --device-kwargs backend=statevector_simulator",
             "--device=qiskit.aer --tb=short --skip-ops --shots=None --device-kwargs backend=aer_simulator_unitary",
         ],
+        "test_filter": "'not test_ibmq.py and not test_runtime.py'",
     },
     {
         "plugin": "cirq",
@@ -99,10 +100,12 @@ workflows = [
             "--device lightning.qubit --skip-ops --shots=20000",
             ],
         "additional_setup": dedent("""
-            - name: Install Eigen
+            - name: Install buildtools & compilers
               run: |
-                sudo apt install libeigen3-dev"""
-        )
+                sudo apt-get update && sudo apt-get -y -q install cmake gcc-${{ env.GCC_VERSION }} g++-${{ env.GCC_VERSION }} ninja-build"""
+        ),
+        "additional_env_vars": "GCC_VERSION: 11",
+        "runs_on": "ubuntu-22.04",
     },
     {
         "plugin": "orquestra",
@@ -127,6 +130,12 @@ workflows = [
             "--device=braket.local.qubit --tb=short --skip-ops -k 'not Sample and not no_0_shots'",
         ],
         "tests_loc": "test/unit_tests",
+        "additional_setup": dedent("""
+            - name: Install TF
+              run: |
+                pip install tensorflow~=$TF_VERSION keras~=$TF_VERSION"""
+        ),
+        "additional_env_vars": "TF_VERSION: 2.6.0\n  TORCH_VERSION: 1.10.0+cpu",
     },
     {
         "plugin": "quantuminspire",

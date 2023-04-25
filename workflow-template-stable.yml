@@ -20,11 +20,14 @@ env:
 {%- if token is defined %}
   {{ token }}: {% raw %}${{ secrets.{% endraw %}{{ token }}{% raw %} }}{% endraw %}
 {%- endif %}
+{%- if additional_env_vars is defined %}
+  {{ additional_env_vars }}
+{%- endif %}
 
 
 jobs:
   tests:
-    runs-on: ubuntu-latest
+    runs-on: {% if runs_on is defined %}{{ runs_on }}{% else %}ubuntu-latest{% endif %}
 
     strategy:
       fail-fast: false
@@ -103,5 +106,5 @@ jobs:
       {%- endif %}
 
       - name: Run plugin tests
-        run: python -m pytest plugin_repo/{{ tests_loc }} --tb=short {%- for kwarg in test_kwargs %} {{ kwarg }} {%- endfor %}
+        run: python -m pytest plugin_repo/{{ tests_loc }} {% if test_filter is defined %}-k {{ test_filter }} {% endif %}--tb=short {%- for kwarg in test_kwargs %} {{ kwarg }} {%- endfor %}
 
