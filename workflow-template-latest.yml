@@ -14,9 +14,6 @@ env:
   PLUGIN_BRANCH: {% if branch %}{{ branch }}{% else %}master{% endif %}
   PLUGIN_PACKAGE: {{ plugin_package }}
   PENNYLANE_BRANCH: master
-  IBMQX_TOKEN: {% raw %}${{ secrets.IBMQX_TOKEN }}{% endraw %}
-  IONQ_API_KEY: {% raw %}${{ secrets.IONQ_API_KEY }}{% endraw %}
-{#- only add the secrets, when token defined in workflow #}
 {%- if token is defined %}
   {{ token }}: {% raw %}${{ secrets.{% endraw %}{{ token }}{% raw %} }}{% endraw %}
 {%- endif %}

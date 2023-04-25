@@ -14,8 +14,6 @@ env:
   PLUGIN_BRANCH: master
   PLUGIN_PACKAGE: pennylane_qulacs
   PENNYLANE_BRANCH: master
-  IBMQX_TOKEN: ${{ secrets.IBMQX_TOKEN }}
-  IONQ_API_KEY: ${{ secrets.IONQ_API_KEY }}
 
 
 jobs:

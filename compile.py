@@ -16,6 +16,7 @@ workflows = [
             "--device=qiskit.aer --tb=short --skip-ops --shots=None --device-kwargs backend=aer_simulator_unitary",
         ],
         "test_filter": "'not test_ibmq.py and not test_runtime.py'",
+        "token": "IBMQX_TOKEN",
     },
     {
         "plugin": "cirq",
@@ -82,6 +83,7 @@ workflows = [
         "which": ["stable", "latest"],
         "requirements": [],
         "device_tests": ["--device=ionq.simulator --tb=short --skip-ops --shots=10000"],
+        "token": "IONQ_API_KEY",
     },
     {
         "plugin": "pq",

@@ -14,8 +14,6 @@ env:
   PLUGIN_BRANCH: main
   PLUGIN_PACKAGE: amazon-braket-pennylane-plugin
   PENNYLANE_BRANCH: master
-  IBMQX_TOKEN: ${{ secrets.IBMQX_TOKEN }}
-  IONQ_API_KEY: ${{ secrets.IONQ_API_KEY }}
   TF_VERSION: 2.6.0
   TORCH_VERSION: 1.10.0+cpu
 
