@@ -13,4 +13,4 @@ jobs:
         uses: actions/checkout@v1
 
       - name: Compile and check for changes files
-        run: python compile.py && git diff-index --quiet HEAD
+        run: python compile.py && git diff --quiet
