@@ -1,0 +1,15 @@
+name: Ensure templates are not manually changed
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  check-diff:
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Compile and check for changes files
+        run: python compile.py && git diff-index --quiet HEAD
