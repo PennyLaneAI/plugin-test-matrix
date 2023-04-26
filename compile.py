@@ -91,6 +91,7 @@ workflows = [
         "which": ["stable", "latest"],
         "requirements": ["projectq"],
         "device_tests": [],
+        "token": "IBMQX_TOKEN",
     },
     {
         "plugin": "lightning",
