@@ -173,8 +173,7 @@ Simply add a new plugin to the `workflows` list in [`compile.py`](compile.py), w
 
 * `runs_on` (optional): string to override the workflow's default `runs-on` attribute of `ubuntu-latest`.
 
-* `test_filter` (optional): string passed to pytest's "-k" option to filter tests run. Note that it is not quoted,
-  so you should wrap it in the appropriate quote types to ensure no syntax errors are raised.
+* `test_kwargs` (optional): additional arguments to pass to pytest for the given plugin.
 
 Once you have added your plugin, run
 
