@@ -168,6 +168,14 @@ Simply add a new plugin to the `workflows` list in [`compile.py`](compile.py), w
 * `token` (optional): sets an environment variable with the same name as the token. The value is loaded from the
   repository secrets. The token is required by some plugins for backend authentication.
 
+* `additional_env_vars` (optional): string containing additional environment variables you'd like to be set for
+  the CI action. Double-check the whitespace when using this - variables should be separated with "\n  "
+
+* `runs_on` (optional): string to override the workflow's default `runs-on` attribute of `ubuntu-latest`.
+
+* `test_filter` (optional): string passed to pytest's "-k" option to filter tests run. Note that it is not quoted,
+  so you should wrap it in the appropriate quote types to ensure no syntax errors are raised.
+
 Once you have added your plugin, run
 
 ```console
