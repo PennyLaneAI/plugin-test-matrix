@@ -14,10 +14,9 @@ env:
   PLUGIN_BRANCH: main
   PLUGIN_PACKAGE: amazon-braket-pennylane-plugin
   PENNYLANE_BRANCH: master
-  IBMQX_TOKEN: ${{ secrets.IBMQX_TOKEN }}
-  IONQ_API_KEY: ${{ secrets.IONQ_API_KEY }}
   TF_VERSION: 2.6.0
   TORCH_VERSION: 1.10.0+cpu
+
 
 jobs:
   tests:
@@ -36,16 +35,16 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.8
+            
+      - name: Install TF
+        run: |
+          pip install tensorflow~=$TF_VERSION keras~=$TF_VERSION
 
       - name: Install requirements
         run: |
           pip install --upgrade pip
           pip install pytest pytest-mock pytest-cov flaky
           pip freeze
-
-      - name: Install TF
-        run: |
-          pip install tensorflow~=$TF_VERSION keras~=$TF_VERSION
 
       - name: Install PennyLane and Plugin
         run: |
