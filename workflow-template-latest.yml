@@ -105,5 +105,5 @@ jobs:
           {%- endfor %}
 
       - name: Run plugin tests
-        run: python -m pytest plugin_repo/{{ tests_loc }} {% if test_filter is defined %}-k {{ test_filter }} {% endif %}--tb=short {%- for kwarg in test_kwargs %} {{ kwarg }} {%- endfor %}
+        run: python -m pytest plugin_repo/{{ tests_loc }} --tb=short {%- for kwarg in test_kwargs %} {{ kwarg }} {%- endfor %}
 

@@ -15,7 +15,7 @@ workflows = [
             "--device=qiskit.basicaer --tb=short --skip-ops --shots=None --device-kwargs backend=statevector_simulator",
             "--device=qiskit.aer --tb=short --skip-ops --shots=None --device-kwargs backend=aer_simulator_unitary",
         ],
-        "test_filter": "'not test_ibmq.py and not test_runtime.py'",
+        "test_kwargs": ["-k 'not test_ibmq.py and not test_runtime.py'"],
         "token": "IBMQX_TOKEN",
     },
     {
