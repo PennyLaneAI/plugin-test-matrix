@@ -3,6 +3,8 @@
 name: ionq-stable-latest
 on:
   push:
+    branches:
+      - master
   pull_request:
   schedule:
     - cron: '0 0 * * *'
@@ -50,7 +52,7 @@ jobs:
         id: plugin-version
         run: |
           PLUGIN_VERSION=$(python -c "import pkg_resources as pkg; print(pkg.get_distribution('${{ env.PLUGIN_PACKAGE }}').version)")
-          echo ::set-output name=version::$PLUGIN_VERSION
+          echo "version=$PLUGIN_VERSION" >> $GITHUB_OUTPUT
 
       - uses: actions/checkout@v2
         with:
