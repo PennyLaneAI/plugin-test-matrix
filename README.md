@@ -107,7 +107,7 @@ The following table shows the current Catalyst compatibility with the Lightning 
 
 ## Feature freeze testing matrix
 
-All entries in the matrix are tested against the PennyLane release candidate branch (GitHub `v0.30.0-rc0` branch).
+All entries in the matrix are tested against the PennyLane release candidate branch (GitHub `v0.31.0-rc0` branch).
 
 |                                                                             | Latest plugin/ release candidate PennyLane                                                                                                                                                                                                                        |
 |:----------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
