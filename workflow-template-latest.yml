@@ -3,6 +3,8 @@
 name: {{ plugin }}-{% if latest %}latest{% else %}stable{% endif %}-latest
 on:
   push:
+    branches:
+      - master
   pull_request:
   schedule:
     - cron: '0 0 * * *'
