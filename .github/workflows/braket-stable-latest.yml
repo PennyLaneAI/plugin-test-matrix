@@ -16,8 +16,8 @@ env:
   PLUGIN_BRANCH: main
   PLUGIN_PACKAGE: amazon-braket-pennylane-plugin
   PENNYLANE_BRANCH: master
-  TF_VERSION: 2.6.0
-  TORCH_VERSION: 1.10.0+cpu
+  TF_VERSION: 2.12.0
+  TORCH_VERSION: 2.0.0+cpu
 
 
 jobs:

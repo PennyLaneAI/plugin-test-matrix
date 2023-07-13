@@ -138,7 +138,7 @@ workflows = [
               run: |
                 pip install tensorflow~=$TF_VERSION keras~=$TF_VERSION"""
         ),
-        "additional_env_vars": "TF_VERSION: 2.6.0\n  TORCH_VERSION: 1.10.0+cpu",
+        "additional_env_vars": "TF_VERSION: 2.12.0\n  TORCH_VERSION: 2.0.0+cpu",
     },
     {
         "plugin": "quantuminspire",
