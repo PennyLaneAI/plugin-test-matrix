@@ -125,7 +125,7 @@ workflows = [
         "plugin_package": "amazon-braket-pennylane-plugin",
         "gh_user": "aws",
         "which": ["stable", "latest"],
-        "requirements": [],
+        "requirements": ["pytest-xdist"],
         "device_tests": [],
         "branch": "main",
         "device_tests": [

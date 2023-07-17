@@ -45,6 +45,7 @@ jobs:
       - name: Install requirements
         run: |
           pip install --upgrade pip
+          pip install --upgrade pytest-xdist
           pip install pytest pytest-mock pytest-cov flaky
           pip freeze
 
