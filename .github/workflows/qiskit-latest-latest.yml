@@ -35,13 +35,13 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.10
+          python-version: "3.10"
 
       - name: Install requirements
         run: |
           pip install --upgrade pip
           pip install --upgrade qiskit
-          pip install --upgrade pyscf==1.7.2
+          pip install --upgrade pyscf
           pip install pytest pytest-mock pytest-cov flaky
           pip freeze
 
