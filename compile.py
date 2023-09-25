@@ -94,23 +94,6 @@ workflows = [
         "token": "IBMQX_TOKEN",
     },
     {
-        "plugin": "lightning",
-        "gh_user": "PennyLaneAI",
-        "which": ["stable", "latest"],
-        "requirements": ["pybind11"],
-        "device_tests": [
-            "--device lightning.qubit --shots=None --skip-ops",
-            "--device lightning.qubit --skip-ops --shots=20000",
-            ],
-        "additional_setup": dedent("""
-            - name: Install buildtools & compilers
-              run: |
-                sudo apt-get update && sudo apt-get -y -q install cmake gcc-${{ env.GCC_VERSION }} g++-${{ env.GCC_VERSION }} ninja-build"""
-        ),
-        "additional_env_vars": "GCC_VERSION: 11",
-        "runs_on": "ubuntu-22.04",
-    },
-    {
         "plugin": "orquestra",
         "gh_user": "PennyLaneAI",
         "which": ["stable", "latest"],
