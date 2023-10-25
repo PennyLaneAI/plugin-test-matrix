@@ -26,7 +26,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        pl_backend: ["lightning_kokkos"]
+        pl_backend: ["lightning_qubit", "lightning_kokkos"]
 
     steps:
       - name: Cancel Previous Runs
@@ -38,7 +38,7 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: "3.10"
-            
+
       - name: Install buildtools & compilers
         run: |
           sudo apt-get update && sudo apt-get -y -q install cmake gcc-${{ env.GCC_VERSION }} g++-${{ env.GCC_VERSION }} ninja-build
