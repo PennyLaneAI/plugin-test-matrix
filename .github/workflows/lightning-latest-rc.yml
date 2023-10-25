@@ -26,7 +26,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        pl_backend: ["lightning_qubit"]
+        pl_backend: ["lightning_kokkos"]
 
     steps:
       - name: Cancel Previous Runs
@@ -60,7 +60,7 @@ jobs:
           path: plugin_repo
           ref: ${{ env.PLUGIN_BRANCH }}
 
-      - name: InstallPlugin
+      - name: Install Plugin
         run: |
           cd plugin_repo
           PL_BACKEND=${{ matrix.pl_backend }} pip install . -vv
