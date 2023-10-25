@@ -132,13 +132,6 @@ workflows = [
         "tests_loc": "tests/unit_test",
         "token": "QI_TOKEN",
     },
-    {
-        "plugin": "lightning",
-        "gh_user": "PennyLaneAI",
-        "which": [],
-        "requirements": [],
-        "device_tests": [],
-    },
 ]
 
 
