@@ -25,6 +25,8 @@ jobs:
 
     strategy:
       fail-fast: false
+      matrix:
+        pl_backend: ["lightning_qubit"]
 
     steps:
       - name: Cancel Previous Runs
@@ -48,10 +50,9 @@ jobs:
           pip install pytest pytest-mock pytest-cov flaky
           pip freeze
 
-      - name: Install PennyLane and Plugin
+      - name: Install PennyLane
         run: |
-          pip install git+https://github.com/PennyLaneAI/pennylane.git@v0.33.0-rc0 \
-            git+https://github.com/${{ env.PLUGIN_REPO }}.git@${{ env.PLUGIN_BRANCH }}
+          pip install git+https://github.com/PennyLaneAI/pennylane.git@v0.33.0-rc0
 
       - uses: actions/checkout@v2
         with:
@@ -59,10 +60,18 @@ jobs:
           path: plugin_repo
           ref: ${{ env.PLUGIN_BRANCH }}
 
+      - name: InstallPlugin
+        run: |
+          cd plugin_repo
+          PL_BACKEND=${{ matrix.pl_backend }} pip install . -vv
+
       - name: Run PennyLane device integration tests
         run: |
-          pl-device-test --device lightning.qubit --shots=None --skip-ops
-          pl-device-test --device lightning.qubit --skip-ops --shots=20000
+          DEVICENAME=`echo ${{ matrix.pl_backend }} | sed "s/_/./g"`
+          pl-device-test --device ${DEVICENAME} --shots=None --skip-ops
+          pl-device-test --device ${DEVICENAME} --skip-ops --shots=20000
 
       - name: Run plugin tests
-        run: python -m pytest plugin_repo/tests --tb=short
+        run: |
+          DEVICENAME=`echo ${{ matrix.pl_backend }} | sed "s/_/./g"`
+          PL_DEVICE=${DEVICENAME} python -m pytest plugin_repo/tests --tb=short
