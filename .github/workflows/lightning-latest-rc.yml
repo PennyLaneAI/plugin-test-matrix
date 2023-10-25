@@ -63,6 +63,7 @@ jobs:
       - name: Install Plugin
         run: |
           cd plugin_repo
+          SKIP_COMPILATION=True PL_BACKEND=lightning_qubit pip install . -vv
           PL_BACKEND=${{ matrix.pl_backend }} pip install . -vv
 
       - name: Run PennyLane device integration tests
