@@ -132,6 +132,13 @@ workflows = [
         "tests_loc": "tests/unit_test",
         "token": "QI_TOKEN",
     },
+    {
+        "plugin": "lightning",
+        "gh_user": "PennyLaneAI",
+        "which": [],
+        "requirements": [],
+        "device_tests": [],
+    },
 ]
 
 
@@ -170,11 +177,10 @@ def render_templates():
                 )
 
         # PennyLane release candidate tests
-        for i in wf["which"]:
-            with open(f".github/workflows/{wf['plugin']}-latest-rc.yml", "w") as f:
-                f.write(
-                    render_from_template("workflow-template-release-candidate.yml", latest=True, **wf)
-                )
+        with open(f".github/workflows/{wf['plugin']}-latest-rc.yml", "w") as f:
+            f.write(
+                render_from_template("workflow-template-release-candidate.yml", latest=True, **wf)
+            )
 
 
 if __name__ == "__main__":
