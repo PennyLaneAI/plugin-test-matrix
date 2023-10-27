@@ -51,7 +51,7 @@ jobs:
           repository: ${{ env.PLUGIN_REPO }}
           path: plugin_repo
           ref: ${{ env.PLUGIN_BRANCH }}
-
+      
 
       - name: Run plugin tests
         run: python -m pytest plugin_repo/tests --tb=short
