@@ -57,7 +57,7 @@ jobs:
           pip install --upgrade {{ req }}
           {%- endfor %}
           {%- endif %}
-          pip install pytest pytest-mock pytest-cov flaky
+          pip install pytest pytest-mock pytest-cov flaky pytest-benchmark
           pip freeze
 
      {%- if latest %}
