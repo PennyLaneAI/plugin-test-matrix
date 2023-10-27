@@ -57,7 +57,7 @@ jobs:
           pip install --upgrade {{ req }}
           {%- endfor %}
           {%- endif %}
-          pip install -r requirements.txt --upgrade
+          pip install pytest pytest-mock pytest-cov flaky pytest-benchmark
           pip freeze
 
       - name: Install PennyLane and Plugin
