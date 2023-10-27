@@ -41,7 +41,7 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install --upgrade projectq
-          pip install pytest pytest-mock pytest-cov flaky
+          pip install -r requirements.txt --upgrade
           pip freeze
 
       - name: Install PennyLane and Plugin
@@ -60,7 +60,7 @@ jobs:
           repository: ${{ env.PLUGIN_REPO }}
           path: plugin_repo
           ref: v${{ steps.plugin-version.outputs.version }}
-      
+
 
       - name: Run plugin tests
         run: python -m pytest plugin_repo/tests --tb=short

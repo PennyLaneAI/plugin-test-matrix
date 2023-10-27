@@ -47,7 +47,7 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install --upgrade pybind11
-          pip install pytest pytest-mock pytest-cov flaky
+          pip install -r requirements.txt --upgrade
           pip freeze
 
       - name: Install PennyLane

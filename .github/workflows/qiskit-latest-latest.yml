@@ -42,7 +42,7 @@ jobs:
           pip install --upgrade pip
           pip install --upgrade qiskit
           pip install --upgrade pyscf
-          pip install pytest pytest-mock pytest-cov flaky
+          pip install -r requirements.txt --upgrade
           pip freeze
 
       - name: Install PennyLane and Plugin

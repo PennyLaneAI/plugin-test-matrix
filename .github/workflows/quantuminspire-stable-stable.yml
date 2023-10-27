@@ -43,7 +43,7 @@ jobs:
           pip install --upgrade pennylane-qiskit
           pip install --upgrade quantuminspire
           pip install --upgrade qiskit
-          pip install pytest pytest-mock pytest-cov flaky
+          pip install -r requirements.txt --upgrade
           pip freeze
 
       - name: Install PennyLane and Plugin
