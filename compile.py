@@ -91,15 +91,6 @@ workflows = [
         "token": "IBMQX_TOKEN",
     },
     {
-        "plugin": "orquestra",
-        "gh_user": "PennyLaneAI",
-        "which": ["stable", "latest"],
-        "requirements": [],
-        "device_tests": [],
-        "test_kwargs": ["-k 'not e2e'"],
-        "branch": "main",
-    },
-    {
         "plugin": "braket",
         "plugin_repo": "amazon-braket-pennylane-plugin-python",
         "plugin_package": "amazon-braket-pennylane-plugin",
