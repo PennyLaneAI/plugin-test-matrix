@@ -71,4 +71,4 @@ jobs:
           fi
 
       - name: Run plugin tests
-        run: python -m pytest plugin_repo/tests/unit_test --tb=short
+        run: python -m pytest plugin_repo/tests/unit_test -W "error:pennylane.PennyLaneDeprecationWarning" --tb=short
