@@ -65,4 +65,4 @@ jobs:
           pl-device-test --device=cirq.qsim --tb=short --skip-ops --analytic=False --shots=20000
 
       - name: Run plugin tests
-        run: python -m pytest plugin_repo/tests -W "error:pennylane.PennyLaneDeprecationWarning" --tb=short
+        run: python -m pytest plugin_repo/tests -W "error::pennylane.PennyLaneDeprecationWarning" --tb=short

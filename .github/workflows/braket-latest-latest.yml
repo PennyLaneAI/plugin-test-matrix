@@ -66,4 +66,4 @@ jobs:
           pl-device-test --device=braket.local.qubit --tb=short --skip-ops -k 'not Sample and not no_0_shots'
 
       - name: Run plugin tests
-        run: python -m pytest plugin_repo/test/unit_tests -W "error:pennylane.PennyLaneDeprecationWarning" --tb=short
+        run: python -m pytest plugin_repo/test/unit_tests -W "error::pennylane.PennyLaneDeprecationWarning" --tb=short
