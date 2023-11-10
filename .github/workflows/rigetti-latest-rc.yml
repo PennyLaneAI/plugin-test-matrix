@@ -66,4 +66,4 @@ jobs:
           pl-device-test --device=rigetti.wavefunction --tb=short --skip-ops --shots=20000
 
       - name: Run plugin tests
-        run: python -m pytest plugin_repo/tests --tb=short
+        run: python -m pytest plugin_repo/tests -W "error::pennylane.PennyLaneDeprecationWarning" --tb=short
