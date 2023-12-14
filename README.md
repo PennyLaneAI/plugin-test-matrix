@@ -35,11 +35,13 @@ All entries in the matrix are tested against PennyLane latest (GitHub master).
 * The Braket plugin device integration tests are run with `-k “not Sample and not no_0_shots”`,
   see #6
   
-* The standard Qiskit plugin tests are run with . These are run on Pennylane-latest once a week.
+* The standard Qiskit plugin tests are run with `-k 'test_ibmq.py or test_runtime.py'`. 
+  These are run on the latest version of Pennylane and the plugin twice a week.
 
-|                                                                             | PyPI version                                                                                              | Stable plugin/stable PennyLane                                                                                                                                                                                                                                            | 
-| :-------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------- | 
-| [Qiskit-IBMQ](https://github.com/PennyLaneAI/pennylane-qiskit) | ![](https://img.shields.io/pypi/v/pennylane-qiskit?color=green&label=%20&style=flat-square)       | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/pennylane-qiskit/ibmq_tests.yml?branch=master)](https://github.com/PennyLaneAI/pennylane-qiskit/actions/workflows/ibmq_tests.yml) | 
+|                                                                | Status                                                                                                                                                                                                                         |
+|:---------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Qiskit-IBMQ](https://github.com/PennyLaneAI/pennylane-qiskit) | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/pennylane-qiskit/ibmq_tests.yml?branch=master)](https://github.com/PennyLaneAI/pennylane-qiskit/actions/workflows/ibmq_tests.yml) |
+
 
 
 ## QML repo
