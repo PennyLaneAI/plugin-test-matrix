@@ -115,7 +115,7 @@ The following table shows the current Catalyst compatibility with the Lightning 
 
 ## Feature freeze testing matrix
 
-All entries in the matrix are tested against the PennyLane release candidate branch (GitHub `v0.31.0-rc0` branch).
+All entries in the matrix are tested against the PennyLane release candidate branch (GitHub `vX.XX.X-rc0` branch).
 
 |                                                                             | Latest plugin/ release candidate PennyLane                                                                                                                                                                                                                     |
 |:----------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -128,7 +128,7 @@ All entries in the matrix are tested against the PennyLane release candidate bra
 | [Rigetti](https://github.com/PennyLaneAI/pennylane-rigetti)                 | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/plugin-test-matrix/rigetti-latest-rc.yml?branch=master)](https://github.com/PennyLaneAI/plugin-test-matrix/actions/workflows/rigetti-latest-rc.yml)               |
 | [ProjectQ](https://github.com/PennyLaneAI/pennylane-pq)                     | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/plugin-test-matrix/pq-latest-rc.yml?branch=master)](https://github.com/PennyLaneAI/plugin-test-matrix/actions/workflows/pq-latest-rc.yml)                         |
 | [Lightning](https://github.com/PennyLaneAI/pennylane-lightning)             | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/plugin-test-matrix/lightning-latest-rc.yml?branch=master)](https://github.com/PennyLaneAI/plugin-test-matrix/actions/workflows/lightning-latest-rc.yml)           |
-| [Catalyst](https://github.com/PennyLaneAI/catalyst)                         | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/plugin-test-matrix/catalyst-latest-rc.yml?branch=master)](https://github.com/PennyLaneAI/plugin-test-matrix/actions/workflows/catalyst-latest-rc.yml)             |
+| [Catalyst](https://github.com/PennyLaneAI/catalyst)                         | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/catalyst/CPL_latest-rc-latest.ymal?branch=master)](https://github.com/PennyLaneAI/catalyst/actions/workflows/CPL_latest-rc-latest.yaml)                           |
 | [Braket](https://github.com/aws/amazon-braket-pennylane-plugin-python)      | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/plugin-test-matrix/braket-latest-rc.yml?branch=master)](https://github.com/PennyLaneAI/plugin-test-matrix/actions/workflows/braket-latest-rc.yml)                 |
 | [Quantum Inspire](https://github.com/QuTech-Delft/pennylane-quantuminspire) | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/plugin-test-matrix/quantuminspire-latest-rc.yml?branch=master)](https://github.com/PennyLaneAI/plugin-test-matrix/actions/workflows/quantuminspire-latest-rc.yml) |
 
