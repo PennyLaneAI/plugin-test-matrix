@@ -35,8 +35,10 @@ All entries in the matrix are tested against PennyLane latest (GitHub master).
 * The Braket plugin device integration tests are run with `-k “not Sample and not no_0_shots”`,
   see #6
   
-* The Qiskit plugin integration tests are run with `-k 'test_ibmq.py or test_runtime.py'`. 
-  These are run on the latest version of Pennylane and the plugin twice a week.
+* The Qiskit tests above are run with `-k 'not test_ibmq.py and not test_runtime.py'`, that is, 
+  without using devices that access the IBMQ backend. The IBMQ backend is tested via `test_ibmp.qpy` 
+  and `test_runtime.py` tests on the latest version of Pennylane and the plugin twice a week. 
+  Their status is shown below:
 
 |                                                                | Status                                                                                                                                                                                                                         |
 |:---------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
