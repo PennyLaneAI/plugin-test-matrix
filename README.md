@@ -34,6 +34,17 @@ All entries in the matrix are tested against PennyLane latest (GitHub master).
 
 * The Braket plugin device integration tests are run with `-k “not Sample and not no_0_shots”`,
   see #6
+  
+* The Qiskit tests above are run with `-k 'not test_ibmq.py and not test_runtime.py'`, that is, 
+  without using devices that access the IBMQ backend. The IBMQ backend is tested via `test_ibmp.qpy` 
+  and `test_runtime.py` tests on the latest version of Pennylane and the plugin twice a week. 
+  Their status is shown below:
+
+|                                                                | Status                                                                                                                                                                                                                         |
+|:---------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Qiskit-IBMQ](https://github.com/PennyLaneAI/pennylane-qiskit) | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/pennylane-qiskit/ibmq_tests.yml?branch=master)](https://github.com/PennyLaneAI/pennylane-qiskit/actions/workflows/ibmq_tests.yml) |
+
+
 
 ## QML repo
 
@@ -106,10 +117,10 @@ The following table shows the current Catalyst compatibility with the Lightning 
 
 ## Feature freeze testing matrix
 
-All entries in the matrix are tested against the PennyLane release candidate branch (GitHub `v0.31.0-rc0` branch).
+All entries in the matrix are tested against the PennyLane release candidate branch (GitHub `vX.XX.X-rc0` branch).
 
-|                                                                             | Latest plugin/ release candidate PennyLane                                                                                                                                                                                                                        |
-| :-------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|                                                                             | Latest plugin/ release candidate PennyLane                                                                                                                                                                                                                     |
+|:----------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Qiskit](https://github.com/PennyLaneAI/pennylane-qiskit)                   | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/plugin-test-matrix/qiskit-latest-rc.yml?branch=master)](https://github.com/PennyLaneAI/plugin-test-matrix/actions/workflows/qiskit-latest-rc.yml)                 |
 | [Cirq](https://github.com/PennyLaneAI/pennylane-cirq)                       | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/plugin-test-matrix/cirq-latest-rc.yml?branch=master)](https://github.com/PennyLaneAI/plugin-test-matrix/actions/workflows/cirq-latest-rc.yml)                     |
 | [Qulacs](https://github.com/PennyLaneAI/pennylane-qulacs)                   | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/plugin-test-matrix/qulacs-latest-rc.yml?branch=master)](https://github.com/PennyLaneAI/plugin-test-matrix/actions/workflows/qulacs-latest-rc.yml)                 |
@@ -119,6 +130,7 @@ All entries in the matrix are tested against the PennyLane release candidate bra
 | [Rigetti](https://github.com/PennyLaneAI/pennylane-rigetti)                 | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/plugin-test-matrix/rigetti-latest-rc.yml?branch=master)](https://github.com/PennyLaneAI/plugin-test-matrix/actions/workflows/rigetti-latest-rc.yml)               |
 | [ProjectQ](https://github.com/PennyLaneAI/pennylane-pq)                     | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/plugin-test-matrix/pq-latest-rc.yml?branch=master)](https://github.com/PennyLaneAI/plugin-test-matrix/actions/workflows/pq-latest-rc.yml)                         |
 | [Lightning](https://github.com/PennyLaneAI/pennylane-lightning)             | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/plugin-test-matrix/lightning-latest-rc.yml?branch=master)](https://github.com/PennyLaneAI/plugin-test-matrix/actions/workflows/lightning-latest-rc.yml)           |
+| [Catalyst](https://github.com/PennyLaneAI/catalyst)                         | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/catalyst/CPL_latest-rc-latest.yaml)](https://github.com/PennyLaneAI/catalyst/actions/workflows/CPL_latest-rc-latest.yaml)                                         |
 | [Braket](https://github.com/aws/amazon-braket-pennylane-plugin-python)      | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/plugin-test-matrix/braket-latest-rc.yml?branch=master)](https://github.com/PennyLaneAI/plugin-test-matrix/actions/workflows/braket-latest-rc.yml)                 |
 | [Quantum Inspire](https://github.com/QuTech-Delft/pennylane-quantuminspire) | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/plugin-test-matrix/quantuminspire-latest-rc.yml?branch=master)](https://github.com/PennyLaneAI/plugin-test-matrix/actions/workflows/quantuminspire-latest-rc.yml) |
 
