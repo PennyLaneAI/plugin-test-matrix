@@ -52,7 +52,7 @@ jobs:
 
       - name: Install PennyLane
         run: |
-          pip install git+https://github.com/PennyLaneAI/pennylane.git@v0.33.0-rc0
+          pip install git+https://github.com/PennyLaneAI/pennylane.git@v0.34.0-rc0
 
       - uses: actions/checkout@v2
         with:
