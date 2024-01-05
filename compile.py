@@ -110,6 +110,7 @@ workflows = [
                 pip install tensorflow~=$TF_VERSION keras~=$TF_VERSION"""
         ),
         "additional_env_vars": "TF_VERSION: 2.12.0\n  TORCH_VERSION: 2.0.0+cpu",
+        "no_deprecation_error": True,
     },
     {
         "plugin": "quantuminspire",
