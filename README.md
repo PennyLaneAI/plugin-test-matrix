@@ -185,6 +185,9 @@ Simply add a new plugin to the `workflows` list in [`compile.py`](compile.py), w
 
 * `test_kwargs` (optional): additional arguments to pass to pytest for the given plugin.
 
+* `no_deprecation_error` (optional): set to True to not raise PL deprecation warnings as errors when testing
+  the latest version of the plugin. By default, PL deprecation warnings are raised as errors.
+
 Once you have added your plugin, run
 
 ```console
