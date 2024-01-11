@@ -83,14 +83,6 @@ workflows = [
         "token": "IONQ_API_KEY",
     },
     {
-        "plugin": "pq",
-        "gh_user": "PennyLaneAI",
-        "which": ["stable", "latest"],
-        "requirements": ["projectq"],
-        "device_tests": [],
-        "token": "IBMQX_TOKEN",
-    },
-    {
         "plugin": "braket",
         "plugin_repo": "amazon-braket-pennylane-plugin-python",
         "plugin_package": "amazon-braket-pennylane-plugin",
