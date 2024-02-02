@@ -56,12 +56,16 @@ jobs:
           path: plugin_repo
           ref: ${{ env.PLUGIN_BRANCH }}
 
-      - name: Run PennyLane device integration tests
+      - name: Run PennyLane device integration tests on Aer device
         run: |
           pl-device-test --device=qiskit.aer --tb=short --skip-ops --shots=20000  -vvv
-          pl-device-test --device=qiskit.basicaer --tb=short --skip-ops --shots=20000 --device-kwargs backend=qasm_simulator -vvv
-          pl-device-test --device=qiskit.basicaer --tb=short --skip-ops --shots=None --device-kwargs backend=statevector_simulator  -vvv
           pl-device-test --device=qiskit.aer --tb=short --skip-ops --shots=None --device-kwargs backend=aer_simulator_unitary -vvv
+
+      - name: Run PennyLane device integration tests on BasicAer device with statevector simulator
+          pl-device-test --device=qiskit.basicaer --tb=short --skip-ops --shots=None --device-kwargs backend=statevector_simulator  -vvv
+
+      - name: Run PennyLane device integration tests on BasicAer device QASM simulator
+        run: pl-device-test --device=qiskit.basicaer --tb=short --skip-ops --shots=20000 --device-kwargs backend=qasm_simulator -vvv
 
       - name: Run plugin tests
         run: python -m pytest plugin_repo/tests -W "error::pennylane.PennyLaneDeprecationWarning" --tb=short -k 'not test_ibmq.py and not test_runtime.py'
