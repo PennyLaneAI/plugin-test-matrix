@@ -62,7 +62,7 @@ jobs:
           pl-device-test --device=qiskit.aer --tb=short --skip-ops --shots=None --device-kwargs backend=aer_simulator_unitary -vvv
 
       - name: Run PennyLane device integration tests on BasicAer device with statevector simulator
-          pl-device-test --device=qiskit.basicaer --tb=short --skip-ops --shots=None --device-kwargs backend=statevector_simulator  -vvv
+        run: pl-device-test --device=qiskit.basicaer --tb=short --skip-ops --shots=None --device-kwargs backend=statevector_simulator  -vvv
 
       - name: Run PennyLane device integration tests on BasicAer device QASM simulator
         run: pl-device-test --device=qiskit.basicaer --tb=short --skip-ops --shots=20000 --device-kwargs backend=qasm_simulator -vvv
