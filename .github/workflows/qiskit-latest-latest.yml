@@ -58,10 +58,10 @@ jobs:
 
       - name: Run PennyLane device integration tests
         run: |
-          pl-device-test --device=qiskit.basicaer --tb=short --skip-ops --shots=20000 --device-kwargs backend=qasm_simulator
-          pl-device-test --device=qiskit.aer --tb=short --skip-ops --shots=20000
-          pl-device-test --device=qiskit.basicaer --tb=short --skip-ops --shots=None --device-kwargs backend=statevector_simulator
-          pl-device-test --device=qiskit.aer --tb=short --skip-ops --shots=None --device-kwargs backend=aer_simulator_unitary
+          pl-device-test --device=qiskit.basicaer --tb=short --skip-ops --shots=20000 --device-kwargs backend=qasm_simulator -vvv
+          pl-device-test --device=qiskit.aer --tb=short --skip-ops --shots=20000  -vvv
+          pl-device-test --device=qiskit.basicaer --tb=short --skip-ops --shots=None --device-kwargs backend=statevector_simulator  -vvv
+          pl-device-test --device=qiskit.aer --tb=short --skip-ops --shots=None --device-kwargs backend=aer_simulator_unitary -vvv
 
       - name: Run plugin tests
         run: python -m pytest plugin_repo/tests -W "error::pennylane.PennyLaneDeprecationWarning" --tb=short -k 'not test_ibmq.py and not test_runtime.py'
