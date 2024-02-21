@@ -40,7 +40,7 @@ jobs:
       - name: Install requirements
         run: |
           pip install --upgrade pip
-          pip install --upgrade qiskit
+          pip install --upgrade qiskit<0.46
           pip install --upgrade pyscf
           pip install pytest pytest-mock pytest-cov flaky pytest-benchmark
           pip freeze
