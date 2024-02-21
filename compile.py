@@ -8,7 +8,7 @@ workflows = [
         "plugin": "qiskit",
         "gh_user": "PennyLaneAI",
         "which": ["latest", "stable"],
-        "requirements": ["qiskit", "pyscf"],
+        "requirements": ["qiskit<0.46", "pyscf"],
         "device_tests": [
             "--device=qiskit.basicaer --tb=short --skip-ops --shots=20000 --device-kwargs backend=qasm_simulator",
             "--device=qiskit.aer --tb=short --skip-ops --shots=20000",
