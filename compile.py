@@ -68,13 +68,6 @@ workflows = [
         "device_tests": [],
     },
     {
-        "plugin": "honeywell",
-        "gh_user": "PennyLaneAI",
-        "which": ["stable", "latest"],
-        "requirements": [],
-        "device_tests": [],
-    },
-    {
         "plugin": "ionq",
         "gh_user": "PennyLaneAI",
         "which": ["stable", "latest"],
