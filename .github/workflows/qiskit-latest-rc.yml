@@ -47,7 +47,7 @@ jobs:
 
       - name: Install PennyLane and Plugin
         run: |
-          pip install git+https://github.com/PennyLaneAI/pennylane.git@v0.34.0-rc0 \
+          pip install git+https://github.com/PennyLaneAI/pennylane.git@v0.35.0-rc0 \
             git+https://github.com/${{ env.PLUGIN_REPO }}.git@${{ env.PLUGIN_BRANCH }}
 
       - uses: actions/checkout@v2
