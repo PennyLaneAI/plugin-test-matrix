@@ -1,6 +1,6 @@
 # Workflow template for testing plugins against PennyLane latest
 
-name: {{ plugin }}-{% if latest %}latest{% else %}stable{% endif %}-latest
+name: {{ plugin }}-{% if latest %}timmy{% else %}stable{% endif %}-latest
 on:
   push:
     branches:
@@ -65,7 +65,7 @@ jobs:
       - name: Install PennyLane and Plugin
         run: |
           {% raw -%}
-          pip install git+https://github.com/PennyLaneAI/pennylane.git \
+          pip install git+https://github.com/PennyLaneAI/pennylane.git@more-device-tests \
             git+https://github.com/${{ env.PLUGIN_REPO }}.git@${{ env.PLUGIN_BRANCH }}
           {%- endraw %}
 

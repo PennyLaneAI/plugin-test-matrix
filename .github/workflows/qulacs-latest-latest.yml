@@ -1,6 +1,6 @@
 # Workflow template for testing plugins against PennyLane latest
 
-name: qulacs-latest-latest
+name: qulacs-timmy-latest
 on:
   push:
     branches:
@@ -45,7 +45,7 @@ jobs:
 
       - name: Install PennyLane and Plugin
         run: |
-          pip install git+https://github.com/PennyLaneAI/pennylane.git \
+          pip install git+https://github.com/PennyLaneAI/pennylane.git@more-device-tests \
             git+https://github.com/${{ env.PLUGIN_REPO }}.git@${{ env.PLUGIN_BRANCH }}
 
       - uses: actions/checkout@v2
