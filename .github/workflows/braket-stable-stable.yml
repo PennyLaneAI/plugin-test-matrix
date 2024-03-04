@@ -46,7 +46,8 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install --upgrade pytest-xdist
-          pip install pytest pytest-mock pytest-cov flaky pytest-benchmark
+          pip install 'pytest<8.1.0' 
+          pip install pytest-mock pytest-cov flaky pytest-benchmark
           pip freeze
 
       - name: Install PennyLane and Plugin
