@@ -52,7 +52,8 @@ jobs:
           {%- for req in requirements %}
           pip install --upgrade {{ req }}
           {%- endfor %}
-          pip install pytest pytest-mock pytest-cov flaky pytest-benchmark
+          pip install 'pytest<8.1.0' 
+          pip install pytest-mock pytest-cov flaky pytest-benchmark
           pip freeze
 
      {%- if latest %}

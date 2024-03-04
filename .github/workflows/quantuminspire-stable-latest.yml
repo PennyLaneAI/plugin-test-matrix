@@ -43,7 +43,8 @@ jobs:
           pip install --upgrade pennylane-qiskit
           pip install --upgrade quantuminspire
           pip install --upgrade qiskit
-          pip install pytest pytest-mock pytest-cov flaky pytest-benchmark
+          pip install 'pytest<8.1.0' 
+          pip install pytest-mock pytest-cov flaky pytest-benchmark
           pip freeze
 
       - name: Install PennyLane and Plugin
