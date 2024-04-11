@@ -38,9 +38,10 @@ All entries in the matrix are tested against PennyLane latest (GitHub master).
   and `test_runtime.py` tests on the latest version of Pennylane and the plugin twice a week. 
   Their status is shown below:
 
-|                                                                |                                                                                                             Status                                                                                                             |
-| :------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Qiskit-IBMQ](https://github.com/PennyLaneAI/pennylane-qiskit) | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/pennylane-qiskit/ibmq_tests.yml?branch=master)](https://github.com/PennyLaneAI/pennylane-qiskit/actions/workflows/ibmq_tests.yml) |
+|                                                                    | Status                                                                                                                                                                                                                             |
+|:-------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Qiskit-IBMQ](https://github.com/PennyLaneAI/pennylane-qiskit)     | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/pennylane-qiskit/ibmq_tests.yml?branch=master)](https://github.com/PennyLaneAI/pennylane-qiskit/actions/workflows/ibmq_tests.yml)     |
+| [Qiskit-IBMQ 1.0](https://github.com/PennyLaneAI/pennylane-qiskit) | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/pennylane-qiskit/ibmq_tests_1.yml?branch=master)](https://github.com/PennyLaneAI/pennylane-qiskit/actions/workflows/ibmq_tests_1.yml) |
 
 ## QML repo
 
