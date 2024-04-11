@@ -10,10 +10,10 @@ workflows = [
         "which": ["latest", "stable"],
         "requirements": ["qiskit", "pyscf"],
         "device_tests": [
-            "--device=qiskit.basicaer --tb=short --skip-ops --shots=20000 --device-kwargs backend=qasm_simulator",
+            "--device=qiskit.basicsim --tb=short --skip-ops --shots=20000 --device-kwargs backend=basic_simulator",
             "--device=qiskit.aer --tb=short --skip-ops --shots=20000",
-            "--device=qiskit.basicaer --tb=short --skip-ops --shots=None --device-kwargs backend=statevector_simulator",
-            "--device=qiskit.aer --tb=short --skip-ops --shots=None --device-kwargs backend=aer_simulator_unitary",
+            "--device=qiskit.aer --tb=short --skip-ops --shots=None --device-kwargs backend=statevector_simulator",
+            "--device=qiskit.aer --tb=short --skip-ops --shots=None --device-kwargs backend=unitary_simulator",
         ],
         "test_kwargs": ["-k 'not test_ibmq.py and not test_runtime.py'"],
         "token": "IBMQX_TOKEN",
