@@ -43,6 +43,15 @@ All entries in the matrix are tested against PennyLane latest (GitHub master).
 | [Qiskit-IBMQ](https://github.com/PennyLaneAI/pennylane-qiskit)     | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/pennylane-qiskit/ibmq_tests.yml?branch=master)](https://github.com/PennyLaneAI/pennylane-qiskit/actions/workflows/ibmq_tests.yml)     |
 | [Qiskit-IBMQ 1.0](https://github.com/PennyLaneAI/pennylane-qiskit) | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/pennylane-qiskit/ibmq_tests_1.yml?branch=master)](https://github.com/PennyLaneAI/pennylane-qiskit/actions/workflows/ibmq_tests_1.yml) |
 
+* All the tests are run with the new operator arithmetic enabled. To check that the functionality of the 
+legacy operator arithmetic is maintained during the deprecation cycle, the PennyLane tests are also run 
+regularly with the new operator arithmetic disabled:
+
+|                                                                                                | Status                                                                                                                                                                                                                   |
+|:-----------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Legacy-opmath](https://github.com/PennyLaneAI/pennylane/actions/workflows/legacy_op_math.yml) | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/pennylane/legacy_op_math.yml?branch=master)](https://github.com/PennyLaneAI/pennylane/actions/workflows/legacy_op_math.yml) |
+
+
 ## QML repo
 
 |                                                                                                                   |                                                                                                  Status                                                                                                  |
