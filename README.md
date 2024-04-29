@@ -3,7 +3,7 @@
 This repository contains regularly scheduled continuous-integration for the official PennyLane plugins.
 
 The continuous integration is performed by GitHub actions. Tests are executed on every push to `master`,
-and are also run on a schedule of once per day. 
+and are also run on a schedule of once per day.
 
 Finally, tests can be triggered manually via the 'Actions' tab.
 
