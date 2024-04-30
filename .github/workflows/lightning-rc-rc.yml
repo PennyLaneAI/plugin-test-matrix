@@ -1,6 +1,6 @@
 # Workflow template for testing plugins against PennyLane release candidate
 
-name: lightning-latest-rc
+name: lightning-rc-rc
 on:
   push:
     branches:
