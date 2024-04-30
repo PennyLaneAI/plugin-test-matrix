@@ -49,6 +49,7 @@ jobs:
           pip install --upgrade pybind11
           pip install 'pytest<8.1.0'
           pip install pytest-mock pytest-cov flaky pytest-benchmark
+          pip install quimb
           pip freeze
 
       - name: Install PennyLane
