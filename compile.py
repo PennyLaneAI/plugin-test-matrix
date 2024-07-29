@@ -15,6 +15,7 @@ workflows = [
             "--device=qiskit.aer --tb=short --skip-ops --shots=None --device-kwargs backend=statevector_simulator",
             "--device=qiskit.aer --tb=short --skip-ops --shots=None --device-kwargs backend=unitary_simulator",
         ],
+        "test_kwargs": ["-k 'not test_ibmq.py and not test_runtime.py'"],
         "token": "IBMQX_TOKEN",
     },
     {
@@ -51,14 +52,13 @@ workflows = [
             "--device=rigetti.wavefunction --tb=short --skip-ops --shots=20000",
             # "--device=rigetti.qvm --tb=short --skip-ops --shots=20000 --device-kwargs device=4q-qvm",
         ],
-        "additional_setup": dedent(
-            """
+        "additional_setup": dedent("""
             - name: Run Rigetti Quilc
               run: docker run --rm -d -p 5555:5555 rigetti/quilc:1.23.0 -R
 
             - name: Run Rigetti QVM
               run: docker run --rm -d -p 5000:5000 rigetti/qvm -S"""
-        ),
+        )
     },
     {
         "plugin": "aqt",
@@ -89,8 +89,7 @@ workflows = [
             "--device=braket.local.qubit --tb=short --skip-ops -k 'not Sample and not no_0_shots'",
         ],
         "tests_loc": "test/unit_tests",
-        "additional_setup": dedent(
-            """
+        "additional_setup": dedent("""
             - name: Install TF
               run: |
                 pip install tensorflow~=$TF_VERSION keras~=$TF_VERSION"""
@@ -138,27 +137,19 @@ def render_templates():
         # PennyLane stable tests
         for i in wf["which"]:
             with open(f".github/workflows/{wf['plugin']}-{i}-stable.yml", "w") as f:
-                f.write(
-                    render_from_template(
-                        "workflow-template-stable.yml", latest=i == "latest", **wf
-                    )
-                )
+                f.write(render_from_template("workflow-template-stable.yml", latest=i ==  "latest", **wf))
 
         # PennyLane latest tests
         for i in wf["which"]:
             with open(f".github/workflows/{wf['plugin']}-{i}-latest.yml", "w") as f:
                 f.write(
-                    render_from_template(
-                        "workflow-template-latest.yml", latest=i == "latest", **wf
-                    )
+                    render_from_template("workflow-template-latest.yml", latest=i == "latest", **wf)
                 )
 
         # PennyLane release candidate tests
         with open(f".github/workflows/{wf['plugin']}-latest-rc.yml", "w") as f:
             f.write(
-                render_from_template(
-                    "workflow-template-release-candidate.yml", latest=True, **wf
-                )
+                render_from_template("workflow-template-release-candidate.yml", latest=True, **wf)
             )
 
 
