@@ -33,6 +33,8 @@ All entries in the matrix are tested against PennyLane latest (GitHub master).
 * The Braket plugin device integration tests are run with `-k “not Sample and not no_0_shots”`,
   see #6
 
+* The Qiskit tests are run using local simulators. There are no tests that access the IBM Quantum backends. 
+
 * All the tests are run with the new operator arithmetic enabled. To check that the functionality of the
 legacy operator arithmetic is maintained during the deprecation cycle, the PennyLane tests are also run
 regularly with the new operator arithmetic disabled:
