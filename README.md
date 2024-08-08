@@ -33,15 +33,7 @@ All entries in the matrix are tested against PennyLane latest (GitHub master).
 * The Braket plugin device integration tests are run with `-k “not Sample and not no_0_shots”`,
   see #6
 
-* The Qiskit tests above are run with `-k 'not test_ibmq.py and not test_runtime.py'`, that is,
-  without using devices that access the IBMQ backend. The IBMQ backend is tested via `test_ibmp.qpy`
-  and `test_runtime.py` tests on the latest version of Pennylane and the plugin twice a week.
-  Their status is shown below:
-
-|                                                                    | Status                                                                                                                                                                                                                             |
-| :----------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Qiskit-IBMQ](https://github.com/PennyLaneAI/pennylane-qiskit)     | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/pennylane-qiskit/ibmq_tests.yml?branch=master)](https://github.com/PennyLaneAI/pennylane-qiskit/actions/workflows/ibmq_tests.yml)     |
-| [Qiskit-IBMQ 1.0](https://github.com/PennyLaneAI/pennylane-qiskit) | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/pennylane-qiskit/ibmq_tests_1.yml?branch=master)](https://github.com/PennyLaneAI/pennylane-qiskit/actions/workflows/ibmq_tests_1.yml) |
+* The Qiskit tests are run using local simulators. There are no tests that access the IBM Quantum backends. 
 
 * All the tests are run with the new operator arithmetic enabled. To check that the functionality of the
 legacy operator arithmetic is maintained during the deprecation cycle, the PennyLane tests are also run
