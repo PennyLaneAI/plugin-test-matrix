@@ -61,7 +61,7 @@ jobs:
           pip install pytest-mock pytest-cov flaky pytest-benchmark
           pip freeze
 
-     {%- if latest %}
+      {%- if latest %}
 
       - name: Install PennyLane and Plugin
         run: |
@@ -97,7 +97,24 @@ jobs:
         with:
           repository: {% raw %}${{ env.PLUGIN_REPO }}{% endraw %}
           path: plugin_repo
-          ref: {% raw %}v${{ steps.plugin-version.outputs.version }}{% endraw %}
+          ref: {% raw %}${{ env.PLUGIN_BRANCH }}{% endraw %}
+
+      - name: Get stable version tag
+        id: plugin-tag
+        run: |
+          {% raw -%}
+          cd plugin_repo
+          base_version="v${{ steps.plugin-version.outputs.version }}"
+          TAG=$(git tag | grep -E "^${base_version//./\\.}([.-]post[0-9]+)?$" | sort -V | tail -n 1)
+          echo "version=$TAG" >> $GITHUB_OUTPUT
+          {%- endraw %}
+
+      - name: Checkout to the determined tag
+        uses: actions/checkout@v2
+        with:
+          repository: {% raw %}${{ env.PLUGIN_REPO }}{% endraw %}
+          path: plugin_repo
+          ref: {% raw %}${{ steps.plugin-tag.outputs.version }}{% endraw %}
 
       {% endif -%}
 

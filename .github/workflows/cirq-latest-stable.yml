@@ -54,6 +54,7 @@ jobs:
           repository: ${{ env.PLUGIN_REPO }}
           path: plugin_repo
           ref: ${{ env.PLUGIN_BRANCH }}
+
       - name: Run PennyLane device integration tests
         run: |
           if ! [ -x "$(command -v pl-device-test)" ]; then

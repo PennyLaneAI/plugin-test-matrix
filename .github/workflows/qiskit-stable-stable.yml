@@ -61,7 +61,23 @@ jobs:
         with:
           repository: ${{ env.PLUGIN_REPO }}
           path: plugin_repo
-          ref: v${{ steps.plugin-version.outputs.version }}
+          ref: ${{ env.PLUGIN_BRANCH }}
+
+      - name: Get stable version tag
+        id: plugin-tag
+        run: |
+          cd plugin_repo
+          base_version="v${{ steps.plugin-version.outputs.version }}"
+          TAG=$(git tag | grep -E "^${base_version//./\\.}([.-]post[0-9]+)?$" | sort -V | tail -n 1)
+          echo "version=$TAG" >> $GITHUB_OUTPUT
+
+      - name: Checkout to the determined tag
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ env.PLUGIN_REPO }}
+          path: plugin_repo
+          ref: ${{ steps.plugin-tag.outputs.version }}
+
       - name: Run PennyLane device integration tests
         run: |
           if ! [ -x "$(command -v pl-device-test)" ]; then
