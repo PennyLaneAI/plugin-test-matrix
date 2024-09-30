@@ -96,18 +96,6 @@ workflows = [
         "additional_env_vars": "TF_VERSION: 2.12.0\n  TORCH_VERSION: 2.0.0+cpu",
         "no_deprecation_error": True,
     },
-    {
-        "plugin": "quantuminspire",
-        "gh_user": "QuTech-Delft",
-        "which": ["stable", "latest"],
-        "requirements": ["pennylane-qiskit", "quantuminspire", "qiskit"],
-        "branch": "master",
-        "device_tests": [
-            "--device=quantuminspire.qi --tb=short --skip-ops --shots=4096 --device-kwargs backend='QX single-node simulator'",
-        ],
-        "tests_loc": "tests/unit_test",
-        "token": "QI_TOKEN",
-    },
 ]
 
 
