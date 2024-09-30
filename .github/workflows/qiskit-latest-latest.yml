@@ -65,4 +65,6 @@ jobs:
           pl-device-test --device=qiskit.aer --tb=short --skip-ops --shots=None --device-kwargs backend=unitary_simulator
 
       - name: Run plugin tests
-        run: python -m pytest plugin_repo/tests -W "error::pennylane.PennyLaneDeprecationWarning" --tb=short
+        run: |
+          python -m pytest plugin_repo/tests --tb=short \
+          -W "error::pennylane.PennyLaneDeprecationWarning"
