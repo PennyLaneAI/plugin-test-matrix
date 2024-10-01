@@ -64,4 +64,8 @@ jobs:
         run: |
 
       - name: Run plugin tests
-        run: python -m pytest plugin_repo/tests -W "error::pennylane.PennyLaneDeprecationWarning" --tb=short
+        run: |
+          python -m pytest plugin_repo/tests --tb=short \
+          -W "error::pennylane.PennyLaneDeprecationWarning" \
+          -W "ignore:QubitDevice:pennylane.PennyLaneDeprecationWarning" \
+          -W "ignore:QubitStateVector:pennylane.PennyLaneDeprecationWarning"

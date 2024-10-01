@@ -108,5 +108,9 @@ jobs:
           {%- endfor %}
 
       - name: Run plugin tests
-        run: python -m pytest plugin_repo/{{ tests_loc }}{% if no_deprecation_error %}{% else %} -W "error::pennylane.PennyLaneDeprecationWarning"{% endif %} --tb=short {%- for kwarg in test_kwargs %} {{ kwarg }} {%- endfor %}
+        run: |
+          python -m pytest plugin_repo/{{ tests_loc }} --tb=short {%- for kwarg in test_kwargs %} {{ kwarg }}{%- endfor %}{% if no_deprecation_error %}{% else %} \
+          -W "error::pennylane.PennyLaneDeprecationWarning"{% endif %}{% if latest or no_deprecation_error %}{% else %} \
+          -W "ignore:QubitDevice:pennylane.PennyLaneDeprecationWarning" \
+          -W "ignore:QubitStateVector:pennylane.PennyLaneDeprecationWarning"{% endif %}
 
