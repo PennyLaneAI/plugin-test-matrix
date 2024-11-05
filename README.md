@@ -91,6 +91,21 @@ The following table shows the current Catalyst compatibility with the Lightning 
   </tr>
 </table>
 
+## Package warnings
+
+The following actions run their respective test-suites with warnings promoted to errors. Failures here indicate warnings encountered during compilation and/or testing.
+
+<table>
+  <tr>
+    <td>PennyLane test-suite <b>latest</b></td>
+    <td><a href=https://github.com/PennyLaneAI/pennylane/actions/workflows/package_warnings_as_errors.yml><img src=https://github.com/PennyLaneAI/pennylane/actions/workflows/package_warnings_as_errors.yml/badge.svg alt="PennyLane PyTest latest"></a></td>
+  </tr>
+  <tr>
+    <td>Lightning-Qubit clang-tidy w/ WAE <b>latest</b></td>
+    <td><a href=https://github.com/PennyLaneAI/pennylane-lightning/actions/workflows/tidy.yml?branch=master><img src=https://github.com/PennyLaneAI/pennylane-lightning/actions/workflows/tidy.yml/badge.svg?branch=master alt="PennyLane Lightning-Qubit clang-tidy build with warnings as errors"></a></td>
+  </tr>
+</table>
+
 ## Interpreting the test matrix
 
 * **Stable/stable**: This reflects a scenario where PennyLane and the plugin are both installed
