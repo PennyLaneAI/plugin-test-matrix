@@ -11,7 +11,7 @@ cat /tmp/job_$JOBID.out | grep "Warning:" | awk '{split($0,a,"Warning:"); print 
 declare -A waeCounts
 
 while read -r line; do
-    [[ -n "$line" && "$line" != [[:blank:]#]* ]] && waeCounts["$line"]=$(cat /tmp/job_$JOBID.out | grep "$line" | wc -l)
+    [[ -n "$line" && "$line" != [[:blank:]]* ]] && waeCounts["$line"]=$(cat /tmp/job_$JOBID.out | grep "$line" | wc -l)
 done <unique_wae.txt
 echo $waeCounts
 
