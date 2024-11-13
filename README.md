@@ -98,43 +98,43 @@ The following table shows the current Catalyst compatibility with the Lightning 
 <table>
 <tr>
   <td><code>UserWarning</code></td>
-  <td><a href=https://github.com/PennyLaneAI/pennylane/actions/workflows/package_warnings_as_errors.yml><img src=https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FPennyLaneAI%2Fplugin-test-matrix%2Frefs%2Ftags%2Fwae_data_tag%2Funique_wae.json&query=%24%5B0%5D.UserWarning&label=&color=yellow></td>
+  <td><a href=https://github.com/PennyLaneAI/pennylane/actions/workflows/package_warnings_as_errors.yml><img src=https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FPennyLaneAI%2Fplugin-test-matrix%2Frefs%2Ftags%2Fwae_data_tag%2Funique_wae.json&query=%24%5B0%5D.UserWarning&label=&color=9c6700></td>
 </tr>
 <tr>
   <td><code>DeprecationWarning</code></td>
-  <td><a href=https://github.com/PennyLaneAI/pennylane/actions/workflows/package_warnings_as_errors.yml><img src=https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FPennyLaneAI%2Fplugin-test-matrix%2Frefs%2Ftags%2Fwae_data_tag%2Funique_wae.json&query=%24%5B0%5D.DeprecationWarning&label=&color=yellow></td>
+  <td><a href=https://github.com/PennyLaneAI/pennylane/actions/workflows/package_warnings_as_errors.yml><img src=https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FPennyLaneAI%2Fplugin-test-matrix%2Frefs%2Ftags%2Fwae_data_tag%2Funique_wae.json&query=%24%5B0%5D.DeprecationWarning&label=&color=9c6700></td>
 </tr>
 <tr>
   <td><code>pytest.PytestRemovedIn9Warning</code></td>
-  <td><a href=https://github.com/PennyLaneAI/pennylane/actions/workflows/package_warnings_as_errors.yml><img src=https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FPennyLaneAI%2Fplugin-test-matrix%2Frefs%2Ftags%2Fwae_data_tag%2Funique_wae.json&query=%24.%5B0%5D.%5B%22pytest.PytestRemovedIn9Warning%22%5D&label=&color=yellow></td>
+  <td><a href=https://github.com/PennyLaneAI/pennylane/actions/workflows/package_warnings_as_errors.yml><img src=https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FPennyLaneAI%2Fplugin-test-matrix%2Frefs%2Ftags%2Fwae_data_tag%2Funique_wae.json&query=%24.%5B0%5D.%5B%22pytest.PytestRemovedIn9Warning%22%5D&label=&color=9c6700></td>
 </tr>
 <tr>
   <td><code>PendingDeprecationWarning</code></td>
-  <td><a href=https://github.com/PennyLaneAI/pennylane/actions/workflows/package_warnings_as_errors.yml><img src=https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FPennyLaneAI%2Fplugin-test-matrix%2Frefs%2Ftags%2Fwae_data_tag%2Funique_wae.json&query=%24.%5B0%5D.%5B%22PendingDeprecationWarning%22%5D&label=&color=yellow></td>
+  <td><a href=https://github.com/PennyLaneAI/pennylane/actions/workflows/package_warnings_as_errors.yml><img src=https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FPennyLaneAI%2Fplugin-test-matrix%2Frefs%2Ftags%2Fwae_data_tag%2Funique_wae.json&query=%24.%5B0%5D.%5B%22PendingDeprecationWarning%22%5D&label=&color=9c6700></td>
 </tr>
 <tr>
   <td><code>pytest.PytestUnraisableExceptionWarning</code></td>
-  <td><a href=https://github.com/PennyLaneAI/pennylane/actions/workflows/package_warnings_as_errors.yml><img src=https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FPennyLaneAI%2Fplugin-test-matrix%2Frefs%2Ftags%2Fwae_data_tag%2Funique_wae.json&query=%24.%5B0%5D.%5B%22pytest.PytestUnraisableExceptionWarning%22%5D&label=&color=yellow></td>
+  <td><a href=https://github.com/PennyLaneAI/pennylane/actions/workflows/package_warnings_as_errors.yml><img src=https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FPennyLaneAI%2Fplugin-test-matrix%2Frefs%2Ftags%2Fwae_data_tag%2Funique_wae.json&query=%24.%5B0%5D.%5B%22pytest.PytestUnraisableExceptionWarning%22%5D&label=&color=9c6700></td>
 </tr>
 <tr>
   <td><code>numpy.exceptions.ComplexWarning</code></td>
-  <td><a href=https://github.com/PennyLaneAI/pennylane/actions/workflows/package_warnings_as_errors.yml><img src=https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FPennyLaneAI%2Fplugin-test-matrix%2Frefs%2Ftags%2Fwae_data_tag%2Funique_wae.json&query=%24.%5B0%5D.%5B%22numpy.exceptions.ComplexWarning%22%5D&label=&color=yellow></td>
+  <td><a href=https://github.com/PennyLaneAI/pennylane/actions/workflows/package_warnings_as_errors.yml><img src=https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FPennyLaneAI%2Fplugin-test-matrix%2Frefs%2Ftags%2Fwae_data_tag%2Funique_wae.json&query=%24.%5B0%5D.%5B%22numpy.exceptions.ComplexWarning%22%5D&label=&color=9c6700></td>
 </tr>
 <tr>
   <td><code>RuntimeWarning</code></td>
-  <td><a href=https://github.com/PennyLaneAI/pennylane/actions/workflows/package_warnings_as_errors.yml><img src=https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FPennyLaneAI%2Fplugin-test-matrix%2Frefs%2Ftags%2Fwae_data_tag%2Funique_wae.json&query=%24.%5B0%5D.%5B%22RuntimeWarning%22%5D&label=&color=yellow></td>
+  <td><a href=https://github.com/PennyLaneAI/pennylane/actions/workflows/package_warnings_as_errors.yml><img src=https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FPennyLaneAI%2Fplugin-test-matrix%2Frefs%2Ftags%2Fwae_data_tag%2Funique_wae.json&query=%24.%5B0%5D.%5B%22RuntimeWarning%22%5D&label=&color=9c6700></td>
 </tr>
 <tr>
   <td><code>pytest.PytestCollectionWarning</code></td>
-  <td><a href=https://github.com/PennyLaneAI/pennylane/actions/workflows/package_warnings_as_errors.yml><img src=https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FPennyLaneAI%2Fplugin-test-matrix%2Frefs%2Ftags%2Fwae_data_tag%2Funique_wae.json&query=%24.%5B0%5D.%5B%22pytest.PytestCollectionWarning%22%5D&label=&color=yellow></td>
+  <td><a href=https://github.com/PennyLaneAI/pennylane/actions/workflows/package_warnings_as_errors.yml><img src=https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FPennyLaneAI%2Fplugin-test-matrix%2Frefs%2Ftags%2Fwae_data_tag%2Funique_wae.json&query=%24.%5B0%5D.%5B%22pytest.PytestCollectionWarning%22%5D&label=&color=9c6700></td>
 </tr>
 <tr>
   <td><code>FutureWarning</code></td>
-  <td><a href=https://github.com/PennyLaneAI/pennylane/actions/workflows/package_warnings_as_errors.yml><img src=https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FPennyLaneAI%2Fplugin-test-matrix%2Frefs%2Ftags%2Fwae_data_tag%2Funique_wae.json&query=%24.%5B0%5D.%5B%22FutureWarning%22%5D&label=&color=yellow></td>
+  <td><a href=https://github.com/PennyLaneAI/pennylane/actions/workflows/package_warnings_as_errors.yml><img src=https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FPennyLaneAI%2Fplugin-test-matrix%2Frefs%2Ftags%2Fwae_data_tag%2Funique_wae.json&query=%24.%5B0%5D.%5B%22FutureWarning%22%5D&label=&color=9c6700></td>
 </tr>
 <tr>
   <td><code>pennylane.PennyLaneDeprecationWarning</code></td>
-  <td><a href=https://github.com/PennyLaneAI/pennylane/actions/workflows/package_warnings_as_errors.yml><img src=https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FPennyLaneAI%2Fplugin-test-matrix%2Frefs%2Ftags%2Fwae_data_tag%2Funique_wae.json&query=%24.%5B0%5D.%5B%22pennylane.PennyLaneDeprecationWarning%22%5D&label=&color=yellow></td>
+  <td><a href=https://github.com/PennyLaneAI/pennylane/actions/workflows/package_warnings_as_errors.yml><img src=https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FPennyLaneAI%2Fplugin-test-matrix%2Frefs%2Ftags%2Fwae_data_tag%2Funique_wae.json&query=%24.%5B0%5D.%5B%22pennylane.PennyLaneDeprecationWarning%22%5D&label=&color=9c6700></td>
 </tr>
 </table>
 
