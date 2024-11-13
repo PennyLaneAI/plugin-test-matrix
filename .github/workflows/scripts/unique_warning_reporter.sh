@@ -2,7 +2,7 @@
 
 # This file determines and counts the unique warnings that appear in the test suite using the
 # warnings-as-errors action runs. The volume of each reported warning can be used to indicate
-# severity or importance for rectification.
+# the severity or importance of rectification.
 
 JOBID=$(gh run list -w "Test-suite with Python warnings as errors" -L 1 --json databaseId -q '.[0].databaseId')
 echo "View latest job at https://github.com/PennyLaneAI/pennylane/actions/runs/$JOBID"
