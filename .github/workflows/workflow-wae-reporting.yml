@@ -2,6 +2,7 @@
 
 name: wae-reporting
 on:
+  pull_request:
   schedule:
     - cron: '35 8 * * 0' # Taken several hours after the weekly runs
   workflow_dispatch:
