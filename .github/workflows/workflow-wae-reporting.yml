@@ -35,5 +35,5 @@ jobs:
           git checkout -b wae_data
           git add *.json
           git commit -m "Check in WAE data"
-          git tag -fa wae_data_tag
+          git tag -f wae_data_tag
           git push origin tag wae_data_tag --force
