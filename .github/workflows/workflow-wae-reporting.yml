@@ -1,0 +1,38 @@
+# Workflow template for reporting the outcome of warnings-as-errors CI checks
+
+name: wae-reporting
+on:
+  schedule:
+    - cron: '35 8 * * 0' # Taken several hours after the weekly runs
+  workflow_dispatch:
+
+
+jobs:
+  wae-reporter:
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Clone latest PennyLane
+        run: git clone https://github.com/PennyLaneAI/pennylane
+
+      - name: Generate WAE JSON
+        run: |
+          cd pennylane
+          bash $GITHUB_WORKSPACE/.github/workflows/scripts/unique_warning_reporter.sh
+          cp *.json $GITHUB_WORKSPACE
+
+      - name: Store new JSON data
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --local user.email 'github-actions[bot]@users.noreply.github.com'
+          git config --local user.name "Update WAE data"
+          git checkout -b wae_data
+          git add *.json
+          git commit -m "Check in WAE data"
+          git tag -f wae_data_tag
+          git push origin tag wae_data_tag --force
