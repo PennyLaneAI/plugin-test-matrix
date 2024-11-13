@@ -24,6 +24,7 @@ jobs:
         run: |
           cd pennylane
           bash $GITHUB_WORKSPACE/.github/workflows/scripts/unique_warning_reporter.sh
+          cp *.json $GITHUB_WORKSPACE
 
       - name: Store new JSON data
         env:
