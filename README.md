@@ -34,14 +34,6 @@ All entries in the matrix are tested against PennyLane latest (GitHub master).
 
 * The Qiskit tests are run using local simulators. There are no tests that access the IBM Quantum backends. 
 
-* All the tests are run with the new operator arithmetic enabled. To check that the functionality of the
-legacy operator arithmetic is maintained during the deprecation cycle, the PennyLane tests are also run
-regularly with the new operator arithmetic disabled:
-
-|                                                                                                | Status                                                                                                                                                                                                                   |
-| :--------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Legacy-opmath](https://github.com/PennyLaneAI/pennylane/actions/workflows/legacy_op_math.yml) | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/pennylane/legacy_op_math.yml?branch=master)](https://github.com/PennyLaneAI/pennylane/actions/workflows/legacy_op_math.yml) |
-
 
 ## QML repo
 
