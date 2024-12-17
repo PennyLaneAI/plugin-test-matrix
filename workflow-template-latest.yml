@@ -66,7 +66,7 @@ jobs:
       - name: Install PennyLane and Plugin
         run: |
           {% raw -%}
-          pip install git+https://github.com/PennyLaneAI/pennylane.git \
+          pip install git+https://github.com/PennyLaneAI/pennylane.git@Replacing_group_observables \
             git+https://github.com/${{ env.PLUGIN_REPO }}.git@${{ env.PLUGIN_BRANCH }}
           {%- endraw %}
 
@@ -81,7 +81,7 @@ jobs:
       - name: Install PennyLane and Plugin
         run: |
           {% raw -%}
-          pip install git+https://github.com/PennyLaneAI/pennylane.git \
+          pip install git+https://github.com/PennyLaneAI/pennylane.git@Replacing_group_observables \
           ${{ env.PLUGIN_PACKAGE }} --upgrade
           {%- endraw %}
 

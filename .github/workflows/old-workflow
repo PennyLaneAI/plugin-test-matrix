@@ -55,7 +55,7 @@ jobs:
         if: contains(matrix.config.pennylane, 'git')
         run: |
           pip uninstall -y pennylane
-          pip install git+https://github.com/PennyLaneAI/pennylane.git@${{ env.PENNYLANE_BRANCH }}
+          pip install git+https://github.com/PennyLaneAI/pennylane.git@Replacing_group_observables@${{ env.PENNYLANE_BRANCH }}
 
       - name: Get plugin version
         id: plugin-version
