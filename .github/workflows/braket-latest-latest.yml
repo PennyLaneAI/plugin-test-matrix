@@ -45,7 +45,7 @@ jobs:
 
       - name: Install JAX
         run: |
-          pip install jax==$JAX_VERSION
+          pip install jax==$JAX_VERSION jaxlib==$JAX_VERSION
 
       - name: Install requirements
         run: |
