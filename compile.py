@@ -42,24 +42,6 @@ workflows = [
         ],
     },
     {
-        "plugin": "rigetti",
-        "gh_user": "PennyLaneAI",
-        "which": ["stable", "latest"],
-        "requirements": ["pyquil==2.28.2"],
-        "device_tests": [
-            "--device=rigetti.numpy_wavefunction --tb=short --skip-ops --shots=None",
-            "--device=rigetti.wavefunction --tb=short --skip-ops --shots=20000",
-            # "--device=rigetti.qvm --tb=short --skip-ops --shots=20000 --device-kwargs device=4q-qvm",
-        ],
-        "additional_setup": dedent("""
-            - name: Run Rigetti Quilc
-              run: docker run --rm -d -p 5555:5555 rigetti/quilc:1.23.0 -R
-
-            - name: Run Rigetti QVM
-              run: docker run --rm -d -p 5000:5000 rigetti/qvm -S"""
-        )
-    },
-    {
         "plugin": "aqt",
         "gh_user": "PennyLaneAI",
         "which": ["stable", "latest"],
@@ -91,9 +73,14 @@ workflows = [
         "additional_setup": dedent("""
             - name: Install TF
               run: |
-                pip install tensorflow~=$TF_VERSION keras~=$TF_VERSION"""
+                pip install tensorflow~=$TF_VERSION keras~=$TF_VERSION
+                                   
+            - name: Install JAX
+              run: |
+                pip install jax==$JAX_VERSION jaxlib==$JAX_VERSION"""
+                                   
         ),
-        "additional_env_vars": "TF_VERSION: 2.12.0\n  TORCH_VERSION: 2.0.0+cpu",
+        "additional_env_vars": "TF_VERSION: 2.12.0\n  TORCH_VERSION: 2.0.0+cpu\n  JAX_VERSION: 0.4.28",
         "no_deprecation_error": True,
     },
 ]
