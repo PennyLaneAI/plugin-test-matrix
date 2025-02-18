@@ -26,7 +26,7 @@ All entries in the matrix are tested against PennyLane latest (GitHub master).
 *Notes:*
 
 * The device integration tests currently do not support devices with a fixed
-  number of wires; as a result, `rigetti.qvm` is not tested.
+  number of wires.
 
 * The Braket plugin device integration tests are run with `-k “not Sample and not no_0_shots”`,
   see #6
@@ -170,7 +170,6 @@ The latest of all plugins are tested against the PennyLane release candidate bra
 | [Qulacs](https://github.com/PennyLaneAI/pennylane-qulacs)                   | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/plugin-test-matrix/qulacs-latest-rc.yml?branch=master)](https://github.com/PennyLaneAI/plugin-test-matrix/actions/workflows/qulacs-latest-rc.yml)                 |
 | [AQT](https://github.com/PennyLaneAI/pennylane-aqt)                         | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/plugin-test-matrix/aqt-latest-rc.yml?branch=master)](https://github.com/PennyLaneAI/plugin-test-matrix/actions/workflows/aqt-latest-rc.yml)                       |
 | [IonQ](https://github.com/PennyLaneAI/pennylane-ionq)                       | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/plugin-test-matrix/ionq-latest-rc.yml?branch=master)](https://github.com/PennyLaneAI/plugin-test-matrix/actions/workflows/ionq-latest-rc.yml)                     |
-| [Rigetti](https://github.com/PennyLaneAI/pennylane-rigetti)                 | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/plugin-test-matrix/rigetti-latest-rc.yml?branch=master)](https://github.com/PennyLaneAI/plugin-test-matrix/actions/workflows/rigetti-latest-rc.yml)               |
 | [Braket](https://github.com/aws/amazon-braket-pennylane-plugin-python)      | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/plugin-test-matrix/braket-latest-rc.yml?branch=master)](https://github.com/PennyLaneAI/plugin-test-matrix/actions/workflows/braket-latest-rc.yml)                 |
 
 The latest and release candidate of Lightning and Catalyst are tested with the release candidate of PennyLane:
