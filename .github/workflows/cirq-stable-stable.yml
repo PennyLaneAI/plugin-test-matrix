@@ -34,12 +34,11 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: "3.10"
+          python-version: "3.11"
 
       - name: Install requirements
         run: |
           pip install --upgrade pip
-          pip install qcs-sdk-python==0.21.12
           pip install --upgrade cirq
           pip install --upgrade qsimcirq
           pip install 'pytest<8.1.0' 
