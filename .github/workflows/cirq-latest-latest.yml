@@ -38,8 +38,8 @@ jobs:
 
       - name: Install requirements
         run: |
-          pip install qcs-sdk-python==0.21.12
           pip install --upgrade pip
+          pip install qcs-sdk-python==0.21.12
           pip install --upgrade cirq
           pip install --upgrade qsimcirq
           pip install 'pytest<8.1.0' 
