@@ -55,7 +55,7 @@ jobs:
           PLUGIN_VERSION=$(python -c "import pkg_resources as pkg; print(pkg.get_distribution('${{ env.PLUGIN_PACKAGE }}').version)")
           echo "version=$PLUGIN_VERSION" >> $GITHUB_OUTPUT
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           repository: ${{ env.PLUGIN_REPO }}
           path: plugin_repo
