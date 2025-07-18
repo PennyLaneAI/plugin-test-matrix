@@ -73,4 +73,4 @@ jobs:
       - name: Run plugin tests
         run: |
           python -m pytest plugin_repo/tests --tb=short \
-          -W "error::pennylane.PennyLaneDeprecationWarning"
+          -W "error::pennylane.exceptions.PennyLaneDeprecationWarning"

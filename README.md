@@ -133,8 +133,8 @@ The following table shows the current Catalyst compatibility with the Lightning 
   <td><a href=https://github.com/PennyLaneAI/pennylane/actions/workflows/package_warnings_as_errors.yml><img src=https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FPennyLaneAI%2Fplugin-test-matrix%2Frefs%2Ftags%2Fwae_data_tag%2Funique_wae.json&query=%24.%5B0%5D.%5B%22FutureWarning%22%5D&label=&color=9c6700></td>
 </tr>
 <tr>
-  <td><code>pennylane.PennyLaneDeprecationWarning</code></td>
-  <td><a href=https://github.com/PennyLaneAI/pennylane/actions/workflows/package_warnings_as_errors.yml><img src=https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FPennyLaneAI%2Fplugin-test-matrix%2Frefs%2Ftags%2Fwae_data_tag%2Funique_wae.json&query=%24.%5B0%5D.%5B%22pennylane.PennyLaneDeprecationWarning%22%5D&label=&color=9c6700></td>
+  <td><code>pennylane.exceptions.PennyLaneDeprecationWarning</code></td>
+  <td><a href=https://github.com/PennyLaneAI/pennylane/actions/workflows/package_warnings_as_errors.yml><img src=https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FPennyLaneAI%2Fplugin-test-matrix%2Frefs%2Ftags%2Fwae_data_tag%2Funique_wae.json&query=%24.%5B0%5D.%5B%22pennylane.exceptions.PennyLaneDeprecationWarning%22%5D&label=&color=9c6700></td>
 </tr>
 </table>
 
