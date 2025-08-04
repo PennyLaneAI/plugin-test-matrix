@@ -36,19 +36,10 @@ All entries in the matrix are tested against PennyLane latest (GitHub master).
 
 ## QML repo
 
-#### Pipeline V1
-
-|                                                                                                                   | Status                                                                                                                                                                                                   |
+| | Status |
 | :---------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`build-branch-dev`](https://github.com/PennyLaneAI/qml/blob/master/.github/workflows/build-branch-dev.yml)       | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/qml/build-branch-dev.yml)](https://github.com/PennyLaneAI/qml/actions/workflows/build-branch-dev.yml)       |
-| [`build-branch-master`](https://github.com/PennyLaneAI/qml/blob/master/.github/workflows/build-branch-master.yml) | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/qml/build-branch-master.yml)](https://github.com/PennyLaneAI/qml/actions/workflows/build-branch-master.yml) |
-| [`update-dev`](https://github.com/PennyLaneAI/qml/blob/master/.github/workflows/update-dev.yml) | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/qml/update-dev.yml)](https://github.com/PennyLaneAI/qml/actions/workflows/update-dev.yml) |
-
-#### Pipeline V2
-
-|                                                                                                                   | Status                                                                                                                                                                                                   |
-| :---------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`v2-build-branch-dev`](https://github.com/PennyLaneAI/qml/blob/master/.github/workflows/v2-build-branch-dev.yml)       | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/qml/v2-build-branch-dev.yml)](https://github.com/PennyLaneAI/qml/actions/workflows/v2-build-branch-dev.yml)       |
+| [`build-branch-dev`](https://github.com/PennyLaneAI/qml/blob/master/.github/workflows/build-branch-dev.yml) | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/qml/build-branch-dev.yml)](https://github.com/PennyLaneAI/qml/actions/workflows/build-branch-dev.yml) |
+| [`v2-build-branch-dev`](https://github.com/PennyLaneAI/qml/blob/master/.github/workflows/v2-build-branch-dev.yml) | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/qml/v2-build-branch-dev.yml)](https://github.com/PennyLaneAI/qml/actions/workflows/v2-build-branch-dev.yml) |
 | [`v2-build-branch-master`](https://github.com/PennyLaneAI/qml/blob/master/.github/workflows/v2-build-branch-master.yml) | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/qml/v2-build-branch-master.yml)](https://github.com/PennyLaneAI/qml/actions/workflows/v2-build-branch-master.yml) |
 
 ## Lightning Docker builds
