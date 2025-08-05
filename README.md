@@ -35,12 +35,28 @@ All entries in the matrix are tested against PennyLane latest (GitHub master).
 
 
 ## QML repo
-
-| | Status |
-| :---------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`build-branch-dev`](https://github.com/PennyLaneAI/qml/blob/master/.github/workflows/build-branch-dev.yml) | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/qml/build-branch-dev.yml)](https://github.com/PennyLaneAI/qml/actions/workflows/build-branch-dev.yml) |
-| [`v2-build-branch-dev`](https://github.com/PennyLaneAI/qml/blob/master/.github/workflows/v2-build-branch-dev.yml) | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/qml/v2-build-branch-dev.yml)](https://github.com/PennyLaneAI/qml/actions/workflows/v2-build-branch-dev.yml) |
-| [`v2-build-branch-master`](https://github.com/PennyLaneAI/qml/blob/master/.github/workflows/v2-build-branch-master.yml) | [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/PennyLaneAI/qml/v2-build-branch-master.yml)](https://github.com/PennyLaneAI/qml/actions/workflows/v2-build-branch-master.yml) |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://github.com/PennyLaneAI/qml/blob/master/.github/workflows/update-dev.yml"><code>update-dev</code></a></td>
+      <td><a href="https://github.com/PennyLaneAI/qml/actions/workflows/update-dev.yml"><img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/PennyLaneAI/qml/update-dev.yml"></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/PennyLaneAI/qml/blob/master/.github/workflows/v2-build-branch-dev.yml"><code>v2-build-branch-dev</code></a></td>
+      <td><a href="https://github.com/PennyLaneAI/qml/actions/workflows/v2-build-branch-dev.yml"><img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/PennyLaneAI/qml/v2-build-branch-dev.yml"></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/PennyLaneAI/qml/blob/master/.github/workflows/v2-build-branch-master.yml"><code>v2-build-branch-master</code></a></td>
+      <td><a href="https://github.com/PennyLaneAI/qml/actions/workflows/v2-build-branch-master.yml"><img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/PennyLaneAI/qml/v2-build-branch-master.yml"></a></td>
+    </tr>
+  </tbody>
+</table>
 
 ## Lightning Docker builds
 
