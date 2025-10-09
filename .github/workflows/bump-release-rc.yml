@@ -1,0 +1,38 @@
+name: Update pennylane rc branch version in plug-in test matrix
+on:
+  workflow_dispatch:
+    inputs:
+      rc_version:
+        description: 'RC version (e.g., v0.43.0-rc0)'
+        required: true
+jobs:
+  bump-rc-version:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
+    steps:
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install setuptools jinja2
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Bump rc version in workflow files
+        run: |
+          git checkout -b bump-rc-version-${{ inputs.rc_version }}
+          sed -i -E 's/v[0-9]+\.[0-9]+\.[0-9]+-rc[0-9]+/v0.9.0-rc0/' 'workflow-template-release-candidate.yml'
+          cat workflow-template-release-candidate.yml | grep pennylane.git
+          python compile.py
+          sed -i -E 's/v[0-9]+\.[0-9]+\.[0-9]+-rc[0-9]+/v0.9.0-rc0/' '.github/workflows/lightning-latest-rc.yml'
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions-bump[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .github/workflows/ .
+          git commit -m "Bump rc version in workflow files" 
+          git push --set-upstream origin bump-rc-version-${{ inputs.rc_version }}
+          gh pr create --title "Bump rc version in workflow files" --body "This PR updates the rc version in the workflow files to ${{ inputs.rc_version }}." --label "automerge" --assignee "runoragbaire"
+          gh pr merge --auto 
