@@ -23,7 +23,6 @@ jobs:
         run: |
           git checkout -b bump-rc-version-${{ inputs.rc_version }}
           sed -i -E 's/v[0-9]+\.[0-9]+\.[0-9]+-rc[0-9]+/v0.9.0-rc0/' 'workflow-template-release-candidate.yml'
-          cat workflow-template-release-candidate.yml | grep pennylane.git
           python compile.py
           sed -i -E 's/v[0-9]+\.[0-9]+\.[0-9]+-rc[0-9]+/v0.9.0-rc0/' '.github/workflows/lightning-latest-rc.yml'
 
