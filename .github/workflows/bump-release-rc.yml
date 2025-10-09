@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       rc_version:
-        description: 'RC version (e.g., v0.43.0-rc0)'
+        description: 'RC version (e.g., 0.43.0)'
         required: true
 jobs:
   bump-rc-version:
