@@ -33,5 +33,5 @@ jobs:
           git add .github/workflows/ .
           git commit -m "Bump rc version in workflow files" 
           git push --set-upstream origin bump-rc-version-${{ inputs.rc_version }}
-          gh pr create --title "Bump rc version in workflow files" --body "This PR updates the rc version in the workflow files to ${{ inputs.rc_version }}." --label "automerge" --assignee "runoragbaire"
+          gh pr create --title "Bump rc version in workflow files" --body "This PR updates the rc version in the workflow files to ${{ inputs.rc_version }}." --label "automerge" 
           gh pr merge --auto 
