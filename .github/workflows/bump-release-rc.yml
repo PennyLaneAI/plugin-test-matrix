@@ -22,9 +22,9 @@ jobs:
       - name: Bump rc version in workflow files
         run: |
           git checkout -b bump-rc-version-${{ inputs.rc_version }}
-          sed -i -E 's/v[0-9]+\.[0-9]+\.[0-9]+-rc[0-9]+/v0.9.0-rc0/' 'workflow-template-release-candidate.yml'
+          sed -i -E 's/v[0-9]+\.[0-9]+\.[0-9]+-rc[0-9]+/v${{ inputs.rc_version }}/' 'workflow-template-release-candidate.yml'
           python compile.py
-          sed -i -E 's/v[0-9]+\.[0-9]+\.[0-9]+-rc[0-9]+/v0.9.0-rc0/' '.github/workflows/lightning-latest-rc.yml'
+          sed -i -E 's/v[0-9]+\.[0-9]+\.[0-9]+-rc[0-9]+/v${{ inputs.rc_version }}/' '.github/workflows/lightning-latest-rc.yml'
 
       - name: Commit and push changes
         run: |
