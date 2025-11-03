@@ -47,6 +47,7 @@ workflows = [
         "which": ["stable", "latest"],
         "requirements": [],
         "device_tests": [],
+        "token": "AQT_TOKEN",
     },
     {
         "plugin": "ionq",

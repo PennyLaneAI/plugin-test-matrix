@@ -16,6 +16,7 @@ env:
   PLUGIN_BRANCH: master
   PLUGIN_PACKAGE: pennylane_aqt
   PENNYLANE_BRANCH: master
+  AQT_TOKEN: ${{ secrets.AQT_TOKEN }}
 
 
 jobs:
@@ -54,8 +55,7 @@ jobs:
           path: plugin_repo
           ref: ${{ env.PLUGIN_BRANCH }}
 
-      - name: Set up AQT API key
-        run: echo "AQT_API_KEY=${{ secrets.AQT_API_KEY }}" >> $GITHUB_ENV
+      
 
       - name: Run plugin tests
         run: |
