@@ -16,7 +16,6 @@ env:
   PLUGIN_BRANCH: master
   PLUGIN_PACKAGE: pennylane_aqt
   PENNYLANE_BRANCH: master
-  AQT_TOKEN: ${{ secrets.AQT_TOKEN }}
 
 
 jobs:
@@ -54,8 +53,6 @@ jobs:
           repository: ${{ env.PLUGIN_REPO }}
           path: plugin_repo
           ref: ${{ env.PLUGIN_BRANCH }}
-
-      
 
       - name: Run plugin tests
         run: |
