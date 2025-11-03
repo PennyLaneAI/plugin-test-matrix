@@ -54,6 +54,9 @@ jobs:
           path: plugin_repo
           ref: ${{ env.PLUGIN_BRANCH }}
 
+      - name: Set up AQT API key
+        run: echo "AQT_API_KEY=${{ secrets.AQT_API_KEY }}" >> $GITHUB_ENV
+
       - name: Run plugin tests
         run: |
           python -m pytest plugin_repo/tests --tb=short \
