@@ -8,9 +8,7 @@ on:
 
 jobs:
   bump-rc-version:
-    runs-on: ubuntu-latest
-    env:
-      GH_TOKEN: ${{ secrets.PENNYLANE_PTM_WORKFLOWUPDATE }}    
+    runs-on: ubuntu-latest 
     steps:
       - name: Install dependencies
         run: |
@@ -19,6 +17,8 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PENNYLANE_PTM_WORKFLOWUPDATE }}
 
       - name: Bump rc version in workflow files
         run: |
