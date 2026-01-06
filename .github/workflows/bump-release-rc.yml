@@ -18,7 +18,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.PENNYLANE_PTM_WORKFLOWUPDATE }}
+          GH_TOKEN: ${{ secrets.PENNYLANE_PTM_WORKFLOWUPDATE }}
 
       - name: Bump rc version in workflow files
         run: |
