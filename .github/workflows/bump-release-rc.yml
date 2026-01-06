@@ -5,11 +5,12 @@ on:
       rc_version:
         description: 'RC version (e.g., 0.43.0)'
         required: true
+
 jobs:
   bump-rc-version:
     runs-on: ubuntu-latest
     env:
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
+      GH_TOKEN: ${{ secrets.PENNYLANE_PTM_WORKFLOWUPDATE }}    
     steps:
       - name: Install dependencies
         run: |
@@ -28,8 +29,8 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git config --global user.name "github-actions-bump[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.email '${{ secrets.AUTO_UPDATE_VERSION_RINGO_EMAIL }}'
+          git config --global user.name "ringo-but-quantum"
           git add .github/workflows/ .
           git commit -m "Bump rc version in workflow files" 
           git push --set-upstream origin test-bump-rc-version-${{ inputs.rc_version }}
