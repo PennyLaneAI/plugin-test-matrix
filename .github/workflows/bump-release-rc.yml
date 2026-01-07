@@ -5,10 +5,6 @@ on:
       rc_version:
         description: 'RC version (e.g., 0.43.0)'
         required: true
-      branch:
-        description: 'Branch to run the workflow on'
-        required: false
-        default: 'test-bump-rc-version-0.0.1'
 
 jobs:
   bump-rc-version:
@@ -23,7 +19,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.PENNYLANE_PTM_WORKFLOWUPDATE }}
-          ref: ${{ inputs.branch }}
 
       - name: Bump rc version in workflow files
         run: |
@@ -41,5 +36,3 @@ jobs:
           git add .github/workflows/ .
           git commit -m "Bump rc version in workflow files" 
           git push
-          # gh pr create --title "Bump rc version in workflow files" --body "This PR updates the rc version in the workflow files to ${{ inputs.rc_version }}." #--label "automerge" 
-          # gh pr merge --auto 
