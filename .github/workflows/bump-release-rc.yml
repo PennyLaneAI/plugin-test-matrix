@@ -17,8 +17,6 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          GH_TOKEN: ${{ secrets.PENNYLANE_PTM_WORKFLOWUPDATE }}
 
       - name: Bump rc version in workflow files
         run: |
@@ -35,6 +33,6 @@ jobs:
           git config --global user.name "ringo-but-quantum"
           git add .github/workflows/ .
           git commit -m "Bump rc version in workflow files" 
-          git push --set-upstream origin test-bump-rc-version-${{ inputs.rc_version }}
+          git push origin test-bump-rc-version-${{ inputs.rc_version }}
           gh pr create --title "Bump rc version in workflow files" --body "This PR updates the rc version in the workflow files to ${{ inputs.rc_version }}." #--label "automerge" 
           # gh pr merge --auto 
