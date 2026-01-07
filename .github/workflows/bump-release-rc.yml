@@ -25,7 +25,6 @@ jobs:
           sed -i -E 's/v[0-9]+\.[0-9]+\.[0-9]+-rc[0-9]+/v${{ inputs.rc_version }}/' 'workflow-template-release-candidate.yml'
           python compile.py
           sed -i -E 's/v[0-9]+\.[0-9]+\.[0-9]+-rc[0-9]+/v${{ inputs.rc_version }}/' '.github/workflows/lightning-latest-rc.yml'
-          cat .github/workflows/lightning-latest-rc.yml
 
       - name: Commit and push changes
         env:
