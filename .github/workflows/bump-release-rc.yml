@@ -28,6 +28,8 @@ jobs:
           sed -i -E 's/v[0-9]+\.[0-9]+\.[0-9]+-rc[0-9]+/v${{ inputs.rc_version }}/' '.github/workflows/lightning-latest-rc.yml'
 
       - name: Commit and push changes
+        env:
+          GH_TOKEN: ${{ secrets.PENNYLANE_PTM_WORKFLOWUPDATE }}
         run: |
           git config --global user.email '${{ secrets.AUTO_UPDATE_VERSION_RINGO_EMAIL }}'
           git config --global user.name "ringo-but-quantum"
