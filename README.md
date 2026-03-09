@@ -44,16 +44,16 @@ All entries in the matrix are tested against PennyLane latest (GitHub master).
   </thead>
   <tbody>
     <tr>
-      <td><a href="https://github.com/PennyLaneAI/qml/blob/master/.github/workflows/update-dev.yml"><code>update-dev</code></a></td>
-      <td><a href="https://github.com/PennyLaneAI/qml/actions/workflows/update-dev.yml"><img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/PennyLaneAI/qml/update-dev.yml"></a></td>
+      <td><a href="https://github.com/PennyLaneAI/demos/blob/master/.github/workflows/update-dev.yml"><code>update-dev</code></a></td>
+      <td><a href="https://github.com/PennyLaneAI/demos/actions/workflows/update-dev.yml"><img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/PennyLaneAI/demos/update-dev.yml"></a></td>
     </tr>
     <tr>
-      <td><a href="https://github.com/PennyLaneAI/qml/blob/master/.github/workflows/v2-build-branch-dev.yml"><code>v2-build-branch-dev</code></a></td>
-      <td><a href="https://github.com/PennyLaneAI/qml/actions/workflows/v2-build-branch-dev.yml"><img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/PennyLaneAI/qml/v2-build-branch-dev.yml"></a></td>
+      <td><a href="https://github.com/PennyLaneAI/demos/blob/master/.github/workflows/v2-build-branch-dev.yml"><code>v2-build-branch-dev</code></a></td>
+      <td><a href="https://github.com/PennyLaneAI/demos/actions/workflows/v2-build-branch-dev.yml"><img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/PennyLaneAI/demos/v2-build-branch-dev.yml"></a></td>
     </tr>
     <tr>
-      <td><a href="https://github.com/PennyLaneAI/qml/blob/master/.github/workflows/v2-build-branch-master.yml"><code>v2-build-branch-master</code></a></td>
-      <td><a href="https://github.com/PennyLaneAI/qml/actions/workflows/v2-build-branch-master.yml"><img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/PennyLaneAI/qml/v2-build-branch-master.yml"></a></td>
+      <td><a href="https://github.com/PennyLaneAI/demos/blob/master/.github/workflows/v2-build-branch-master.yml"><code>v2-build-branch-master</code></a></td>
+      <td><a href="https://github.com/PennyLaneAI/demos/actions/workflows/v2-build-branch-master.yml"><img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/PennyLaneAI/demos/v2-build-branch-master.yml"></a></td>
     </tr>
   </tbody>
 </table>
