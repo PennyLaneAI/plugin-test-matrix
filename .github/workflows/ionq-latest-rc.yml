@@ -15,7 +15,7 @@ env:
   PLUGIN_REPO: PennyLaneAI/pennylane-ionq
   PLUGIN_BRANCH: master
   PLUGIN_PACKAGE: pennylane_ionq
-  PENNYLANE_BRANCH: master
+  PENNYLANE_BRANCH: main
   IONQ_API_KEY: ${{ secrets.IONQ_API_KEY }}
 
 

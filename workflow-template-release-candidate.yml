@@ -15,7 +15,7 @@ env:
   PLUGIN_REPO: {{ gh_user }}/{{ plugin_repo }}
   PLUGIN_BRANCH: {% if branch %}{{ branch }}{% else %}master{% endif %}
   PLUGIN_PACKAGE: {{ plugin_package }}
-  PENNYLANE_BRANCH: master
+  PENNYLANE_BRANCH: main
 {%- if token is defined %}
   {{ token }}: {% raw %}${{ secrets.{% endraw %}{{ token }}{% raw %} }}{% endraw %}
 {%- endif %}
@@ -64,7 +64,7 @@ jobs:
       - name: Install PennyLane and Plugin
         run: |
           {% raw -%}
-          pip install git+https://github.com/PennyLaneAI/pennylane.git@v0.44.0-rc0 \
+          pip install git+https://github.com/PennyLaneAI/pennylane.git@v1.0.0-rc0 \
             git+https://github.com/${{ env.PLUGIN_REPO }}.git@${{ env.PLUGIN_BRANCH }}
           {%- endraw %}
 

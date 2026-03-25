@@ -15,7 +15,7 @@ env:
   PLUGIN_REPO: PennyLaneAI/pennylane-qiskit
   PLUGIN_BRANCH: master
   PLUGIN_PACKAGE: pennylane_qiskit
-  PENNYLANE_BRANCH: master
+  PENNYLANE_BRANCH: main
   IBMQX_TOKEN: ${{ secrets.IBMQX_TOKEN }}
 
 
