@@ -9,7 +9,7 @@ Finally, tests can be triggered manually via the 'Actions' tab.
 
 ## Testing matrix
 
-All entries in the matrix are tested against PennyLane latest (GitHub master).
+All entries in the matrix are tested against PennyLane latest (GitHub main).
 
 
 |                                                                             | PyPI version                                                                                              | Stable plugin/stable PennyLane                                                                                                                                                                                                                                         | Stable plugin/latest PennyLane                                                                                                                                                                                                                                         | Latest plugin/ stable PennyLane                                                                                                                                                                                                                                        | Latest plugin/latest PennyLane                                                                                                                                                                                                                                         |
