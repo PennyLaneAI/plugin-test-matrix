@@ -13,7 +13,7 @@ on:
 
 env:
   PLUGIN_REPO: PennyLaneAI/pennylane-lightning
-  PLUGIN_BRANCH: master
+  PLUGIN_BRANCH: main
   PLUGIN_PACKAGE: pennylane_lightning
   PENNYLANE_BRANCH: main
   GCC_VERSION: 11
