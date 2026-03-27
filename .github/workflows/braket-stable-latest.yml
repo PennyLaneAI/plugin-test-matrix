@@ -15,7 +15,7 @@ env:
   PLUGIN_REPO: aws/amazon-braket-pennylane-plugin-python
   PLUGIN_BRANCH: main
   PLUGIN_PACKAGE: amazon-braket-pennylane-plugin
-  PENNYLANE_BRANCH: master
+  PENNYLANE_BRANCH: main
   TF_VERSION: 2.12.0
   TORCH_VERSION: 2.0.0+cpu
   JAX_VERSION: 0.4.28
