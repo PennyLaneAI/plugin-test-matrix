@@ -15,7 +15,7 @@ env:
   PLUGIN_REPO: {{ gh_user }}/{{ plugin_repo }}
   PLUGIN_BRANCH: {% if branch %}{{ branch }}{% else %}master{% endif %}
   PLUGIN_PACKAGE: {{ plugin_package }}
-  PENNYLANE_BRANCH: master
+  PENNYLANE_BRANCH: main
 {%- if token is defined %}
   {{ token }}: {% raw %}${{ secrets.{% endraw %}{{ token }}{% raw %} }}{% endraw %}
 {%- endif %}

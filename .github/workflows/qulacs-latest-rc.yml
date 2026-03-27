@@ -15,7 +15,7 @@ env:
   PLUGIN_REPO: PennyLaneAI/pennylane-qulacs
   PLUGIN_BRANCH: master
   PLUGIN_PACKAGE: pennylane_qulacs
-  PENNYLANE_BRANCH: master
+  PENNYLANE_BRANCH: main
 
 
 jobs:
