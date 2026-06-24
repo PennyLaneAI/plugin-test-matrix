@@ -89,7 +89,7 @@ jobs:
         id: plugin-version
         run: |
           {% raw -%}
-          PLUGIN_VERSION=$(python -c "import pkg_resources as pkg; print(pkg.get_distribution('${{ env.PLUGIN_PACKAGE }}').version)")
+          PLUGIN_VERSION=$(python -c "from importlib.metadata import version; print(version('${{ env.PLUGIN_PACKAGE }}'))")
           echo "version=$PLUGIN_VERSION" >> $GITHUB_OUTPUT
           {%- endraw %}
 
