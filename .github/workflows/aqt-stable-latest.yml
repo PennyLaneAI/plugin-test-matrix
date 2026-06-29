@@ -34,7 +34,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: "3.11"
+          python-version: "3.12"
 
       - name: Install requirements
         run: |
@@ -51,7 +51,7 @@ jobs:
       - name: Get plugin version
         id: plugin-version
         run: |
-          PLUGIN_VERSION=$(python -c "import pkg_resources as pkg; print(pkg.get_distribution('${{ env.PLUGIN_PACKAGE }}').version)")
+          PLUGIN_VERSION=$(python -c "from importlib.metadata import version; print(version('${{ env.PLUGIN_PACKAGE }}'))")
           echo "version=$PLUGIN_VERSION" >> $GITHUB_OUTPUT
 
       - uses: actions/checkout@v2
