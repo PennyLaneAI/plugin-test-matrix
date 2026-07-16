@@ -18,37 +18,6 @@ workflows = [
         "token": "IBMQX_TOKEN",
     },
     {
-        "plugin": "cirq",
-        "gh_user": "PennyLaneAI",
-        "which": ["latest", "stable"],
-        "requirements": ["cirq", "qsimcirq"],
-        "device_tests": [
-            "--device=cirq.simulator --tb=short --skip-ops --shots=None",
-            "--device=cirq.simulator --tb=short --skip-ops --shots=20000",
-            "--device=cirq.mixedsimulator --tb=short --skip-ops --shots=None",
-            "--device=cirq.mixedsimulator --tb=short --skip-ops --shots=20000",
-            "--device=cirq.pasqal --tb=short --skip-ops --analytic=False --shots=20000 --device-kwargs control_radius=2.",
-            "--device=cirq.qsim --tb=short --skip-ops --analytic=False --shots=20000",
-        ],
-    },
-    {
-        "plugin": "qulacs",
-        "gh_user": "PennyLaneAI",
-        "which": ["stable", "latest"],
-        "requirements": ["qulacs"],
-        "device_tests": [
-            "--device=qulacs.simulator --tb=short --skip-ops --shots=None",
-            "--device=qulacs.simulator --tb=short --skip-ops --shots=20000",
-        ],
-    },
-    {
-        "plugin": "aqt",
-        "gh_user": "PennyLaneAI",
-        "which": ["stable", "latest"],
-        "requirements": [],
-        "device_tests": [],
-    },
-    {
         "plugin": "ionq",
         "gh_user": "PennyLaneAI",
         "which": ["stable", "latest"],
