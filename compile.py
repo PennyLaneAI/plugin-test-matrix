@@ -71,16 +71,11 @@ workflows = [
         ],
         "tests_loc": "test/unit_tests",
         "additional_setup": dedent("""
-            - name: Install TF
-              run: |
-                pip install tensorflow~=$TF_VERSION keras~=$TF_VERSION
-                                   
             - name: Install JAX
               run: |
                 pip install jax==$JAX_VERSION jaxlib==$JAX_VERSION"""
-                                   
         ),
-        "additional_env_vars": "TF_VERSION: 2.12.0\n  TORCH_VERSION: 2.0.0+cpu\n  JAX_VERSION: 0.4.28",
+        "additional_env_vars": "TORCH_VERSION: 2.0.0+cpu\n  JAX_VERSION: 0.4.28",
         "no_deprecation_error": True,
     },
 ]
