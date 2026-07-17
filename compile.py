@@ -49,7 +49,7 @@ workflows = [
                 pip install jax==$JAX_VERSION jaxlib==$JAX_VERSION"""
                                    
         ),
-        "additional_env_vars": "TF_VERSION: 2.12.0\n  TORCH_VERSION: 2.0.0+cpu\n  JAX_VERSION: 0.4.28",
+        "additional_env_vars": "TF_VERSION: 2.12.0\n  TORCH_VERSION: 2.9.1+cpu\n  JAX_VERSION: 0.7.1",
         "no_deprecation_error": True,
     },
 ]
