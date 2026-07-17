@@ -37,11 +37,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: "3.11"
-            
-      - name: Install TF
-        run: |
-          pip install tensorflow~=$TF_VERSION keras~=$TF_VERSION
+          python-version: "3.12"
 
       - name: Install JAX
         run: |
