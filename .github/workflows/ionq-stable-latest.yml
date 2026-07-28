@@ -10,6 +10,9 @@ on:
     - cron: '0 0 * * *'
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 env:
   PLUGIN_REPO: PennyLaneAI/pennylane-ionq
@@ -27,11 +30,6 @@ jobs:
       fail-fast: false
 
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.4.1
-        with:
-          access_token: ${{ github.token }}
-
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
