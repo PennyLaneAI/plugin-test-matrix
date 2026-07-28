@@ -11,8 +11,8 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: {% raw %}${{ github.workflow }}-${{ github.ref }}{% endraw %}
-  cancel-in-progress: true
+  group: {% raw %}${{ github.workflow }}-${{ github.ref }}-stable{% endraw %}
+    cancel-in-progress: true
 
 env:
   PLUGIN_REPO: {{ gh_user }}/{{ plugin_repo }}

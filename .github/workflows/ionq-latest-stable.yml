@@ -11,8 +11,8 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.ref }}-stable
+    cancel-in-progress: true
 
 env:
   PLUGIN_REPO: PennyLaneAI/pennylane-ionq

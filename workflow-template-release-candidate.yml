@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: {% raw %}${{ github.workflow }}-${{ github.ref }}{% endraw %}
+  group: {% raw %}${{ github.workflow }}-${{ github.ref }}-rc{% endraw %}
   cancel-in-progress: true
 
 env:
