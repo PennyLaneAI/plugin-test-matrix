@@ -12,7 +12,7 @@ on:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}-stable
-    cancel-in-progress: true
+  cancel-in-progress: true
 
 env:
   PLUGIN_REPO: aws/amazon-braket-pennylane-plugin-python
