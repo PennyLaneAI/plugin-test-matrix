@@ -10,6 +10,9 @@ on:
     - cron: '0 0 * * *'
   workflow_dispatch:
 
+concurrency:
+  group: {% raw %}${{ github.workflow }}-${{ github.ref }}-rc{% endraw %}
+  cancel-in-progress: true
 
 env:
   PLUGIN_REPO: {{ gh_user }}/{{ plugin_repo }}
@@ -32,11 +35,6 @@ jobs:
       fail-fast: false
 
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.4.1
-        with:
-          access_token: {% raw %}${{ github.token }}{% endraw %}
-
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
