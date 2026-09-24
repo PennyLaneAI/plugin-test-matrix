@@ -91,7 +91,7 @@ The following table shows the current Catalyst compatibility with the Lightning 
     <td><a href=https://github.com/PennyLaneAI/catalyst/actions/workflows/CPL_latest-stable-stable.yaml><img src=https://img.shields.io/github/actions/workflow/status/PennyLaneAI/catalyst/CPL_latest-stable-stable.yaml alt="Check CPL latest/stable/stable"></a></td>
     <td><a href=https://github.com/PennyLaneAI/catalyst/actions/workflows/CPL_latest-stable-latest.yaml><img src=https://img.shields.io/github/actions/workflow/status/PennyLaneAI/catalyst/CPL_latest-stable-latest.yaml alt="Check CPL latest/stable/latest"></a></td>
     <td><a href=https://github.com/PennyLaneAI/catalyst/actions/workflows/CPL_latest-latest-stable.yaml><img src=https://img.shields.io/github/actions/workflow/status/PennyLaneAI/catalyst/CPL_latest-latest-stable.yaml alt="Check CPL latest/latest/stable"></a></td>
-    <td><a href=https://github.com/PennyLaneAI/catalyst/actions/workflows/CPL_latest-latest-latest.yaml><img src=https://img.shields.io/github/actions/workflow/status/PennyLaneAI/catalyst/CPL_latest-latest-latest.yaml alt="Check CPL latest/latest/latest"></a></td>
+    <td><a href=https://github.com/PennyLaneAI/catalyst/actions/workflows/CPL_latest-latest-latest.yaml><img src=https://img.shields.io/github/actions/workflow/status/PennyLaneAI/catalyst/CPL_latest-latest-latest.yaml?branch=main alt="Check CPL latest/latest/latest"></a></td>
   </tr>
 </table>
 
